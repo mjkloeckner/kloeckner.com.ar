@@ -1,0 +1,16 @@
+img {
+	border-radius: .3em;
+	max-width: 60em;
+
+	overflow: hidden;
+
+	height: 100%;
+	width: 100%;
+
+	color: black;
+	background: #151515;
+}
+
+p {
+	margin-bottom: 1em;
+}
