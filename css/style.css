@@ -23,11 +23,13 @@ body {
 
 	font-size: 14px;
 	font-family: "DejaVu Sans", sans, sans-serif;
+	scroll-behavior: smooth
 }
 
 header {
 	color: crimson;
-	background: #151515;
+	/* background: #151515; */
+	background: #191919;
 
 	max-width: 55em;
 
@@ -41,8 +43,8 @@ header {
 
 	padding-left: 1.25em;
 	padding-right: 1.25em;
-	padding-top: 1.5em;
-	padding-bottom: 1em;
+	padding-top: 1.25em;
+	padding-bottom: .75em;
 
 	border-radius: 1em;
 	border-top: 1em;
@@ -53,13 +55,14 @@ header {
 #header_text {
 	margin-bottom: 0em;
 	padding-bottom: 0.10em;
+	font-size: 2.15em;
 }
-
-
 
 article {
 	color: antiquewhite;
-	background: #151515;
+	/* background: #151515; */
+	background: #191919;
+
 	max-width: 55em;
 
 	margin-left: auto;
@@ -67,7 +70,7 @@ article {
 	margin-top: 1em;
 	margin-bottom: .9em;
 
-	text-align: left;
+	/* text-align: left; */
 
 	padding-left: 1.25em;
 	padding-right: 1.25em;
@@ -80,7 +83,6 @@ article {
 
 img {
 	border-radius: .3em;
-	/* max-width: 10em; */
 
 	overflow: hidden;
 
@@ -88,7 +90,7 @@ img {
 	width: 100%;
 
 	color: black;
-	background: #151515;
+	background: #191919;
 }
 
 a:visited {
@@ -122,6 +124,7 @@ footer {
 	text-align: center;
 	font-size: 0.75em;
 	color: #151515;
+	font-family: monospace;
 }
 
 h2 {
@@ -229,7 +232,9 @@ hr {
 }
 
 .header_buttons {
-	margin-top: .2em;
+	/* margin-top: .2em; */
+	margin-top: 0;
+	font-size: 1.05em;
 }
 
 #header_link {
@@ -242,14 +247,43 @@ hr {
 }
 
 #header_link:hover {
-	color: whitesmoke;
+	color: antiquewhite;
 }
 
 footer {
 	color: black;
 }
 
-#top {
+#go_top {
 	text-decoration: none;
-	color: blue;
+	color: peru;
 }
+
+#go_top:hover {
+	color: crimson;
+}
+
+#recent_articles_items {
+
+}
+
+/* #recent_articles { */
+/* 	border-collapse: collapse; */
+	/* width: 75%; */
+    /* border-radius: 100px; */
+	/* margin-left: auto; */
+	/* margin-right: auto; */
+/* } */
+
+/* #recent_articles tr { */
+/* 	border: 1px dotted antiquewhite; */
+/* 	width: 100%; */
+/*     border-radius: 100px; */
+/* } */
+
+/* #recent_articles td { */
+/* 	padding: .25em; */
+/* 	padding-right: -10em; */
+/* 	border: 1px dotted antiquewhite; */
+/* } */
+

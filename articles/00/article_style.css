@@ -1,4 +1,4 @@
-img {
+.screenshot {
 	border-radius: .3em;
 	max-width: 60em;
 
@@ -6,9 +6,6 @@ img {
 
 	height: 100%;
 	width: 100%;
-
-	color: black;
-	background: #151515;
 }
 
 p {

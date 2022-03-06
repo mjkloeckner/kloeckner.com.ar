@@ -1,4 +1,4 @@
-<br>
-<div style="margin-top: .25em; text-align: center;">
-	<a href="#top">Back to top</a>
+<!-- <br> -->
+<div style="margin-top: 1em; text-align: center; text-decoration: none;">
+	<a href="#top" id="go_top">Back to top</a>
 </div>
