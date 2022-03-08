@@ -4,6 +4,7 @@
 
 	text-align: center;
 
+	padding-top: 1em;
 	padding-bottom: 1em;
 }
 
@@ -14,8 +15,11 @@
 	max-width: 15em;
 
 	border-style: dashed;
-	border-color: gold;
-	border-width: 1.5px;
+	border-color: peru;
+	border-width: 1.75px;
+	border-radius: .75em;
+
+	box-shadow: 3px 3px 3px black;
 }
 
 .skills_logos {
