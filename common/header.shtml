@@ -1,12 +1,13 @@
 <header>
 	<h1 id="header_text">
-		<a href="/index.html" id="header_link">Martin's webpage</a>
+		<a href="/index.html" id="header_link">Martin Klöckner</a>
 	</h1>
 	<div class="header_buttons">
 		<a href="/index.html" style="text-decoration: none;">home</a>&nbsp;
 		<a href="/common/articles.html" style="text-decoration: none;">articles</a>&nbsp;
 		<a href="/common/library.html" style="text-decoration: none;">library</a>&nbsp;
-		<a href="/common/downloads.html" style="text-decoration: none;">downloads</a>&nbsp;
+		<!-- <a href="/common/downloads.html" style="text-decoration: none;">downloads</a>&nbsp; -->
 		<a href="/common/about.html" style="text-decoration: none;">about</a>
 	</div>
 </header>
+<hr class="header_bottom_bar">

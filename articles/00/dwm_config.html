@@ -2,7 +2,7 @@
 <html lang="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<head id=top>
-		<title>Martin's webpage - DWM configuration</title>
+		<title>DWM, A tiling window manager configuration - Martin Klöckner's webpage</title>
 		<link rel='stylesheet' type='text/css' href="/css/style.css">
 		<link rel='stylesheet' type='text/css' href="article_style.css">
 		<link rel="icon" href="/favicon.ico">
@@ -13,12 +13,14 @@
 		<!--#include virtual="/common/header.shtml" -->
 
 		<article>
-			<h3 style="text-align: left;"><u>DWM - A window manager configuration</u></h3>
-			<p>A window manager it's a software that can manage the layout and appearance of every window spawned in your desktop, most people confuse them with desktop enviroments, which isn't the same since a desktop enviroment it's more of an ecosystem, It comes with a more 'complete' set of tools, like a basic web browser or a terminal; a window manager it's only the thing that controlls the window layout, although there are some window manager that come with docks or taskbars.</p>
+			<h3 style="text-align: left;"><u>DWM - A tiling window manager configuration</u></h3>
+			<p>A window manager it's a software that can manage the layout and appearance of every window spawned in your desktop, most people confuse them with desktop enviroments, which isn't the same since a desktop enviroment it's more of an ecosystem, they come with a more 'complete' set of tools, like a basic web browser, a terminal emulator or calculator, an example of desktop enviroment would be gnome, xfce or kde plasma; instead a window manager it's only the software that manages the windows spawned, although there are window manager that come with just a little bit more like docks or taskbars (openbox for example).</p>
 
-			<br>
-			<p>	In my particular case I use dwm, which is a window manager written in C developed by suckless software. It can apply all the layout dynamically per task, and you can also have different layouts in every workspace. By default it comes with 9 Workspaces but you can add as much as you want, for example I added a 10th workspace and mapped to the '0' key, which by default turn on a mode that shows all the opened windows in the current workspace, a feature that I never used.</p>
+			<p>	In my case I use dwm, which is a window manager written in C developed by suckless software. The most relevant thing of this window manager is that out of the box it comes with the most basic functionallity, and if you want to extend it you need to patch it.</p>
 
+			<p>By default DWM comes with 9 workspaces, in which you can open as many windows as you please; to spawn a new window for example a web browser you need to assign it a keybinding or use an application launcher like <a href="https://tools.suckless.org/dmenu/">dmenu</a></p>
+
+			<!-- <p>but you can add as much as you want, for example I added a 10th workspace and mapped to the '0' key, which by default turn on a mode that shows all the opened windows in the current workspace, a feature that I never used.</p> -->
 			<br>
 
 			<img class="screenshot" max-width=40em src="scrot.png" title="Screenshot of my dwm build" alt="Screenshot">
@@ -56,7 +58,7 @@
 
 			<!-- <br> -->
 			<h5><u>How do you configure DWM?</u></h5>
-			
+
 			<p>Basically you configure it by editing its source code, inside the root folder of the project there is a C header file named <a href="https://github.com/klewer-martin/dotfiles/blob/master/.config/dwm/config.def.h">config.def.h</a> which if you open with a text editor you can see that there is some C code that you can edit, for example the line "static const int topbar" defines a variable named topbar which you can set to 1 or 0, to select if the status bar should spawn in the top or the bottom of the screen. After every change you make to the source code you need to copy config.def.h to config.h and then <u>recompile dwm</u></p>
 
 			<!-- <br> -->
@@ -91,7 +93,6 @@
 
 			<p>If you never patched dwm before then probably it's gonna work on the first try, but if you already have a ton of patches then probably it's gonna fail to patch, in this case you need to get your hands dirty, and manually patch all the files that failed. You do this by opening the files with a .rej extension, this means rejected, and the corresponding file to be patched, for example dwm.c and dwm.c.rej, and then you add all the chunks of code in the corresponding place in dwm.c, you know where you should put the chunks of code because in the .rej file you can see at the start of every chunk there is a '@@' followed by a number of line which indicates between which and which line you sould put add or remove the followed chunk of code, i.e. a line starting with plus means add, and minus means delete.</p>
 
-			<!-- <br> -->
 			<h5><u>Useful links</u></h5>
 			<ul>
 				<li>Make sure to check the <a href="https://suckless.org/">suckless webiste</a></li>
@@ -100,6 +101,7 @@
 				<li><a target="_blank" href="https://man7.org/linux/man-pages/man1/patch.1.html">patch man page</a></li>
 			</ul>
 
+			<br>
 			<!--#include virtual="/common/end_of_article.shtml" -->
 		</article>
 		<!--#include virtual="/common/footer.shtml" -->
