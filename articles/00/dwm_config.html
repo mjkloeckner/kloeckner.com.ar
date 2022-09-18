@@ -14,7 +14,7 @@
 
 		<article>
 			<h3 style="text-align: left;"><u>DWM - A tiling window manager configuration</u></h3>
-			<p>A window manager it's a software that can manage the layout and appearance of every window spawned in your desktop, most people confuse them with desktop enviroments, which isn't the same since a desktop enviroment it's more of an ecosystem, they come with a more 'complete' set of tools, like a basic web browser, a terminal emulator or calculator, an example of desktop enviroment would be gnome, xfce or kde plasma; instead a window manager it's only the software that manages the windows spawned, although there are window manager that come with just a little bit more like docks or taskbars (openbox for example).</p>
+			<p>A window manager is a software that can manage the layout and appearance of every window spawned in your desktop, most people confuse them with desktop enviroments, which isn't the same since a desktop enviroment is more of an ecosystem, they come with a more 'complete' set of tools, like a basic web browser, a terminal emulator or calculator, an example of desktop enviroment would be gnome, xfce or kde plasma; instead a window manager is only the program that manages the windows spawned, although there are window managers that come with a little more, like docks or taskbars (openbox for example).</p>
 
 			<p>	In my case I use dwm, which is a window manager written in C developed by suckless software. The most relevant thing of this window manager is that out of the box it comes with the most basic functionallity, and if you want to extend it you need to patch it.</p>
 
@@ -40,7 +40,7 @@
 
 			<br>
 
-			<p>As you can see above you can only install DWM on GNU/Linux or BSD based distros, unfortunally dwm it's not available for Windows users but I'm sure there is an alternative.</p>
+			<p>As you can see above you can only install DWM on GNU/Linux or BSD based distros, unfortunally dwm is not available for Windows users but I'm sure there is an alternative.</p>
 
 			<!-- <br> -->
 			<h5>Installation</h5>
@@ -91,10 +91,11 @@
 
 			<code>$ <em id=command>patch</em> -p1 <em id=command_red>&lt;</em> <u>&lt;name of the file&gt;</u></code>
 
-			<p>If you never patched dwm before then probably it's gonna work on the first try, but if you already have a ton of patches then probably it's gonna fail to patch, in this case you need to get your hands dirty, and manually patch all the files that failed. You do this by opening the files with a .rej extension, this means rejected, and the corresponding file to be patched, for example dwm.c and dwm.c.rej, and then you add all the chunks of code in the corresponding place in dwm.c, you know where you should put the chunks of code because in the .rej file you can see at the start of every chunk there is a '@@' followed by a number of line which indicates between which and which line you sould put add or remove the followed chunk of code, i.e. a line starting with plus means add, and minus means delete.</p>
+			<p>If you never patched dwm before then probably no errors would be reportjd, but if you already have applied a ton of patches then probably you would get a HUNK ## FAILED, in this case you need to get your hands dirty, and manually patch all the files that failed, you do this by opening the files with .rej extension (short for rejected), and the corresponding file to be patched, for example dwm.c and dwm.c.rej, and then you add all the chunks of code from the rejected file into the corresponding place in the non rejected file, you know where you should put the chunks of code because in the rej file you can see at the start of every chunk there is a '@@' followed by a number of line; also lines starting with plus means add, and minus means delete, if i'm not clear you should google how to use diff and patch to modify a file.</p>
 
 			<h5><u>Useful links</u></h5>
 			<ul>
+				<li><a href="https://en.wikipedia.org/wiki/Window_manager">What is a window manager?</a></li>
 				<li>Make sure to check the <a href="https://suckless.org/">suckless webiste</a></li>
 				<li><a target="_blank" href="https://dwm.suckless.org/">suckless dwm website</a></li>
 				<li><a target="_blank" href="https://www.x.org/releases/X11R7.7/doc/man/man1/Xserver.1.xhtml">X server man page</a></li>

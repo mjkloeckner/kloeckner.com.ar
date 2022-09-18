@@ -39,8 +39,7 @@ body {
 
 header {
 	color: crimson;
-	/* background: #151515; */
-	background: #191919;
+	/* background: #191919; */
 
 	max-width: 42em;
 
@@ -122,8 +121,7 @@ header {
 
 article {
 	color: antiquewhite;
-	/* background: #151515; */
-	background: #191919;
+	/* background: #191919; */
 
 	max-width: 55em;
 
@@ -189,7 +187,7 @@ footer {
 	font-size: 0.75em;
 
 	/* color: #151515; */
-	color: antiquewhite;
+	color: dimgrey;
 	font-family: monospace;
 }
 
