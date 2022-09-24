@@ -1,20 +1,20 @@
 /* src: url('webfont.eot?#iefix') format('embedded-opentype'), /1* IE6-IE8 *1/ */
 @font-face {
   font-family: 'Futura Medium';
-  src: url('/fonts/futura_medium/futura_medium.ttf'); /* IE9 Compat Modes */
-  src: url('/fonts/futura_medium/FuturaBT-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/fonts/futura_medium/FuturaBT-Medium.woff') format('woff'), /* Modern Browsers */
-       url('/fonts/futura_medium/futura_medium.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('/fonts/futura_medium/FuturaBT-Medium.svg#svgFutura') format('svg'); /* Legacy iOS */
+  src: url('/fonts/Futura/futura_medium.ttf'); /* IE9 Compat Modes */
+  src: url('/fonts/Futura/FuturaBT-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/Futura/FuturaBT-Medium.woff') format('woff'), /* Modern Browsers */
+       url('/fonts/Futura/futura_medium.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('/fonts/Futura/FuturaBT-Medium.svg#svgFutura') format('svg'); /* Legacy iOS */
 }
 
 @font-face {
   font-family: 'Ubuntu Mono';
-  src: url('/fonts/UbuntuMono-regular/UbuntuMono-Regular.ttf'); /* IE9 Compat Modes */
-  src: url('/fonts/UbuntuMono-regular/UbuntuMono-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/fonts/UbuntuMono-regular/UbuntuMono-Regular.woff') format('woff'), /* Modern Browsers */
-       url('/fonts/UbuntuMono-regular/UbuntuMono-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('/fonts/UbuntuMono-regular/UbuntuMono-Regular.svg#svgUbuntuMono') format('svg'); /* Legacy iOS */
+  src: url('/fonts/UbuntuMono/UbuntuMono-Regular.ttf'); /* IE9 Compat Modes */
+  src: url('/fonts/UbuntuMono/UbuntuMono-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/UbuntuMono/UbuntuMono-Regular.woff') format('woff'), /* Modern Browsers */
+       url('/fonts/UbuntuMono/UbuntuMono-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('/fonts/UbuntuMono/UbuntuMono-Regular.svg#svgUbuntuMono') format('svg'); /* Legacy iOS */
 }
 
 * {
