@@ -1,0 +1,75 @@
+#article-title {
+	font-size: 16px;
+	text-decoration: underline;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+img {
+	padding: 1em;
+	width: 85%;
+
+}
+
+#article-screenshot {
+	text-align: center;
+}
+
+#article-icon {
+	/* text-align: center; */
+	/* float: center; */
+	/* max-width: 5em; */
+	/* flex-basis: 40% */
+	width: 10%;
+	padding-right: 1em;
+}
+
+#article-title-with-icon {
+	display: flex;
+	align-items: center;
+}
+
+p {
+	padding-bottom: .5em;
+}
+
+ul {
+	margin-left: 1.5em;
+}
+
+.article_bottom_bar {
+	border: 0;
+	clear:both;
+
+	display:block;
+
+	background-color: #191919;
+
+	width: 60%;
+	max-width: 20em;
+	height: 0px;
+
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2em;
+	margin-bottom: 0;
+
+	padding-top: 0;
+	padding-bottom: 0;
+	/*! border-bottom: dashed; */
+	border-top: 1px dashed peru;
+}
+
+.article-date {
+	font-size: 14px;
+	padding-top: 1em;
+	color: #588B8B;
+	font-style: italic;
+}
+
+
+@media (max-width: 800px) {
+	.article_bottom_bar{
+		width: 45%;
+	}
+}

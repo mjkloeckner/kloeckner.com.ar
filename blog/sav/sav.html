@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html  lang="en" >
+
+<meta charset="utf-8">
+<meta name="generator" content="pandoc">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- pagetitle = "Martin's webpage" -->
+<head id=top>
+	<title>SAV - Sorting Algorithms Visualized {#article-title}</title>
+	<link rel='stylesheet' type='text/css' href="/css/style.css">
+	<link rel="icon" href="/favicon.ico">
+
+	<style type="text/css">code{white-space: pre;}</style>
+
+<!--  -->
+
+</head>
+
+<body id=top>
+	<!--#include virtual="/common/header.shtml" -->
+
+	<article>
+		<link rel='stylesheet' type='text/css' href="/css/article_style.css">
+
+		<script>
+			var dt = document.lastModified;
+			dt = dt.replaceAll("/", "-");
+			// document.write(dt.substring(0, 11));
+			document.querySelector('.article-date').innerHTML += dt.substring(0, 10) + ")";
+		</script>
+
+		<h1 id="article-title">SAV - Sorting Algorithms Visualized</h1>
+<p>18-09-22 {#article-date}</p>
+<p>This is a desktop app that shows how an array is being sorted using
+different algorithms.</p>
+<p><img src="sav.gif" title="Gif showing SAV working" />
+{#article-screenshot}</p>
+<p>I made it using pure C and SDL2 for graphics, you can take a look at
+it’s source code on <a
+href="https://github.com/mjkloeckner/sav">Github</a>.</p>
+<p>The main purpose of this app was to put in practice the knowledge I
+gained in C as well with algorithms, and it was like a challenge since
+I’d never used SDL2 graphics before. In the end was a very enjoyable
+project since SDL2 per se is a very simple and easy to use library.</p>
+<p>Currently it supports the following algorithms:</p>
+<ul>
+<li>bubble sort improved</li>
+<li>insertion sort</li>
+<li>merge sort wrapper</li>
+<li>quick sort wrapper</li>
+<li>shell sort</li>
+<li>selection sort</li>
+<li>heap sort</li>
+</ul>
+
+		<!--#include virtual="/common/end_of_article.shtml" -->
+	</article>
+
+	<!--#include virtual="/common/footer.shtml" -->
+</body>
+
+</html>
