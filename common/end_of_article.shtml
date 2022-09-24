@@ -4,3 +4,6 @@
 <div style="margin-top: 1em; text-align: center; text-decoration: none;">
 	<a href="#top" id="go_top">Back to top</a>
 </div>
+<div style="margin-top: 1em; text-align: center; text-decoration: none;">
+	<a href="/rss.xml" id="rss"><img style="width: 1.5em; padding: 0;" src="/common/logos/rss_logo.png" alt="rss logo"></a>
+</div>

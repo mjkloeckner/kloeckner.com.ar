@@ -1,14 +1,22 @@
 #article-title {
-	font-size: 16px;
+	font-size: 1.5em;
 	text-decoration: underline;
+	text-align: left;
 	padding-top: 1em;
 	padding-bottom: 1em;
 }
 
-img {
-	padding: 1em;
-	width: 85%;
+.article-date {
+	font-size: .9em;
+	padding-bottom: 2.5em;
+	/* color: #588B8B; */
+	color: #9D96B8;
+	font-style: italic;
+}
 
+img {
+	padding-top: .75em;
+	padding-bottom: .75em;
 }
 
 #article-screenshot {
@@ -20,8 +28,8 @@ img {
 	/* float: center; */
 	/* max-width: 5em; */
 	/* flex-basis: 40% */
-	width: 10%;
-	padding-right: 1em;
+	width: 3em;
+	padding-right: .5em;
 }
 
 #article-title-with-icon {
@@ -30,7 +38,7 @@ img {
 }
 
 p {
-	padding-bottom: .5em;
+	padding-bottom: 1em;
 }
 
 ul {
@@ -59,14 +67,6 @@ ul {
 	/*! border-bottom: dashed; */
 	border-top: 1px dashed peru;
 }
-
-.article-date {
-	font-size: 14px;
-	padding-top: 1em;
-	color: #588B8B;
-	font-style: italic;
-}
-
 
 @media (max-width: 800px) {
 	.article_bottom_bar{

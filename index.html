@@ -2,7 +2,7 @@
 <html lang="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<head>
-		<title>Martin Klöckner's webpage</title>
+		<title>Martin Klöckner's Webpage</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel='stylesheet' type='text/css' href="css/style.css">
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -12,52 +12,26 @@
 	<body id=top>
 		<!--#include virtual="/common/header.shtml" -->
 
-		<script src="js/hello.js"></script>
-
 		<article>
-			<h1 id="index-title">Welcome, to Martin's webpage!</h1>
+			<h1 id="index-title">Welcome, to Martin's Webpage!</h1>
 
-			<p>Hello world! this is my website, which I did to experiment with Web Development and such. Feel free to surf the couple of pages that I made for you, you can navigate them by the menu on top, below the title, you can also choose an article in the <a href="#recent_articles">recent articles</a> section.
-			</p><br>
+			<p>Hello world! this is my website, which I did to experiment with Web Development and such. Feel free to surf the couple of pages that I made for you, you can navigate them by the menu on top, below the title, you can also choose an article in the <a href="#recent_articles">latest uploads</a> section.
+			</p>
+
 			<p>If you want to contact me to make business or just to talk you can head to <a href="/common/about.html">about</a> section where you can read a little bit of my history and get my contact info.</p>
 
-			<h3 style="text-align: left;"><u>Latest uploads</u></h3>
-
-			<!-- <table id="recent_articles"> -->
-			<!-- 	<tbody> -->
-					<!-- <tr> -->
-					<!-- 	<th>Date</th> -->
-					<!-- 	<th>Title</th> -->
-					<!-- </tr> -->
-					<!-- <tr> -->
-					<!-- 	<td>04 Mar 2022</td> -->
-					<!-- 	<td><a href="articles/01/vim_config.html">Vim introduction and basic configuration</a></td> -->
-					<!-- </tr> -->
-					<!-- <tr> -->
-					<!-- 	<td>23 Oct 2021</td> -->
-					<!-- 	<td><a href="articles/00/dwm_config.html">DWM - A window manager configuration</a></td> -->
-					<!-- </tr> -->
-				<!-- </tbody> -->
-			<!-- </table> -->
-
-			<ul id=recent_articles>
-				<div id="recent_articls_items">
-				<!-- <li>01 Sep 2021 -- <a href="articles/01/vim_config.html">What is LaTeX?</a></li> -->
-				<!-- <li>31 Oct 2021 -- <a href="articles/01/vim_config.html">About Object-Oriented Programming</a></li> -->
-				<!-- <li>30 Oct 2021 -- <a href="articles/01/vim_config.html">How to install GCam on an android phone</a></li> -->
-				<!-- <li>29 Oct 2021 -- <a href="articles/01/vim_config.html">What is linux?</a></li> -->
-				<!-- <li>28 Oct 2021 -- <a href="articles/01/vim_config.html">Astrophotography with a phone</a></li> -->
-				<!-- <li>27 Oct 2021 -- <a href="articles/01/vim_config.html">Making linux boot faster</a></li> -->
-				<!-- <li>26 Oct 2021 -- <a href="articles/01/vim_config.html">What is initramfs?</a></li> -->
-				<!-- <li>25 Oct 2021 -- <a href="articles/01/vim_config.html">How does Linux boot?</a></li> -->
-				<!-- <li>24 Oct 2021 -- <a href="articles/01/vim_config.html">How I configured Vim/Nvim editor</a></li> -->
-				<li>18 Sep 2022 -- <a href="/blog/sav/sav.html">SAV - Sorting Algorithms Visualized</a></li>
-				<li>04 Mar 2022 -- <a href="/blog/01/vim_config.html">Vim introduction and basic configuration</a></li>
-				<!-- <li>02 Dec 2021 -- <a href="articles/02/templeos.html">Minimal TempleOS configuration</a></li> -->
-				<li>23 Oct 2021 -- <a href="/blog/00/dwm_config.html">DWM - A window manager configuration</a></li>
+			<div style="display: flex; align-items: center;">
+				<h3 style="text-align: left; font-size: 1.25em;"><u>Latest uploads</u></h3>
+				<div style="margin-top: 5px; margin-left: .5em">
+					<a href="/rss.xml" id="rss"><img style="width: 1.5em;" src="/common/logos/rss_logo.png" alt="rss logo"></a>
 				</div>
+			</div>
+
+			<ul id=blog_entries>
+				<!--#include virtual="/latest_uploads.shtml" -->
 			</ul>
 
+			<p>See more <a href="/blog">blog entries</a></p>
 		</article>
 
 		<!--#include virtual="/common/footer.shtml" -->

@@ -2,13 +2,13 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<div class="header_flex_div">
 		<h1 id="header_title">
-			<a href="/index.html" id="header_link">Martin Klöckner</a>
+			<a href="/" id="header_link">Martin Klöckner</a>
 		</h1>
 		 <ul style="list-style-type: none;" class="header_buttons">
-			 <li class="header_button" style="padding-right: 10px"><a href="/blog.html" style="text-decoration: none; mergin-left: 1em;">blog</a></li>
-			 <li class="header_button" style="padding-right: 10px"><a href="/about.html" style="text-decoration: none;">about</a></li>
-			 <li class="header_button"><a href="/downloads/resume.pdf" style="text-decoration: none;" target="_blank">cv<i style="font-size: 14px; color: gray; margin-left: 2px;" class="fa fa-download"></i></a></li>
-		</ul> 
+			 <li class="header_button" style="padding-right: 10px"><a href="/blog" style="text-decoration: none; mergin-left: 1em;">blog</a></li>
+			 <li class="header_button" style="padding-right: 10px"><a href="/about" style="text-decoration: none;">about</a></li>
+			 <li class="header_button"><a href="/resume.pdf" style="text-decoration: none;" target="_blank">cv<i style="font-size: 14px; color: gray; margin-left: 2px;" class="fa fa-download"></i></a></li>
+		</ul>
 
 			<!-- <a href="/index.html" style="text-decoration: none;">home</a>&nbsp; -->
 			<!-- <a href="/common/library.html" style="text-decoration: none;">library</a>&nbsp; -->

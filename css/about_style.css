@@ -65,9 +65,9 @@ ul {
 	border-style: dashed;
 	border-color: peru;
 	/* border-width: 1.75px; */
-	/* border-radius: .75em; */
+	border-radius: 0em;
 
-	box-shadow: 3px 3px 3px black;
+	box-shadow: 1px 1px 5px black;
 }
 
 .skills_logos {
