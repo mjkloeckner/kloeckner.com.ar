@@ -9,10 +9,6 @@
 			 <li class="header_button" style="padding-right: 10px"><a href="/about" style="text-decoration: none;">about</a></li>
 			 <li class="header_button"><a href="/resume.pdf" style="text-decoration: none;" target="_blank">cv<i style="font-size: 14px; color: gray; margin-left: 2px;" class="fa fa-download"></i></a></li>
 		</ul>
-
-			<!-- <a href="/index.html" style="text-decoration: none;">home</a>&nbsp; -->
-			<!-- <a href="/common/library.html" style="text-decoration: none;">library</a>&nbsp; -->
-			<!-- <a href="/common/downloads.html" style="text-decoration: none;">downloads</a>&nbsp; -->
 	</div>
 </header>
 <hr class="header_bottom_bar">

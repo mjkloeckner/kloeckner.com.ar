@@ -58,7 +58,7 @@ header {
 	margin-bottom: .25em;
 
 	text-align: center;
-	text-shadow: 5px 5px 5px black;
+	/* text-shadow: 5px 5px 5px black; */
 
 	padding-top: 1em;
 	padding-bottom: .25em;
@@ -223,9 +223,9 @@ footer {
 #index-title {
 	text-align: center;
 	color: #DAA520;
-	text-shadow: 5px 5px 5px black;
-	padding-top: .5em;
-	padding-bottom: .5em;
+	/* text-shadow: 5px 5px 5px black; */
+	padding-top: .75em;
+	padding-bottom: 1em;
 }
 
 h1 {
@@ -323,8 +323,6 @@ hr {
 	clear:both;
 
 	display:block;
-
-	background-color: antiquewhite;
 
 	width: 90%;
 	height: .1em;
