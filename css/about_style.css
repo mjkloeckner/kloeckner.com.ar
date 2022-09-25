@@ -89,3 +89,9 @@ ul {
 #skills_heading {
 	text-align: center;
 }
+
+@media (prefers-color-scheme: light) {
+	.article_bottom_bar {
+		border-top: 1px dashed white;
+	}
+}
