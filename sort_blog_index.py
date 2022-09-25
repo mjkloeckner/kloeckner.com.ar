@@ -1,7 +1,27 @@
 #!/usr/bin/env python3
- 
-# usage: 
+
+# Generates a list of file names sorted based on a date contained in them.
+# Files in root folder must have a line like the following:
+#     <meta name="article-date" content="23-Oct-2022">
+# also the folders in the root folder must have a file named the same as
+# the folder but with an html extension.
+
+# For example:
+# root_folder
+# |- first_folder
+# |     `-- first_folder.html
+# `-- second_folder
+#       `-- second_folder.html
+
+# The program executed with the root_folder path as argument should print to
+# stdout the names of first_folder and second_folder sorted based on the
+# contents of the first_folder.html and second_folder.html
+
+# usage:
 #   ./sort_blog_index.py <root_folder>
+
+# if no root_folder path is provided then the current path is assumed
+# author: github.com/mjkloeckner
 
 import os
 import re
@@ -9,18 +29,18 @@ import time
 import datetime
 import sys
 
+date_delimiter = "-"
+regex = re.compile('(?<=<meta name="article-date" content=")(.*?)(?=")')
+suffix = '.html'
+paths = []
+
 if len(sys.argv) == 1:
-    print("No PATH provided, assuming current folder")
+    print("==> No PATH provided, assuming current folder")
     root_folder = os.path.abspath(os.getcwd())
     print(root_folder)
 else:
     root_folder = sys.argv[1]
 
-# root_folder = "/home/mk/soydev/webp/tmp/html/blog/"
-date_delimiter = "-"
-regex = re.compile('(?<=<meta name="article-date" content=")(.*?)(?=")')
-
-# <meta name="article-date" content="23-Oct-2021">
 def get_content(file_name):
     with open(file_name) as f:
         for line in f:
@@ -28,11 +48,7 @@ def get_content(file_name):
             if result is not None:
                 return time.mktime(datetime.datetime.strptime(result.group(0), "%d-%b-%Y").timetuple())
 
-# list file and directories
 folders = os.listdir(root_folder)
-suffix = '.html'
-
-paths = []
 for folder in folders:
     paths.append(os.path.join(root_folder, folder + "/" + folder + suffix))
 
