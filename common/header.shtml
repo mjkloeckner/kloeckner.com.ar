@@ -1,6 +1,9 @@
 <header>
 	<link rel="canonical" href="https://kloeckner.com.ar/" />
+	<link rel="preload" href="/fonts/Futura/FuturaBT-Medium.woff" as="font" type="font/woff" crossorigin>
+	<link rel="preload" href="/fonts/Futura/FuturaBT-Medium.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/fonts/fonts.css">
 	<div class="header_flex_div">
 		<h1 id="header_title">
 			<a href="/" id="header_link">Martin Klöckner</a>
