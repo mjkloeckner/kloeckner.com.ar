@@ -193,6 +193,9 @@ article {
 	.header_bottom_bar{
 		width: 55%;
 	}
+	.article_bottom_bar {
+		width: 40%;
+	}
 	#header_title {
 		font-size: 3em;
 		padding-left: .5em;

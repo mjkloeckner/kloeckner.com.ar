@@ -1,4 +1,5 @@
 <header>
+	<link rel="canonical" href="https://kloeckner.com.ar/" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<div class="header_flex_div">
 		<h1 id="header_title">
