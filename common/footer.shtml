@@ -1,3 +1,6 @@
 <footer class="footer">
-	<b>This webpage has been written by Martin J. Klöckner</b>
+	<div class="footer-div" style="padding: 0em 2em 2em 2em;">
+		The content of this webpage is licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+	</div>
+	<img alt="Creative Commons License" style="padding: 0; margin: 0; border-width:0; width: 88px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
 </footer>

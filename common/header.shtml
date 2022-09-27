@@ -1,9 +1,10 @@
 <header>
 	<link rel="canonical" href="https://kloeckner.com.ar/" />
-	<link rel="preload" href="/fonts/Futura/FuturaBT-Medium.woff" as="font" type="font/woff" crossorigin>
-	<link rel="preload" href="/fonts/Futura/FuturaBT-Medium.woff2" as="font" type="font/woff2" crossorigin>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/fonts/fonts.css">
+	<!-- <link rel="preload" href="/fonts/Futura/FuturaBT-Medium.woff" as="font" type="font/woff" crossorigin> -->
+	<!-- <link rel="preload" href="/fonts/Futura/FuturaBT-Medium.woff2" as="font" type="font/woff2" crossorigin> -->
+
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+	<link rel="stylesheet" href="">
 	<div class="header_flex_div">
 		<h1 id="header_title">
 			<a href="/" id="header_link">Martin Klöckner</a>
@@ -11,7 +12,7 @@
 		 <ul style="list-style-type: none;" class="header_buttons">
 			 <li class="header_button" style="padding-right: 10px"><a href="/blog" style="text-decoration: none; mergin-left: 1em;">blog</a></li>
 			 <li class="header_button" style="padding-right: 10px"><a href="/about" style="text-decoration: none;">about</a></li>
-			 <li class="header_button"><a href="/resume.pdf" style="text-decoration: none;" target="_blank">cv<i style="font-size: 14px; color: gray; margin-left: 2px;" class="fa fa-download"></i></a></li>
+			 <li class="header_button"><a href="/resume.pdf" style="text-decoration: none;" target="_blank">cv<i class="icon-download">&#xe800;</i></a></li>
 		</ul>
 	</div>
 </header>

@@ -1,3 +1,48 @@
+@font-face {
+	font-family: 'Futura Medium';
+	src: local('Futura Medium'),
+		 local('FuturaBT-Medium'),
+		 local('futura_medium'),
+		 url('/fonts/Futura/FuturaBT-Medium.woff2') format('woff2'), /* Modern Browsers */
+	  	 url('/fonts/Futura/FuturaBT-Medium.woff') format('woff'),
+		 url('/fonts/Futura/futura_medium.ttf') format('truetype'), /* Safari, Android, iOS */
+		 url('/fonts/Futura/FuturaBT-Medium.svg#svgFutura') format('svg'), /* Legacy iOS */
+	     url('/fonts/Futura/FuturaBT-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		 url('/fonts/Futura/futura_medium.ttf'); /* IE9 Compat Modes */
+}
+
+@font-face {
+	font-family: 'Ubuntu Mono';
+	src: local('Ubuntu Mono'),
+		 local('UbuntuMono-Regular'),
+		 local('UbuntuMono'),
+		 url('/fonts/UbuntuMono/UbuntuMono-Regular.woff2') format('woff2'), /* Modern Browsers */
+		 url('/fonts/UbuntuMono/UbuntuMono-Regular.woff') format('woff'), /* Modern Browsers */
+		 url('/fonts/UbuntuMono/UbuntuMono-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+		 url('/fonts/UbuntuMono/UbuntuMono-Regular.svg#svgUbuntuMono') format('svg'), /* Legacy iOS */
+		 url('/fonts/UbuntuMono/UbuntuMono-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		 url('/fonts/UbuntuMono/UbuntuMono-Regular.ttf'); /* IE9 Compat Modes */
+}
+
+@font-face {
+	font-family: 'download';
+	src: url('/fonts/download/download.eot');
+	src: url('/fonts/download/download.eot') format('embedded-opentype'),
+		 url('/fonts/download/download.woff') format('woff'),
+		 url('/fonts/download/download.ttf') format('truetype'),
+		 url('/fonts/download/download.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.icon-download {
+	font-family: 'download';
+	color: gray;
+	font-size: 16px;
+	text-decoration: none;
+	font-style: normal;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -147,6 +192,21 @@ article {
 	border-top: 1px dashed peru;
 }
 
+footer {
+	padding-top: 0em;
+	text-align: center;
+	font-size: 0.75em;
+
+	/* color: #151515; */
+	color: dimgrey;
+	font-family: monospace;
+}
+
+.footer-div {
+	padding: 0em 2em 2em 2em;
+	margin-left: auto;
+	margin-right:auto;
+}
 
 @media (max-width: 800px) {
 	body {
@@ -181,6 +241,9 @@ article {
 		font-size: 3em;
 		padding-left: .5em;
 		padding-right: .5em;
+	}
+	.footer-div {
+		max-width: 75%;
 	}
 }
 
@@ -222,16 +285,6 @@ ul {
 	padding: 0;
 	padding-bottom: .5em;
 	margin: 0; /* Remove margins */
-}
-
-footer {
-	padding-top: 0em;
-	text-align: center;
-	font-size: 0.75em;
-
-	/* color: #151515; */
-	color: dimgrey;
-	font-family: monospace;
 }
 
 #index-title {
