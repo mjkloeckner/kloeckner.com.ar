@@ -1,7 +1,5 @@
 <header>
 	<link rel="canonical" href="https://kloeckner.com.ar/" />
-	<!-- <link rel="preload" href="/fonts/Futura/FuturaBT-Medium.woff" as="font" type="font/woff" crossorigin> -->
-	<!-- <link rel="preload" href="/fonts/Futura/FuturaBT-Medium.woff2" as="font" type="font/woff2" crossorigin> -->
 	<div class="header_flex_div">
 		<h1 id="header_title">
 			<a href="/" id="header_link">Martin Klöckner</a>
