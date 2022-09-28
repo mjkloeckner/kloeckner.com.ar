@@ -2,13 +2,12 @@
 	font-family: 'Futura Medium';
 	src: local('Futura Medium'),
 		 local('FuturaBT-Medium'),
-		 local('futura_medium'),
 		 url('/fonts/Futura/FuturaBT-Medium.woff2') format('woff2'), /* Modern Browsers */
 	  	 url('/fonts/Futura/FuturaBT-Medium.woff') format('woff'),
-		 url('/fonts/Futura/futura_medium.ttf') format('truetype'), /* Safari, Android, iOS */
+		 url('/fonts/Futura/FuturaBT-Medium.ttf') format('truetype'), /* Safari, Android, iOS */
 		 url('/fonts/Futura/FuturaBT-Medium.svg#svgFutura') format('svg'), /* Legacy iOS */
 	     url('/fonts/Futura/FuturaBT-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-		 url('/fonts/Futura/futura_medium.ttf'); /* IE9 Compat Modes */
+		 url('/fonts/Futura/FuturaBT-Medium.ttf'); /* IE9 Compat Modes */
 }
 
 @font-face {
@@ -102,6 +101,7 @@ header {
 	font-size: 1.5em;
 	display: inline;
 	align-self: center;
+	padding-bottom: 0em;
 	/* padding-top: 1em; */
 }
 
@@ -203,7 +203,7 @@ footer {
 }
 
 .footer-div {
-	padding: 0em 2em 2em 2em;
+	padding: 0em 1em 2em 1em;
 	margin-left: auto;
 	margin-right:auto;
 }
@@ -230,6 +230,7 @@ footer {
 		font-size: 1.75em;
 		align-self: center;
 		padding-top: 0em;
+		padding-bottom: 0em;
 	}
 	.header_bottom_bar{
 		width: 55%;
@@ -242,8 +243,9 @@ footer {
 		padding-left: .5em;
 		padding-right: .5em;
 	}
-	.footer-div {
-		max-width: 75%;
+	#index-title {
+		padding-top: .5em;
+		padding-bottom: .75em;
 	}
 }
 
