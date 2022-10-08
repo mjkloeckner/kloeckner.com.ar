@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set -xe
-
 root_folder="/home/mk/soydev/webp/kloeckner.com.ar"
 blog_folder="blog"
 blog_index_file="blog_index.shtml"
@@ -9,8 +7,6 @@ latest_uploads_file="latest_uploads.shtml"
 rss_feed_file=$root_folder/"rss.xml"   # RSS feed file
 
 generate_blog_index() {
-	{ set +xe; } 2>/dev/null
-
 	rm $root_folder/$blog_index_file 2> /dev/null
 	touch $root_folder/$blog_index_file
 
@@ -22,23 +18,15 @@ generate_blog_index() {
 
 		printf "<li><time>%s</time> <a href=\"/$blog_folder/$file_name/$file_name.html\">%s</a></li>\n" "${article_date}" "${article_title}" >> $root_folder/$blog_index_file
     done
-
-	{ set -xe; } 2>/dev/null
 }
 
 generate_latest_uploads() {
-	{ set +xe; } 2>/dev/null
-
-	rm $root_folder/$latest_uploads_file
+	rm $root_folder/$latest_uploads_file 2> /dev/null
 
 	tail -n 5 $root_folder/$blog_index_file > $root_folder/$latest_uploads_file
-
-	{ set -xe; } 2>/dev/null
 }
 
 generate_rss_feed() {
-	{ set +xe; } 2>/dev/null
-
 	rm $rss_feed_file 2> /dev/null
 
     cp rss_feed_top.xml $rss_feed_file
@@ -72,12 +60,9 @@ generate_rss_feed() {
     echo "" >> $rss_feed_file
     echo "</channel>" >> $rss_feed_file
     echo "</rss>" >> $rss_feed_file
-
-	{ set -xe; } 2>/dev/null
 }
 
 check_rss_feed_last_build() {
-	{ set +xe; } 2>/dev/null
     for i in $(ls $root_folder/$blog_folder); do
 		# if exists and it's a directory
         if [ -d $root_folder/$blog_folder/$i ]; then
@@ -93,8 +78,15 @@ check_rss_feed_last_build() {
 			fi
         fi
     done
-	{ set -xe; } 2>/dev/null
 }
+
+echo "==> root_folder: $root_folder"
+echo "==> blog_folder: $blog_folder"
+echo "==> blog_index_file: $blog_index_file"
+echo "==> latest_uploads_file: $latest_uploads_file"
+echo "==> rss_feed_file: $rss_feed_file"
+
+set -xe
 
 generate_blog_index
 
