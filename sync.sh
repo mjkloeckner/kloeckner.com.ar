@@ -21,7 +21,7 @@ generate_blog_index() {
 }
 
 generate_latest_uploads() {
-	rm $root_folder/$latest_uploads_file 2> /dev/null
+	rm $root_folder/$latest_uploads_file &> /dev/null
 
 	tail -n 5 $root_folder/$blog_index_file > $root_folder/$latest_uploads_file
 }
@@ -80,22 +80,24 @@ check_rss_feed_last_build() {
     done
 }
 
-echo "==> root_folder: $root_folder"
-echo "==> blog_folder: $blog_folder"
-echo "==> blog_index_file: $blog_index_file"
-echo "==> latest_uploads_file: $latest_uploads_file"
-echo "==> rss_feed_file: $rss_feed_file"
-
-set -xe
-
+echo "* root_folder: $root_folder"
+echo "* blog_folder: $blog_folder"
+echo "* blog_index_file: $blog_index_file"
+echo "* latest_uploads_file: $latest_uploads_file"
+echo "* rss_feed_file: $rss_feed_file"
+echo ""
+echo "+ generate_blog_index"
 generate_blog_index
 
+echo "+ generate_latest_uploads"
 generate_latest_uploads
 
 case "$1" in
-	--force-rss) generate_rss_feed;;
-	*) check_rss_feed_last_build;;
+	--force-rss) echo "+ generate_rss_feed"; generate_rss_feed;;
+	*) echo "==> Checking if rss feed needs to be rebuild"; check_rss_feed_last_build;;
 esac
+
+set -xe
 
 chown mk:mk $root_folder/$latest_uploads_file
 

@@ -10,17 +10,27 @@
 		 url('/fonts/Futura/FuturaBT-Medium.ttf'); /* IE9 Compat Modes */
 }
 
+/* @font-face { */
+/* 	font-family: 'Ubuntu Mono'; */
+/* 	src: local('Ubuntu Mono'), */
+/* 		 local('UbuntuMono-Regular'), */
+/* 		 local('UbuntuMono'), */
+/* 		 url('/fonts/UbuntuMono/UbuntuMono-Regular.woff2') format('woff2'), /1* Modern Browsers *1/ */
+/* 		 url('/fonts/UbuntuMono/UbuntuMono-Regular.woff') format('woff'), /1* Modern Browsers *1/ */
+/* 		 url('/fonts/UbuntuMono/UbuntuMono-Regular.ttf') format('truetype'), /1* Safari, Android, iOS *1/ */
+/* 		 url('/fonts/UbuntuMono/UbuntuMono-Regular.svg#svgUbuntuMono') format('svg'), /1* Legacy iOS *1/ */
+/* 		 url('/fonts/UbuntuMono/UbuntuMono-Regular.eot?#iefix') format('embedded-opentype'), /1* IE6-IE8 *1/ */
+/* 		 url('/fonts/UbuntuMono/UbuntuMono-Regular.ttf'); /1* IE9 Compat Modes *1/ */
+/* } */
+
+/* latin only */
 @font-face {
 	font-family: 'Ubuntu Mono';
-	src: local('Ubuntu Mono'),
-		 local('UbuntuMono-Regular'),
-		 local('UbuntuMono'),
-		 url('/fonts/UbuntuMono/UbuntuMono-Regular.woff2') format('woff2'), /* Modern Browsers */
-		 url('/fonts/UbuntuMono/UbuntuMono-Regular.woff') format('woff'), /* Modern Browsers */
-		 url('/fonts/UbuntuMono/UbuntuMono-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
-		 url('/fonts/UbuntuMono/UbuntuMono-Regular.svg#svgUbuntuMono') format('svg'), /* Legacy iOS */
-		 url('/fonts/UbuntuMono/UbuntuMono-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-		 url('/fonts/UbuntuMono/UbuntuMono-Regular.ttf'); /* IE9 Compat Modes */
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url(https://fonts.gstatic.com/s/ubuntumono/v15/KFOjCneDtsqEr0keqCMhbCc6CsQ.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
@@ -352,8 +362,8 @@ code {
 
     margin-left: auto;
     margin-right: auto;
-    margin-top: .75em;
-    margin-bottom: .75em;
+    margin-top: .25em;
+    margin-bottom: 1.25em;
 
     /* max-width: 23em; */
     border-width: thin;
@@ -364,7 +374,8 @@ code {
 
 	overflow: auto;
 
-	font-size: .9em;
+	font-size: 1em;
+	font-family: "Ubuntu Mono", monospace;
 }
 
 #command {
@@ -421,7 +432,7 @@ hr {
 }
 
 time {
-	font-family: "Ubuntu Mono";
+	font-family: "Ubuntu Mono", monospace;
 	/* font-family: "IBMPlexMono"; */
 }
 

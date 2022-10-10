@@ -5,7 +5,7 @@
 		<description>Latest uploads on Martin Klöckner's Webpage</description>
 		<generator>Shell script</generator>
 		<language>en-us</language>
-<lastBuildDate>Wed Sep 28 12:17:44 AM -03 2022</lastBuildDate>
+<lastBuildDate>Mon Oct 10 03:32:55 PM -03 2022</lastBuildDate>
 <item>
 <title>I'm going to Nerdearla 2022</title>
 <link>https://kloeckner.com.ar/blog/nerdearla-2022/nerdearla-2022.html</link>
@@ -21,12 +21,27 @@ Hall</a> was making a
 presentation called &quot;50 years of UNIX and the landing on the Moon&quot;, you
 can find a record of the presentation
 <a href="https://www.youtube.com/watch?v=9O_FnKZI6_M">here</a>.</p>
-<p><a href="/blog/nerdearla-2022/nerdearla-2019.png"><img src="nerdearla-2019.jpeg" alt="" title="Nerdearla 2019"></a></p>
+<p><img src="nerdearla-2019.jpeg" alt="" title="Nerdearla 2019"></p>
 <p>It was my first talk ever and I loved it, sadly becouse of the pandemic
 I couldn't go in the past two years.</p>
 <p>The event is half remote half presential and the entrance is free. It
 takes place at Centro cultural Konex on Once, Buenos Aires on Oct 19 to
-Oct 22, last three days.</p></html>]]>
+Oct 22, last three days.</p>
+<pre><code class="language-console">$ sudo make clean install
+</pre>
+<p>This is how I replace the variables in the template with the data
+aquired from the metadata contained in the files written in markdown</p>
+<pre>$ sed -e &quot;s/\$article-title\\$/$title/&quot; -e &quot;s/\$article-date\\$/$date/&quot; \
+    -e &quot;s/\$pagetitle\\$/$pagetitle/&quot; -e '/\$body\$/r./body.html' \
+    -e '/\$body\$/d' $template &gt; $filename.html
+</pre>
+<p>This is how I generate this webpage, converting it from its markdown
+file into html, this is a custom scripts that I made that only depends
+on lowdown, grep, and sed. Previously I had another script similar,
+which depended on pandoc, which is an alternative of lowdown but much
+more bloated, it depends on a ton of libraries wirtten in haskell</p>
+<pre>$ ./build.sh nerdearla-2022.md
+</pre></html>]]>
 				</htmlData>
 			</description>
 <pubDate>23-Sep-2022</pubDate>

@@ -1,49 +1,56 @@
 <!DOCTYPE html>
-<html  lang="en" >
-	<head>
+<html lang="en">
+	<head id=top>
 		<meta charset="utf-8">
-		<meta name="generator" content="pandoc">
+		<meta name="generator" content="Shell script">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-						<meta name="article-date" content="23-Sep-2022">
-						<meta name="article-title" content="I'm going to Nerdearla 2022">
+		<meta name="article-author" content="$article-author$">
+		<meta name="article-date" content="23-Sep-2022">
+		<meta name="article-title" content="I'm going to Nerdearla 2022">
 
-		<title>I'm going to Nerdearla 2022 | Martin's Webpage</title>
-
-		<link rel="preload" href="/fonts/Futura/FuturaBT-Medium.woff" as="font" type="font/woff" crossorigin="anonymous">
-		<link rel="preload" href="/fonts/Futura/FuturaBT-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-		<link rel="preload" href="/fonts/Futura/FuturaBT-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-
+		<title>I'm going to Nerdearla 2022 | Martin Klöckner's Webpage</title>
 		<link rel='stylesheet' type='text/css' href="/css/style.css">
 		<link rel="icon" href="/favicon.png">
-		<style type="text/css">code{white-space: pre;}</style>
 	</head>
 
-	<body>
+	<body id=top>
 		<!--#include virtual="/common/header.shtml" -->
 
 		<article>
 			<link rel='stylesheet' type='text/css' href="/css/article_style.css">
 
-			<h1 id=article-title>I’m going to Nerdearla 2022</h1><p class="article-date">23-Sep-2022</p>
-<p>As the title says I’m going to be present at <a
-href="https://nerdear.la/">Nerdearla</a>.</p>
-<p>This will be my second time that I attend to this event since I’ve
-been there for the first time in 2019. I remember that <a
-href="https://en.wikipedia.org/wiki/Jon_Hall_(programmer)">John ‘Maddog’
-Hall</a> was making a presentation called “50 years of UNIX and the
-landing on the Moon”, you can find a record of the presentation <a
-href="https://www.youtube.com/watch?v=9O_FnKZI6_M">here</a>.</p>
-<p><a href="/blog/nerdearla-2022/nerdearla-2019.png"><img src="nerdearla-2019.jpeg" title="Nerdearla 2019" /></a></p>
-<p>It was my first talk ever and I loved it, sadly becouse of the
-pandemic I couldn’t go in the past two years.</p>
-<p>The event is half remote half presential and the entrance is free. It
-takes place at Centro cultural Konex on Once, Buenos Aires on Oct 19 to
-Oct 22, last three days.</p>
+<h1 id=article-title>I&#8217;m going to Nerdearla 2022</h1><p class="article-date">23-Sep-2022</p>
+
+<p>As the title says I&#8217;m going to be present at <a href="https://nerdear.la/">Nerdearla</a>.</p>
+
+<p>This will be my second time that I attend to this event since I&#8217;ve been there for the first time in 2019. I remember that <a href="https://en.wikipedia.org/wiki/Jon_Hall_(programmer)">John &#8216;Maddog&#8217; Hall</a> was making a presentation called &#8220;50 years of UNIX and the landing on the Moon&#8221;, you can find a record of the presentation <a href="https://www.youtube.com/watch?v=9O_FnKZI6_M">here</a>.</p>
+
+<p><a href="nerdearla-2019.png" title="Nerdearla 2019"><img src="nerdearla-2019.jpeg" alt="Nerdearla 2019" /></a></p>
+
+<p>It was my first talk ever and I loved it, sadly becouse of the pandemic I couldn&#8217;t go in the past two years.</p>
+
+<p>The event is half remote half presential and the entrance is free. It takes place at Centro cultural Konex on Once, Buenos Aires on Oct 19 to Oct 22, last three days.</p>
+
+<pre><code class="language-console">$ sudo make clean install
+</code></pre>
+
+<p>This is how I replace the variables in the template with the data aquired from the metadata contained in the files written in markdown</p>
+
+<pre><code>$ sed -e "s&#47;\$article-title\\$&#47;$title&#47;" -e "s&#47;\$article-date\\$&#47;$date&#47;" \
+    -e "s&#47;\$pagetitle\\$&#47;$pagetitle&#47;" -e &#39;&#47;\$body\$&#47;r.&#47;body.html&#39; \
+    -e &#39;&#47;\$body\$&#47;d&#39; $template &#62; $filename.html
+</code></pre>
+
+<p>This is how I generate this webpage, converting it from its markdown file into html, this is a custom scripts that I made that only depends on lowdown, grep, and sed. Previously I had another script similar, which depended on pandoc, which is an alternative of lowdown but much more bloated, it depends on a ton of libraries wirtten in haskell</p>
+
+<pre><code>$ .&#47;build.sh nerdearla-2022.md
+</code></pre>
 
 			<script type="text/javascript" src="/js/article-date.js"></script>
 			<!--#include virtual="/common/end_of_article.shtml" -->
 		</article>
+
 		<!--#include virtual="/common/footer.shtml" -->
 	</body>
 </html>
