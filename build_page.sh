@@ -1,6 +1,7 @@
 #!/bin/sh
 
-# Author: Martin Kloeckner - https://kloeckner.com.ar
+# The most bloated, non-mantainable, non-readable static site generator
+# by: Martin Kloeckner - https://kloeckner.com.ar
 # Dependencies: sed, grep, lowdown.
 
 # Template: the converted html text is placed on a copy of the template
@@ -26,6 +27,32 @@ apply_syntax_highlight() {
 	done
 }
 
+div_article_title_w_logo() {
+	# convert:
+	# 	<p><img src="vim_logo.png" alt="Vim logo" class="article-icon" title="Vim logo" /></p>
+	# 	<h1>The keyboard driven text editor</h1>
+
+	# into:
+	# 	<div id="article-title-with-icon">
+	# 		<div id="article-icon">
+	# 			<img src="/blog/vim-config/vim_logo.png" title="Vim logo" alt="Vim logo">
+	# 		</div>
+	# 		<h1 id="article-title">The keyboard driven text editor</h1>
+	# 	</div>
+
+	# if found a `class="article-icon"` then put a div around it including
+	# title with logo, for styling purposes
+	# <img src="vim_logo.png" alt="Vim logo" class="article-icon" title="Vim logo" />
+	logo_src=$(echo $1 | grep -zoP '(?<=src=\")(.*?)(?=\")')
+	logo_alt=$(echo $1 | grep -zoP '(?<=alt=\")(.*?)(?=\")')
+	logo_title=$(echo $1 | grep -zoP '(?<=title=\")(.*?)(?=\")')
+	h1_title=
+
+	echo "logo src: $logo_src"
+	echo "logo alt: $logo_alt"
+	echo "logo title: $logo_title"
+}
+
 usage() {
 	echo "usage: $0 -i <input_file> -t <template_file>"
 }
@@ -40,19 +67,18 @@ check_opt() {
 	while getopts ":i:t:d:" opt; do
 		case $opt in
 			i) input="$OPTARG";;
-			t) templ="$OPTARG";;
+			t) templ="$OPTARG"; echo "template: $templ";;
 			d) dest_dir="$OPTARG";;
 			\?) printf "%s\n\n" "error: flag not found" && usage && exit 1;;
 		esac
 	done
 
 	[ $OPTIND -eq 1 ] && missing_operand && exit 2
-
 	shift "$((OPTIND-1))"
 
-	[ -z "$input" ] && echo "error: no input file" && exit 1
-	[ -z "$templ" ] && echo "error: no template file" && exit 1
-	[ -z "$dest_dir" ] echo "no dest dir specified" && echo "==> assuming current dir"; dest_dir="."
+	[ -z "$input" ] || [ ! -e "$input" ] && echo "error: no input file" && exit 1
+	[ -z "$templ" ] || [ ! -e "$templ" ] && echo "error: no template file" && exit 1
+	[ -z "$dest_dir" ] && dest_dir="."
 }
 
 check_opt $@
@@ -73,7 +99,7 @@ echo "dest dir: $dest_dir"
 echo "template: $template"
 
 # generate body (skips lines starting with `%`, they're considered metadata)
-sed '/^% /d' $input | lowdown --html-no-head-ids > body.html
+sed '/^% /d' $input | lowdown --html-no-head-ids --html-no-escapehtml --html-no-owasp > body.html
 
 # puts ids to <h1> tag and adds paragraph next to it with the article-date
 sed -i -e 's/<h1>/<h1 id=article-title>/g' \
@@ -88,9 +114,16 @@ sed -e "s/\$article-title\\$/$title/" -e "s/\$article-date\\$/$date/" \
 	-e "s/\$lang\\$/$lang/" -e "s/\$generator\\$/$generator/" \
 	-e '/\$body\$/d' $template > "$dest_dir"/"$filename".html
 
-echo "==> "$dest_dir"/"$filename".html generated succesfully"
-echo ""
+# logo_line=$(grep -zoP '<img.*?("article-icon").*?>')
+# [ "$?" -eq "0" ] && div_article_title_w_logo logo_line $(grep -zoP )
 
 rm body.html &> /dev/null
+
+# ./syntax-highlight "$dest_dir"/"$filename".html > sh.html
+
+# cp -rf sh.html "$dest_dir"/"$filename".html
+
+echo "==> "$dest_dir"/"$filename".html generated succesfully"
+echo ""
 
 # apply_syntax_highlight "$filename.html"

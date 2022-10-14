@@ -5,7 +5,7 @@
 		<description>Latest uploads on Martin Klöckner's Webpage</description>
 		<generator>Shell script</generator>
 		<language>en-us</language>
-<lastBuildDate>Mon Oct 10 03:32:55 PM -03 2022</lastBuildDate>
+<lastBuildDate>Fri Oct 14 12:39:18 AM -03 2022</lastBuildDate>
 <item>
 <title>I'm going to Nerdearla 2022</title>
 <link>https://kloeckner.com.ar/blog/nerdearla-2022/nerdearla-2022.html</link>
@@ -21,7 +21,7 @@ Hall</a> was making a
 presentation called &quot;50 years of UNIX and the landing on the Moon&quot;, you
 can find a record of the presentation
 <a href="https://www.youtube.com/watch?v=9O_FnKZI6_M">here</a>.</p>
-<p><img src="nerdearla-2019.jpeg" alt="" title="Nerdearla 2019"></p>
+<p><a href="nerdearla-2019.png" title="Nerdearla 2019"><img src="nerdearla-2019.jpeg" alt="Nerdearla 2019"></a></p>
 <p>It was my first talk ever and I loved it, sadly becouse of the pandemic
 I couldn't go in the past two years.</p>
 <p>The event is half remote half presential and the entrance is free. It
@@ -31,7 +31,7 @@ Oct 22, last three days.</p>
 </pre>
 <p>This is how I replace the variables in the template with the data
 aquired from the metadata contained in the files written in markdown</p>
-<pre>$ sed -e &quot;s/\$article-title\\$/$title/&quot; -e &quot;s/\$article-date\\$/$date/&quot; \
+<pre><code class="language-console">$ sed -e &quot;s/\$article-title\\$/$title/&quot; -e &quot;s/\$article-date\\$/$date/&quot; \
     -e &quot;s/\$pagetitle\\$/$pagetitle/&quot; -e '/\$body\$/r./body.html' \
     -e '/\$body\$/d' $template &gt; $filename.html
 </pre>
@@ -40,7 +40,7 @@ file into html, this is a custom scripts that I made that only depends
 on lowdown, grep, and sed. Previously I had another script similar,
 which depended on pandoc, which is an alternative of lowdown but much
 more bloated, it depends on a ton of libraries wirtten in haskell</p>
-<pre>$ ./build.sh nerdearla-2022.md
+<pre><code class="language-console">$ ./build.sh nerdearla-2022.md
 </pre></html>]]>
 				</htmlData>
 			</description>
@@ -54,11 +54,10 @@ more bloated, it depends on a ton of libraries wirtten in haskell</p>
 				<htmlData>
 					<![CDATA[<html><h1>SAV - Sorting Algorithms Visualized </h1>
 <p>18-Sep-2022</p>
+<p>18-09-22</p>
 <p>This is a desktop app that shows how an array is being sorted using
-different sorting algorithms.</p>
-<p>::: 
-<a href="sav.gif"><img src="sav.gif" alt="" title="Gif showing SAV working"></a>
-:::</p>
+different algorithms.</p>
+<p><img src="sav.gif" alt="" title="Gif showing SAV working"></p>
 <p>I made it using pure C and SDL2 for graphics, you can take a look at
 it's source code on <a href="https://github.com/mjkloeckner/sav">Github</a>.</p>
 <p>The main purpose of this app was to put in practice the knowledge I
@@ -67,7 +66,7 @@ I'd never used SDL2 graphics before. In the end was a very enjoyable
 project since SDL2 per se is a very simple and easy to use library.</p>
 <p>Currently it supports the following algorithms:</p>
 <ul>
-<li>bubble sort</li>
+<li>bubble sort improved</li>
 <li>insertion sort</li>
 <li>merge sort wrapper</li>
 <li>quick sort wrapper</li>
@@ -104,11 +103,7 @@ you want to extend it you need to patch it.</p>
 windows as you please; to spawn a new window for example a web browser
 you need to assign it a keybinding or use an application launcher like
 <a href="https://tools.suckless.org/dmenu/">dmenu</a></p>
-<p>::: 
-<a href="/blog/dwm-config/screenshot.png"><img src="screenshot.jpeg" alt="Screenshot" title="Screenshot of my dwm build">{.screenshot
-style=&quot;padding: 0em; width: 100%;&quot;
-max-width=&quot;40em&quot;}</a>
-:::</p>
+<p><a href="screenshot.png" title="Screenshot of my dwm build"><img src="screenshot.jpeg" alt="Screenshot"></a></p>
 <h2>Installing dwm</h2>
 <h3>Requisites</h3>
 <ul>
@@ -128,17 +123,16 @@ sure there is an alternative.</p>
 the source code as a tar file, or clone the repository.</p>
 <p>After you obtain the source code you need to navigate to the root folder
 of the source code and execute the following command</p>
-<pre>$ sudo make install
+<pre><code class="language-console">$ sudo make install
 </pre>
 <p>after that you can log out of you user account, if you use a display
 manager you can select dwm as window manager and log back in, if you
 dont use a display manager you need to edit your .xinitrc file located
 at you home folder so that when you start X dwm gets launched too, you
-do this by adding `exec dwm` to [the end] of the .xinitrc
-file, its important that you add it to the end of the file.</p>
-<pre>$ cat $HOME/.xinitrc
-...
-exec dwm 
+do this by adding `exec dwm` to the end of the .xinitrc file, its
+important that you add it to the end of the file.</p>
+<pre><code class="language-console">$ cat $HOME/.xinitrc
+exec dwm
 </pre>
 <p>Then you can start the X server by executing `startx` on a tty and it
 should open dwm without any problems.</p>
@@ -151,17 +145,17 @@ code that you can edit, for example the line &quot;static const int topbar&quot;
 defines a variable named topbar which you can set to 1 or 0, to select
 if the status bar should spawn in the top or the bottom of the screen.
 After every change you make to the source code you need to copy
-config.def.h to config.h and then [recompile dwm]</p>
+config.def.h to config.h and then recompile dwm</p>
 <h3>Show information on the status bar</h3>
 <p>dwm by default won't show any information on the status bar, this is
 done by using the xsetroot utility, which sets the WM_NAME enviroment
 variable that dwm uses, lets assume you want to set the clock and date
 on the status bar, well you could execute the following command</p>
-<pre>$ xsetroot -iname $(date)
+<pre><code class="language-console">$ xsetroot -iname $(date)
 </pre>
-<p>and all the output of 'date' would be printed on the status bar, this
-makes dwm status bar highly scriptable, in fact the are a ton of status
-bar implementation, the one that I use is called
+<p>and all the output of the command `date` would be printed on the
+status bar, this makes dwm status bar highly scriptable, in fact there
+are a ton of status bar implementations, the one that I use is called
 <a href="https://github.com/torrinfail/dwmblocks">dwmblocks</a> and its also
 written in C and the configuration its pretty much the same as dwm, in
 order to get information you need to have scripts that prints the
@@ -169,19 +163,17 @@ desired data to stdout, then you can include it on the config.h of
 dwmblocks by having them on a folder which is included in the $PATH
 variable of your user.</p>
 <h3>Getting emoji support on dwm</h3>
-<p>dwm by default doesn't come with emoji support, if you want to render
-an emoji in the status bar its going to either show it as a box or in
-the worst case crash, so in order to get emoji support first you need to
-get a font with [emojis], I'm using <a href="https://www.joypixels.com/">JoyPixels®
-font</a> you can also use
-<a href="https://fonts.google.com/noto">Google's noto font</a>, or any other font
-that comes with emoji support. Then open dwm configuration file and
-append to the [fonts] array the name of the font you want,
-in my case it's JoyPixels®.</p>
-<pre>$ cat config.def.h
-...
-static const char *fonts[] = ;
-...
+<p>dwm by default doesn't come with emoji support, if you want to render an
+emoji in the status bar its going to either show it as a box or in the
+worst case crash, so in order to get emoji support first you need to get
+a font with emojis, I'm using <a href="https://www.joypixels.com/">JoyPixels®
+font</a> you can also use <a href="https://fonts.google.com/noto">Google's noto
+font</a>, or any other font that comes with
+emoji support. Then open dwm configuration file and append to the fonts
+array the name of the font you want, in my case it's JoyPixels®.</p>
+<pre><code class="language-c">static const char *fonts[] = { &quot;Source Code Pro:style=Regular:size=9&quot;,
+                                &quot;JoyPixels:style=Regular:size=8&quot;,
+                                 &quot;DejaVu Sans&quot; };
 </pre>
 <p>After you setup the font you need to remove or comment a chunk of code
 from drw.c, a file located in the root of the folder where dwm source
@@ -189,17 +181,17 @@ code resides, between lines 136-150 there is a function named IsCol, you
 need to remove it or comment it.</p>
 <p>Finally you can recompile dwm and you will get emoji support. Sometimes
 even though you made all this procedure you still get boxes insted of
-the proper emoji, I solved this by adding another font name in the
-[fonts] array, like a fallback font.</p>
-<h3>[Patches in dwm]</h3>
-<p>Since dwm is a simple program than doesn't include much features, if
-you want to extend it, for example by adding a
+the proper emoji, I solved this by adding another font name in the fonts
+array, like a fallback font.</p>
+<h3>Patches in dwm</h3>
+<p>Since dwm is a simple program than doesn't include much features, if you
+want to extend it, for example by adding a
 <a href="https://dwm.suckless.org/patches/systray/">systray</a> to the status bar,
 you need to patch dwm. To do this first you need to download the patch
 from <a href="https://dwm.suckless.org/patches/">suckless.org/patches</a>, then
 make sure you got it 'patch' installed, although I think it comes with
 most linux distributions by default nowdays.</p>
-<pre>$ patch -p1 &lt; &lt;name of the file&gt;
+<pre><code class="language-console">$ patch -p1 &lt; &lt;name of the file&gt;
 </pre>
 <p>If you never patched dwm before then probably no errors would be
 reportjd, but if you already have applied a ton of patches then probably
@@ -210,9 +202,9 @@ corresponding file to be patched, for example dwm.c and dwm.c.rej, and
 then you add all the chunks of code from the rejected file into the
 corresponding place in the non rejected file, you know where you should
 put the chunks of code because in the rej file you can see at the start
-of every chunk there is a '@@' followed by a number of line; also
-lines starting with plus means add, and minus means delete, if i'm not
-clear you should google how to use diff and patch to modify a file.</p>
+of every chunk there is a '@@' followed by a number of line; also lines
+starting with plus means add, and minus means delete, if I'm not clear
+you should google how to use diff and patch to modify a file.</p>
 <h2>Useful links</h2>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Window_manager">What is a window
@@ -221,8 +213,7 @@ manager?</a></li>
 <li><a href="https://dwm.suckless.org/">suckless dwm website</a></li>
 <li><a href="https://www.x.org/releases/X11R7.7/doc/man/man1/Xserver.1.xhtml">X server man
 page</a></li>
-<li><a href="https://man7.org/linux/man-pages/man1/patch.1.html">patch man
-page</a></li>
+<li><a href="https://man7.org/linux/man-pages/man1/patch.1.html">patch man page</a></li>
 </ul></html>]]>
 				</htmlData>
 			</description>
@@ -234,20 +225,16 @@ page</a></li>
 <link>https://kloeckner.com.ar/blog/vim-config/vim-config.html</link>
 <description>
 				<htmlData>
-					<![CDATA[<html><p>::: 
-::: 
-<img src="/blog/vim-config/vim_logo.png" alt="Vim logo" title="Vim logo">
-:::</p>
+					<![CDATA[<html><p><img src="vim_logo.png" alt="Vim logo" title="Vim logo"></p>
 <h1>The keyboard driven text editor </h1>
-<p>:::</p>
 <p>04-Mar-2021</p>
 <p>If we think for a moment about software we are going to realize that the
 core of every program it's just plain text, literally just words in a
-file that someone wrote, this webpage it's just text interpreted by
-your web-browser, whose also just plain text implemented by another
-program, some software has more complexity than others, for example the
-linux kernel it's estimated that has around 27.8 million lines of code,
-which is also just plain text</p>
+file that someone wrote, this webpage it's just text interpreted by your
+web-browser, whose also just plain text implemented by another program,
+some software has more complexity than others, for example the linux
+kernel it's estimated that has around 27.8 million lines of code, which
+is also just plain text</p>
 <p>The way we tell computers what to do it's with text, so in order to
 write that text we just need a text editor and this is were Vim it's
 known for. Vim it's just a text editor. The term Vim stands for Vi
@@ -259,16 +246,15 @@ and extension on my browser to use vim like keybindings.</p>
 <p>Vim is a console text editor (altough you can find distributions like
 gvim, which comes with a gui), a benefit of this its that It's very
 lightweign in terms of system resources. Vim it's also highly
-configurable, you can do this by editing the [.vimrc] text
-file, which should be in you home directory in Linux or BSD bases OSs,
-if not you can [create] a new blank one and start from zero</p>
+configurable, you can do this by editing the .vimrc text file, which
+should be in you home directory in Linux or BSD bases OSs, if not you
+can create a new blank one and start from zero</p>
 <p>If you installed Vim and you don't know how to move around or insert
 text, first you need to understand the basics, Vim has 3 main &quot;modes&quot;</p>
 <p>By default Vim comes with a lot of features disabled, for example a key
 binding to comment a line or auto close brackets, parenthesis, etc, this
-features you can enable them by installing [plugins] which I
-will cover leter.</p>
-<p>\</p></html>]]>
+features you can enable them by installing plugins which I will cover
+leter.</p></html>]]>
 				</htmlData>
 			</description>
 <pubDate>04-Mar-2021</pubDate>

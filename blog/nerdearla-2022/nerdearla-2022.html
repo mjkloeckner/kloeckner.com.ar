@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head id=top>
+	<head>
 		<meta charset="utf-8">
 		<meta name="generator" content="Shell script">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
 		<link rel="icon" href="/favicon.png">
 	</head>
 
-	<body id=top>
+	<body>
 		<!--#include virtual="/common/header.shtml" -->
 
 		<article>
@@ -37,14 +37,14 @@
 
 <p>This is how I replace the variables in the template with the data aquired from the metadata contained in the files written in markdown</p>
 
-<pre><code>$ sed -e "s&#47;\$article-title\\$&#47;$title&#47;" -e "s&#47;\$article-date\\$&#47;$date&#47;" \
-    -e "s&#47;\$pagetitle\\$&#47;$pagetitle&#47;" -e &#39;&#47;\$body\$&#47;r.&#47;body.html&#39; \
-    -e &#39;&#47;\$body\$&#47;d&#39; $template &#62; $filename.html
+<pre><code class="language-console">$ sed -e "s/\$article-title\\$/$title/" -e "s/\$article-date\\$/$date/" \
+    -e "s/\$pagetitle\\$/$pagetitle/" -e '/\$body\$/r./body.html' \
+    -e '/\$body\$/d' $template &#62; $filename.html
 </code></pre>
 
 <p>This is how I generate this webpage, converting it from its markdown file into html, this is a custom scripts that I made that only depends on lowdown, grep, and sed. Previously I had another script similar, which depended on pandoc, which is an alternative of lowdown but much more bloated, it depends on a ton of libraries wirtten in haskell</p>
 
-<pre><code>$ .&#47;build.sh nerdearla-2022.md
+<pre><code class="language-console">$ ./build.sh nerdearla-2022.md
 </code></pre>
 
 			<script type="text/javascript" src="/js/article-date.js"></script>

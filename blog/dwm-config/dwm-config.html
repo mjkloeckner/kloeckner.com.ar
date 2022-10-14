@@ -1,22 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<head>
+		<meta charset="utf-8">
+		<meta name="generator" content="Shell script">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<meta name="article-author" content="$article-author$">
 		<meta name="article-date" content="23-Oct-2021">
 		<meta name="article-title" content="dwm - A tiling window manager configuration">
 
 		<title>dwm - A tiling window manager configuration | Martin Klöckner's Webpage</title>
-
-		<!-- <link rel="preload" href="/fonts/Futura/FuturaBT-Medium.woff" as="font" type="font/woff" crossorigin="anonymous"> -->
-		<link rel="preload" href="/fonts/Futura/FuturaBT-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-		<!-- <link rel="preload" href="/fonts/Futura/FuturaBT-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous"> -->
-
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 		<link rel='stylesheet' type='text/css' href="/css/style.css">
 		<link rel="icon" href="/favicon.png">
-		<meta charset="utf-8"/>
 	</head>
 
 	<body>
@@ -25,95 +20,171 @@
 		<article>
 			<link rel='stylesheet' type='text/css' href="/css/article_style.css">
 
-			<h1 id="article-title">dwm - A tiling window manager configuration</h1>
+<h1 id=article-title>dwm - A tiling window manager configuration</h1><p class="article-date">23-Oct-2021</p>
 
-			<p class="article-date">23-Oct-2021</p>
+<p>A window manager is a software that can manage the layout and appearance
+of every window spawned in your desktop, most people confuse them with
+desktop enviroments, which isn&#8217;t the same since a desktop enviroment is
+more of an ecosystem, they come with a more &#8216;complete&#8217; set of tools,
+like a basic web browser, a terminal emulator or calculator, an example
+of desktop enviroment would be gnome, xfce or kde plasma; instead a
+window manager is only the program that manages the windows spawned,
+although there are window managers that come with a little more, like
+docks or taskbars (openbox for example).</p>
+
+<p>In my case I use dwm, which is a window manager written in C developed
+by suckless software. The most relevant thing of this window manager is
+that out of the box it comes with the most basic functionallity, and if
+you want to extend it you need to patch it.</p>
+
+<p>By default dwm comes with 9 workspaces, in which you can open as many
+windows as you please; to spawn a new window for example a web browser
+you need to assign it a keybinding or use an application launcher like
+<a href="https://tools.suckless.org/dmenu/">dmenu</a></p>
+
+<p><a href="screenshot.png" title="Screenshot of my dwm build"><img src="screenshot.jpeg" alt="Screenshot" /></a></p>
+
+<h2>Installing dwm</h2>
+
+<h3>Requisites</h3>
+
+<ul>
+<li>  GNU/Linux or BSD based operating system</li>
+<li>  A C library and a C compiler</li>
+<li>  make utility installed</li>
+<li>  X server installed</li>
+<li>  dwm source code, you can clone the repository or download as a tar file at the web</li>
+</ul>
+
+<p>As you can see above you can only install dwm on GNU/Linux or BSD based
+distros, unfortunally dwm is not available for Windows users but I&#8217;m
+sure there is an alternative.</p>
+
+<h3>Installation</h3>
+
+<p>In order to install dwm you can visit the web of the creators at
+<a href="https://dwm.suckless.org/">suckless.org/dwm</a>, where you can download
+the source code as a tar file, or clone the repository.</p>
+
+<p>After you obtain the source code you need to navigate to the root folder
+of the source code and execute the following command</p>
+
+<pre><code class="language-console">$ sudo make install
+</code></pre>
+
+<p>after that you can log out of you user account, if you use a display
+manager you can select dwm as window manager and log back in, if you
+dont use a display manager you need to edit your .xinitrc file located
+at you home folder so that when you start X dwm gets launched too, you
+do this by adding `exec dwm` to the end of the .xinitrc
+file, its important that you add it to the end of the file.</p>
+
+<pre><code class="language-console">$ cat $HOME/.xinitrc
+exec dwm
+</code></pre>
+
+<p>Then you can start the X server by executing `startx` on a tty and it
+should open dwm without any problems.</p>
+
+<h2>How do you configure dwm?</h2>
+
+<p>Basically you configure it by editing its source code, inside the root
+folder of the project there is a C header file named
+<a href="https://github.com/klewer-martin/dotfiles/blob/master/.config/dwm/config.def.h">config.def.h</a>
+which if you open with a text editor you can see that there is some C
+code that you can edit, for example the line &#8220;static const int topbar&#8221;
+defines a variable named topbar which you can set to 1 or 0, to select
+if the status bar should spawn in the top or the bottom of the screen.
+After every change you make to the source code you need to copy
+config.def.h to config.h and then recompile dwm</p>
+
+<h3>Show information on the status bar</h3>
+
+<p>dwm by default won&#8217;t show any information on the status bar, this is
+done by using the xsetroot utility, which sets the WM_NAME enviroment
+variable that dwm uses, lets assume you want to set the clock and date
+on the status bar, well you could execute the following command</p>
+
+<pre><code class="language-console">$ xsetroot -iname $(date)
+</code></pre>
+
+<p>and all the output of the command `date` would be printed on the status bar, this
+makes dwm status bar highly scriptable, in fact there are a ton of status
+bar implementations, the one that I use is called
+<a href="https://github.com/torrinfail/dwmblocks">dwmblocks</a> and its also
+written in C and the configuration its pretty much the same as dwm, in
+order to get information you need to have scripts that prints the
+desired data to stdout, then you can include it on the config.h of
+dwmblocks by having them on a folder which is included in the $PATH
+variable of your user.</p>
+
+<h3>Getting emoji support on dwm</h3>
+
+<p>dwm by default doesn&#8217;t come with emoji support, if you want to render
+an emoji in the status bar its going to either show it as a box or in
+the worst case crash, so in order to get emoji support first you need to
+get a font with emojis, I&#8217;m using <a href="https://www.joypixels.com/">JoyPixels®
+font</a> you can also use
+<a href="https://fonts.google.com/noto">Google&#8217;s noto font</a>, or any other font
+that comes with emoji support. Then open dwm configuration file and
+append to the fonts array the name of the font you want,
+in my case it&#8217;s JoyPixels®.</p>
+
+<pre><code class="language-c">static const char *fonts[] = { "Source Code Pro:style=Regular:size=9",
+                                "JoyPixels:style=Regular:size=8",
+                                 "DejaVu Sans" };
+</code></pre>
+
+<p>After you setup the font you need to remove or comment a chunk of code
+from drw.c, a file located in the root of the folder where dwm source
+code resides, between lines 136-150 there is a function named IsCol, you
+need to remove it or comment it.</p>
+
+<p>Finally you can recompile dwm and you will get emoji support. Sometimes
+even though you made all this procedure you still get boxes insted of
+the proper emoji, I solved this by adding another font name in the
+fonts array, like a fallback font.</p>
+
+<h3>Patches in dwm</h3>
+
+<p>Since dwm is a simple program than doesn&#8217;t include much features, if
+you want to extend it, for example by adding a
+<a href="https://dwm.suckless.org/patches/systray/">systray</a> to the status bar,
+you need to patch dwm. To do this first you need to download the patch
+from <a href="https://dwm.suckless.org/patches/">suckless.org/patches</a>, then
+make sure you got it &#8216;patch&#8217; installed, although I think it comes with
+most linux distributions by default nowdays.</p>
+
+<pre><code class="language-console">$ patch -p1 &#60; &#60;name of the file&#62;
+</code></pre>
+
+<p>If you never patched dwm before then probably no errors would be
+reportjd, but if you already have applied a ton of patches then probably
+you would get a HUNK ## FAILED, in this case you need to get your hands
+dirty, and manually patch all the files that failed, you do this by
+opening the files with .rej extension (short for rejected), and the
+corresponding file to be patched, for example dwm.c and dwm.c.rej, and
+then you add all the chunks of code from the rejected file into the
+corresponding place in the non rejected file, you know where you should
+put the chunks of code because in the rej file you can see at the start
+of every chunk there is a &#8216;@@&#8217; followed by a number of line; also
+lines starting with plus means add, and minus means delete, if I&#8217;m not
+clear you should google how to use diff and patch to modify a file.</p>
+
+<h2>Useful links</h2>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Window_manager">What is a window manager?</a></li>
+<li>Make sure to check the <a href="https://suckless.org/">suckless webiste</a></li>
+<li><a href="https://dwm.suckless.org/">suckless dwm website</a></li>
+<li><a href="https://www.x.org/releases/X11R7.7/doc/man/man1/Xserver.1.xhtml">X server man page</a></li>
+<li><a href="https://man7.org/linux/man-pages/man1/patch.1.html">patch man page</a></li>
+</ul>
+
 			<script type="text/javascript" src="/js/article-date.js"></script>
-
-			<p>A window manager is a software that can manage the layout and appearance of every window spawned in your desktop, most people confuse them with desktop enviroments, which isn't the same since a desktop enviroment is more of an ecosystem, they come with a more 'complete' set of tools, like a basic web browser, a terminal emulator or calculator, an example of desktop enviroment would be gnome, xfce or kde plasma; instead a window manager is only the program that manages the windows spawned, although there are window managers that come with a little more, like docks or taskbars (openbox for example).</p>
-
-			<p>	In my case I use dwm, which is a window manager written in C developed by suckless software. The most relevant thing of this window manager is that out of the box it comes with the most basic functionallity, and if you want to extend it you need to patch it.</p>
-
-			<p>By default dwm comes with 9 workspaces, in which you can open as many windows as you please; to spawn a new window for example a web browser you need to assign it a keybinding or use an application launcher like <a href="https://tools.suckless.org/dmenu/">dmenu</a></p>
-
-			<!-- <p>but you can add as much as you want, for example I added a 10th workspace and mapped to the '0' key, which by default turn on a mode that shows all the opened windows in the current workspace, a feature that I never used.</p> -->
-
-			<div id="article-screenshot">
-				<a href="/blog/dwm-config/screenshot.png"><img style="padding: 0em; width: 100%;" class="screenshot" max-width="40em" src="screenshot.jpeg" title="Screenshot of my dwm build" alt="Screenshot"></a>
-				<!-- <img style="padding: 0em; width: 100%;" class="screenshot" max-width=40em src="scrot.png" title="Screenshot of my dwm build" alt="Screenshot"> -->
-			</div>
-
-			<h2>Installing dwm</h2>
-
-			<h3>Requisites</h3>
-			<ul>
-				<li>GNU/Linux or BSD based operating system</li>
-				<li>A C library and a C compiler</li>
-				<li>make utility installed</li>
-				<li>X server installed</li>
-				<li>dwm source code, you can clone the repository or download as a tar file at the web</li>
-			</ul>
-
-			<p>As you can see above you can only install dwm on GNU/Linux or BSD based distros, unfortunally dwm is not available for Windows users but I'm sure there is an alternative.</p>
-
-			<h3>Installation</h3>
-			<p>In order to install dwm you can visit the web of the creators at <a href="https://dwm.suckless.org/">suckless.org/dwm</a>, where you can download the source code as a tar file, or clone the repository.</p>
-			<p>After you obtain the source code you need to navigate to the root folder of the source code and execute the following command</p>
-
-			<pre><code>$ <em id=command><u>sudo</u> make</em> install</code></pre>
-
-			<p>after that you can log out of you user account, if you use a display manager you can select dwm as window manager and log back in, if you dont use a display manager you need to edit your .xinitrc file located at you home folder so that when you start X dwm gets launched too, you do this by adding `exec dwm` to <u>the end</u> of the .xinitrc file, its important that you add it to the end of the file.</p>
-
-			<pre><code>$ <em id=command>cat</em> $HOME/.xinitrc
-...
-exec dwm </code></pre>
-
-			<p>Then you can start the X server by executing `startx` on a tty and it should open dwm without any problems.</p>
-
-			<h2>How do you configure dwm?</h2>
-
-			<p>Basically you configure it by editing its source code, inside the root folder of the project there is a C header file named <a href="https://github.com/klewer-martin/dotfiles/blob/master/.config/dwm/config.def.h">config.def.h</a> which if you open with a text editor you can see that there is some C code that you can edit, for example the line "static const int topbar" defines a variable named topbar which you can set to 1 or 0, to select if the status bar should spawn in the top or the bottom of the screen. After every change you make to the source code you need to copy config.def.h to config.h and then <u>recompile dwm</u></p>
-
-			<h3>Show information on the status bar</h3>
-
-			<p>dwm by default won't show any information on the status bar, this is done by using the xsetroot utility, which sets the WM_NAME enviroment variable that dwm uses, lets assume you want to set the clock and date on the status bar, well you could execute the following command</p>
-
-			<pre><code>$ <em id=command>xsetroot</em> -iname <em id=command_sym>$(</em><em id=command>date</em><em id=command_sym>)</em></code></pre>
-
-			<p>and all the output of 'date' would be printed on the status bar, this makes dwm status bar highly scriptable, in fact the are a ton of status bar implementation, the one that I use is called <a href="https://github.com/torrinfail/dwmblocks">dwmblocks</a> and its also written in C and the configuration its pretty much the same as dwm, in order to get information you need to have scripts that prints the desired data to stdout, then you can include it on the config.h of dwmblocks by having them on a folder which is included in the $PATH variable of your user.</p>
-
-			<h3>Getting emoji support on dwm</h3>
-
-			<p>dwm by default doesn't come with emoji support, if you want to render an emoji in the status bar its going to either show it as a box or in the worst case crash, so in order to get emoji support first you need to get a font with <u>emojis</u>, I'm using <a href="https://www.joypixels.com/"JoyPixel>JoyPixels&reg; font</a> you can also use <a href="https://fonts.google.com/noto">Google's noto font</a>, or any other font that comes with emoji support. Then open dwm configuration file and append to the <u>fonts</u> array the name of the font you want, in my case it's JoyPixels&reg;.</p>
-
-			<pre><code>$ <em id=command>cat</em> config.def.h
-...
-static const char *fonts[] = { "Source Code Pro:style=Regular:size=9", "JoyPixels:style=Regular:size=8:antialias=true:autohint=true", "DejaVu Sans" };
-...</code></pre>
-
-			<p>After you setup the font you need to remove or comment a chunk of code from drw.c, a file located in the root of the folder where dwm source code resides, between lines 136-150 there is a function named IsCol, you need to remove it or comment it.</p>
-
-
-			<p>Finally you can recompile dwm and you will get emoji support. Sometimes even though you made all this procedure you still get boxes insted of the proper emoji, I solved this by adding another font name in the <u>fonts</u> array, like a fallback font.</p>
-			<h3><u>Patches in dwm</u></h3>
-
-			<p>Since dwm is a simple program than doesn't include much features, if you want to extend it, for example by adding a <a href="https://dwm.suckless.org/patches/systray/">systray</a> to the status bar, you need to patch dwm. To do this first you need to download the patch from <a href="https://dwm.suckless.org/patches/">suckless.org/patches</a>, then make sure you got it 'patch' installed, although I think it comes with most linux distributions by default nowdays.</p>
-
-			<pre><code>$ <em id=command>patch</em> -p1 <em id=command_red>&lt;</em> <u>&lt;name of the file&gt;</u></code></pre>
-
-			<p>If you never patched dwm before then probably no errors would be reportjd, but if you already have applied a ton of patches then probably you would get a HUNK ## FAILED, in this case you need to get your hands dirty, and manually patch all the files that failed, you do this by opening the files with .rej extension (short for rejected), and the corresponding file to be patched, for example dwm.c and dwm.c.rej, and then you add all the chunks of code from the rejected file into the corresponding place in the non rejected file, you know where you should put the chunks of code because in the rej file you can see at the start of every chunk there is a '@@' followed by a number of line; also lines starting with plus means add, and minus means delete, if i'm not clear you should google how to use diff and patch to modify a file.</p>
-
-			<h2>Useful links</h2>
-			<ul>
-				<li><a href="https://en.wikipedia.org/wiki/Window_manager">What is a window manager?</a></li>
-				<li>Make sure to check the <a href="https://suckless.org/">suckless webiste</a></li>
-				<li><a target="_blank" href="https://dwm.suckless.org/">suckless dwm website</a></li>
-				<li><a target="_blank" href="https://www.x.org/releases/X11R7.7/doc/man/man1/Xserver.1.xhtml">X server man page</a></li>
-				<li><a target="_blank" href="https://man7.org/linux/man-pages/man1/patch.1.html">patch man page</a></li>
-			</ul>
-
 			<!--#include virtual="/common/end_of_article.shtml" -->
 		</article>
+
 		<!--#include virtual="/common/footer.shtml" -->
 	</body>
 </html>

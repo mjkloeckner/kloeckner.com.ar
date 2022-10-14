@@ -19,7 +19,7 @@ $ sudo make clean install
 
 This is how I replace the variables in the template with the data aquired from the metadata contained in the files written in markdown
 
-```
+```console
 $ sed -e "s/\$article-title\\$/$title/" -e "s/\$article-date\\$/$date/" \
 	-e "s/\$pagetitle\\$/$pagetitle/" -e '/\$body\$/r./body.html' \
 	-e '/\$body\$/d' $template > $filename.html
@@ -28,6 +28,6 @@ $ sed -e "s/\$article-title\\$/$title/" -e "s/\$article-date\\$/$date/" \
 This is how I generate this webpage, converting it from its markdown file into html, this is a custom scripts that I made that only depends on lowdown, grep, and sed. Previously I had another script similar, which depended on pandoc, which is an alternative of lowdown but much more bloated, it depends on a ton of libraries wirtten in haskell
 
 
-```
+```console
 $ ./build.sh nerdearla-2022.md
 ```
