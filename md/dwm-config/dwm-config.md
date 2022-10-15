@@ -139,7 +139,7 @@ make sure you got it 'patch' installed, although I think it comes with
 most linux distributions by default nowdays.
 
 ```console
-$ patch -p1 < <name of the file>
+$ patch -p1 < <file.diff>
 ```
 
 If you never patched dwm before then probably no errors would be

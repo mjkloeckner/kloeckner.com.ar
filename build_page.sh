@@ -39,21 +39,10 @@ div_article_title_w_logo() {
 	# 		</div>
 	# 		<h1 id="article-title">The keyboard driven text editor</h1>
 	# 	</div>
-
-	# if found a `class="article-icon"` then put a div around it including
-	# title with logo, for styling purposes
-	# <img src="vim_logo.png" alt="Vim logo" class="article-icon" title="Vim logo" />
-	echo "arg 1 is :$1"
-	echo "arg 2 is :$2"
 	logo_src=$(echo $1 | grep -zoP '(?<=src=\")(.*?)(?=\")' | tr -d '\0')
 	logo_alt=$(echo $1 | grep -zoP '(?<=alt=\")(.*?)(?=\")' | tr -d '\0')
 	logo_title=$(echo $1 | grep -zoP '(?<=title=\")(.*?)(?=\")' | tr -d '\0')
 	h1_title=$(echo $2 | grep -zoP '(?<=<h1 id=article-title>)(.*?)(?=</h1>)' | tr -d '\0')
-
-	echo "logo src: $logo_src"
-	echo "logo alt: $logo_alt"
-	echo "logo title: $logo_title"
-	echo "h1_title: $h1_title"
 }
 
 usage() {
@@ -119,15 +108,24 @@ sed -e "s/\$article-title\\$/$title/" -e "s/\$article-date\\$/$date/" \
 
 logo_line=$(grep -zoP '<img.*?("article-icon").*?>' "$dest_dir"/"$filename".html | tr -d '\0')
 title_line=$(grep -P '<h1.*?(article-title).*?>' "$dest_dir"/"$filename".html | tr -d '\0')
-echo "logo_line: $logo_line"
-echo "title_line: $title_line"
-[ "$?" -eq "0" ] && div_article_title_w_logo "$logo_line" "$title_line"
 
-sed -i -e "s^$title_line^<div id=\"article-title-with-icon\"> <div id=\"article-icon\"> <img src=\"$logo_src\" title=\"$logo_title\" alt=\"$logo_alt\"> <\/div> <h1 id=\"article-title\">$h1_title<\/h1> <\/div>^" "$dest_dir"/"$filename".html
+insert_div_article_title_w_logo() {
+	logo_line="$1"
+	title_line="$2"
 
-# awk "!/$logo_line/" "$dest_dir"/"$filename".html
+	echo "logo_line: $logo_line"
+	echo "title_line: $title_line"
 
-sed -i "\#$logo_line#d" "$dest_dir"/"$filename".html
+	div_article_title_w_logo "$logo_line" "$title_line"
+
+	sed -i -e "s^$title_line^<div id=\"article-title-with-icon\">\
+		<div id=\"article-icon\"> <img src=\"$logo_src\" title=\"$logo_title\" alt=\"$logo_alt\">\
+		<\/div> <h1 id=\"article-title\">$h1_title<\/h1> <\/div>^" "$dest_dir"/"$filename".html
+
+	sed -i -E '/(^<p>).*?(article-icon).*?<\/p>/d' "$dest_dir"/"$filename".html
+}
+
+[ ! -z "$logo_line" ] && insert_div_article_title_w_logo "$logo_line" "$title_line"
 
 rm body.html &> /dev/null
 

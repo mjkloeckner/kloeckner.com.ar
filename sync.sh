@@ -1,6 +1,6 @@
 #!/bin/sh
 
-root_folder="/home/mk/soydev/kloeckner.com.ar"
+root_folder="/home/mk/soydev/webp/kloeckner.com.ar"
 blog_folder="blog"
 blog_index_file="blog_index.shtml"
 latest_uploads_file="latest_uploads.shtml"
@@ -37,8 +37,7 @@ generate_rss_feed() {
 		article_title=$(cat $i | grep -oP '(?<=<meta name="article-title" content=")(.*?)(?=")')
 		file_name=$(echo "$i" | grep -oE '[^/]*$' | cut -d '.' -f 1)
 
-		pandoc $root_folder/$blog_folder/$file_name/$file_name.html -o $root_folder/$blog_folder/$file_name/$file_name.md
-		article_description="$(md2html $root_folder/$blog_folder/$file_name/$file_name.md | sed -E -e 's/ \(last\ update//g' -e 's/\{[^\}]*\}//g' -e 's/<code>|<\/code>//g' -e 's/<em>|<\/em>//g')"
+		article_description="$(md2html $root_folder/md/$file_name/$file_name.md | sed -E -e 's/ \(last\ update//g' -e 's/\{[^\}]*\}//g' -e 's/<code>|<\/code>//g' -e 's/<em>|<\/em>//g')"
 		rm $root_folder/$blog_folder/$file_name/$file_name.md
 
 		# Create RSS feed item
@@ -79,6 +78,8 @@ check_rss_feed_last_build() {
         fi
     done
 }
+
+[ ! -d $root_folder ] && echo "error: root_folder: $root_folder not found" && exit 1
 
 echo "* root_folder: $root_folder"
 echo "* blog_folder: $blog_folder"

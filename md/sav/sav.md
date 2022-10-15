@@ -3,8 +3,6 @@
 
 # SAV - Sorting Algorithms Visualized
 
-18-09-22
-
 This is a desktop app that shows how an array is being sorted using different algorithms.
 
 ![](sav.gif "Gif showing SAV working")
