@@ -252,6 +252,8 @@ footer {
 		font-size: 3em;
 		padding-left: .5em;
 		padding-right: .5em;
+		line-height: 1.10em;
+		padding-bottom: .10em;
 	}
 	#index-title {
 		padding-top: .5em;
