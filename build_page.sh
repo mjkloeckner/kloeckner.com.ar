@@ -43,14 +43,17 @@ div_article_title_w_logo() {
 	# if found a `class="article-icon"` then put a div around it including
 	# title with logo, for styling purposes
 	# <img src="vim_logo.png" alt="Vim logo" class="article-icon" title="Vim logo" />
-	logo_src=$(echo $1 | grep -zoP '(?<=src=\")(.*?)(?=\")')
-	logo_alt=$(echo $1 | grep -zoP '(?<=alt=\")(.*?)(?=\")')
-	logo_title=$(echo $1 | grep -zoP '(?<=title=\")(.*?)(?=\")')
-	h1_title=
+	echo "arg 1 is :$1"
+	echo "arg 2 is :$2"
+	logo_src=$(echo $1 | grep -zoP '(?<=src=\")(.*?)(?=\")' | tr -d '\0')
+	logo_alt=$(echo $1 | grep -zoP '(?<=alt=\")(.*?)(?=\")' | tr -d '\0')
+	logo_title=$(echo $1 | grep -zoP '(?<=title=\")(.*?)(?=\")' | tr -d '\0')
+	h1_title=$(echo $2 | grep -zoP '(?<=<h1 id=article-title>)(.*?)(?=</h1>)' | tr -d '\0')
 
 	echo "logo src: $logo_src"
 	echo "logo alt: $logo_alt"
 	echo "logo title: $logo_title"
+	echo "h1_title: $h1_title"
 }
 
 usage() {
@@ -67,7 +70,7 @@ check_opt() {
 	while getopts ":i:t:d:" opt; do
 		case $opt in
 			i) input="$OPTARG";;
-			t) templ="$OPTARG"; echo "template: $templ";;
+			t) templ="$OPTARG";;
 			d) dest_dir="$OPTARG";;
 			\?) printf "%s\n\n" "error: flag not found" && usage && exit 1;;
 		esac
@@ -77,7 +80,7 @@ check_opt() {
 	shift "$((OPTIND-1))"
 
 	[ -z "$input" ] || [ ! -e "$input" ] && echo "error: no input file" && exit 1
-	[ -z "$templ" ] || [ ! -e "$templ" ] && echo "error: no template file" && exit 1
+	[ -z "$templ" ] || [ ! -e "$templ" ] && echo "error: no template fshellile" && exit 1
 	[ -z "$dest_dir" ] && dest_dir="."
 }
 
@@ -114,8 +117,17 @@ sed -e "s/\$article-title\\$/$title/" -e "s/\$article-date\\$/$date/" \
 	-e "s/\$lang\\$/$lang/" -e "s/\$generator\\$/$generator/" \
 	-e '/\$body\$/d' $template > "$dest_dir"/"$filename".html
 
-# logo_line=$(grep -zoP '<img.*?("article-icon").*?>')
-# [ "$?" -eq "0" ] && div_article_title_w_logo logo_line $(grep -zoP )
+logo_line=$(grep -zoP '<img.*?("article-icon").*?>' "$dest_dir"/"$filename".html | tr -d '\0')
+title_line=$(grep -P '<h1.*?(article-title).*?>' "$dest_dir"/"$filename".html | tr -d '\0')
+echo "logo_line: $logo_line"
+echo "title_line: $title_line"
+[ "$?" -eq "0" ] && div_article_title_w_logo "$logo_line" "$title_line"
+
+sed -i -e "s^$title_line^<div id=\"article-title-with-icon\"> <div id=\"article-icon\"> <img src=\"$logo_src\" title=\"$logo_title\" alt=\"$logo_alt\"> <\/div> <h1 id=\"article-title\">$h1_title<\/h1> <\/div>^" "$dest_dir"/"$filename".html
+
+# awk "!/$logo_line/" "$dest_dir"/"$filename".html
+
+sed -i "\#$logo_line#d" "$dest_dir"/"$filename".html
 
 rm body.html &> /dev/null
 

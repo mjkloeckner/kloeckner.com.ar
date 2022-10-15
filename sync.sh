@@ -1,6 +1,6 @@
 #!/bin/sh
 
-root_folder="/home/mk/soydev/webp/kloeckner.com.ar"
+root_folder="/home/mk/soydev/kloeckner.com.ar"
 blog_folder="blog"
 blog_index_file="blog_index.shtml"
 latest_uploads_file="latest_uploads.shtml"
