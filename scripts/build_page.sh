@@ -120,7 +120,8 @@ insert_div_article_title_w_logo() {
 
 	sed -i -e "s^$title_line^<div id=\"article-title-with-icon\">\
 		<div id=\"article-icon\"> <img src=\"$logo_src\" title=\"$logo_title\" alt=\"$logo_alt\">\
-		<\/div> <h1 id=\"article-title\">$h1_title<\/h1> <\/div>^" "$dest_dir"/"$filename".html
+		<\/div> <h1 id=\"article-title\">$h1_title<\/h1><\/div><p class=\"article-date\">$date</p>^"\
+		"$dest_dir"/"$filename".html
 
 	sed -i -E '/(^<p>).*?(article-icon).*?<\/p>/d' "$dest_dir"/"$filename".html
 }

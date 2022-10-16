@@ -6,8 +6,10 @@
 # then removes the md file conbtained in the dest folder.
 
 # TODO: leave markdown file to generate a description for the rss feed
-for i in $(ls md); do
-	cp -r md/$i ./blog &> /dev/null;
-	./build_page.sh -i md/$i/$i.md -t template.html -d ./blog/$i;
-	# rm -r ./blog/$i/$i.md;
+
+root_folder="/home/mk/soydev/webp/kloeckner.com.ar"
+
+for i in $(ls /home/mk/soydev/webp/kloeckner.com.ar/md); do
+	cp -r "$root_folder"/md/$i "$root_folder"/blog &>/dev/null;
+	"$root_folder"/scripts/build_page.sh -i "$root_folder"/md/$i/$i.md -t "$root_folder"/scripts/template.html -d "$root_folder"/blog/$i;
 done

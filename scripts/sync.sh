@@ -2,21 +2,25 @@
 
 root_folder="/home/mk/soydev/webp/kloeckner.com.ar"
 blog_folder="blog"
-blog_index_file="blog_index.shtml"
-latest_uploads_file="latest_uploads.shtml"
+blog_index_file="common/blog_index.shtml"
+latest_uploads_file="common/latest_uploads.shtml"
 rss_feed_file=$root_folder/"rss.xml"   # RSS feed file
+blog_folders=$("$root_folder"/scripts/sort_blog_index.py "$blog_folder")
+
+# set -xe
 
 generate_blog_index() {
 	rm $root_folder/$blog_index_file 2> /dev/null
 	touch $root_folder/$blog_index_file
 
-	for i in $(./sort_blog_index.py /home/mk/soydev/webp/tmp/html/blog/); do
+	# for i in $(eval $root_folder/scritps/sort_blog_index.py $root_folder/$blog_folder); do
+	for i in ${blog_folders[@]}; do
 		article_date=$(cat $i | grep -oP '(?<=<meta name="article-date" content=")(.*?)(?=")')
 		article_title=$(cat $i | grep -oP '(?<=<meta name="article-title" content=")(.*?)(?=")')
-
 		file_name=$(echo "$i" | grep -oE '[^/]*$' | cut -d '.' -f 1)
 
-		printf "<li><time>%s</time> <a href=\"/$blog_folder/$file_name/$file_name.html\">%s</a></li>\n" "${article_date}" "${article_title}" >> $root_folder/$blog_index_file
+		printf "<li><time>%s</time> <a href=\"/$blog_folder/$file_name/$file_name.html\">%s</a></li>\n" \
+			"${article_date}" "${article_title}" >> $root_folder/$blog_index_file
     done
 }
 
@@ -27,18 +31,19 @@ generate_latest_uploads() {
 }
 
 generate_rss_feed() {
-	rm $rss_feed_file 2> /dev/null
+	rm $rss_feed_file &> /dev/null
 
-    cp rss_feed_top.xml $rss_feed_file
+    cp "$root_folder"/scripts/rss_feed_top.xml $rss_feed_file
 	printf "<lastBuildDate>%s</lastBuildDate>\n" "$(date)" >> $rss_feed_file
 
-	for i in $(./sort_blog_index.py /home/mk/soydev/webp/tmp/html/blog/); do
+	for i in ${blog_folders[@]}; do
 		article_date=$(cat $i | grep -oP '(?<=<meta name="article-date" content=")(.*?)(?=")')
 		article_title=$(cat $i | grep -oP '(?<=<meta name="article-title" content=")(.*?)(?=")')
 		file_name=$(echo "$i" | grep -oE '[^/]*$' | cut -d '.' -f 1)
 
-		article_description="$(md2html $root_folder/md/$file_name/$file_name.md | sed -E -e 's/ \(last\ update//g' -e 's/\{[^\}]*\}//g' -e 's/<code>|<\/code>//g' -e 's/<em>|<\/em>//g')"
-		rm $root_folder/$blog_folder/$file_name/$file_name.md
+		article_description="$(md2html $root_folder/md/$file_name/$file_name.md |\
+			sed -E -e 's/ \(last\ update//g' -e 's/\{[^\}]*\}//g'\
+			       -e 's/<code>|<\/code>//g' -e 's/<em>|<\/em>//g')"
 
 		# Create RSS feed item
 		echo "<item>" >> $rss_feed_file
@@ -62,6 +67,7 @@ generate_rss_feed() {
 }
 
 check_rss_feed_last_build() {
+	[ ! -e $rss_feed_file ] && echo "+ Regenerating rss feed" && generate_rss_feed && return
     for i in $(ls $root_folder/$blog_folder); do
 		# if exists and it's a directory
         if [ -d $root_folder/$blog_folder/$i ]; then
@@ -97,15 +103,3 @@ case "$1" in
 	--force-rss) echo "+ generate_rss_feed"; generate_rss_feed;;
 	*) echo "==> Checking if rss feed needs to be rebuild"; check_rss_feed_last_build;;
 esac
-
-set -xe
-
-chown mk:mk $root_folder/$latest_uploads_file
-
-rm -rf /var/www/html 2>/dev/null
-
-cp -rf $root_folder /var/www/html
-
-rm /var/www/html/{rss_feed_top.xml,README.md}
-
-systemctl restart nginx
