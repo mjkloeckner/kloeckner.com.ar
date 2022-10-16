@@ -19,7 +19,7 @@ generate_blog_index() {
 		article_title=$(cat $i | grep -oP '(?<=<meta name="article-title" content=")(.*?)(?=")')
 		file_name=$(echo "$i" | grep -oE '[^/]*$' | cut -d '.' -f 1)
 
-		printf "<li><time>%s</time> <a href=\"/$blog_folder/$file_name/$file_name.html\">%s</a></li>\n" \
+		printf "<li><time>%s</time> <a href=\"/$blog_folder/$file_name/$file_name\">%s</a></li>\n" \
 			"${article_date}" "${article_title}" >> $root_folder/$blog_index_file
     done
 }

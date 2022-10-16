@@ -6,7 +6,7 @@
 # The keyboard driven text editor
 
 If we think for a moment about software we are going to realize that the
-core of every program it's just plain text, literally just words in a
+core of every program is just plain text, literally, just words in a
 file that someone wrote, this webpage it's just text interpreted by
 your web-browser, whose also just plain text implemented by another
 program, some software has more complexity than others, for example the

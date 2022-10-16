@@ -28,17 +28,6 @@ apply_syntax_highlight() {
 }
 
 div_article_title_w_logo() {
-	# convert:
-	# 	<p><img src="vim_logo.png" alt="Vim logo" class="article-icon" title="Vim logo" /></p>
-	# 	<h1>The keyboard driven text editor</h1>
-
-	# into:
-	# 	<div id="article-title-with-icon">
-	# 		<div id="article-icon">
-	# 			<img src="/blog/vim-config/vim_logo.png" title="Vim logo" alt="Vim logo">
-	# 		</div>
-	# 		<h1 id="article-title">The keyboard driven text editor</h1>
-	# 	</div>
 	logo_src=$(echo $1 | grep -zoP '(?<=src=\")(.*?)(?=\")' | tr -d '\0')
 	logo_alt=$(echo $1 | grep -zoP '(?<=alt=\")(.*?)(?=\")' | tr -d '\0')
 	logo_title=$(echo $1 | grep -zoP '(?<=title=\")(.*?)(?=\")' | tr -d '\0')
@@ -83,12 +72,12 @@ generator="Shell script"
 template="$templ"
 filename="$(basename $input | sed 's/\.[^.]*$//')"
 
-echo "file: $input"
-echo "filename: $filename"
-echo "title: $title"
-echo "date: $date"
-echo "dest dir: $dest_dir"
-echo "template: $template"
+# echo "file: $input"
+# echo "filename: $filename"
+# echo "title: $title"
+# echo "date: $date"
+# echo "dest dir: $dest_dir"
+# echo "template: $template"
 
 # generate body (skips lines starting with `%`, they're considered metadata)
 sed '/^% /d' $input | lowdown --html-no-head-ids --html-no-escapehtml --html-no-owasp > body.html
@@ -113,9 +102,6 @@ insert_div_article_title_w_logo() {
 	logo_line="$1"
 	title_line="$2"
 
-	echo "logo_line: $logo_line"
-	echo "title_line: $title_line"
-
 	div_article_title_w_logo "$logo_line" "$title_line"
 
 	sed -i -e "s^$title_line^<div id=\"article-title-with-icon\">\
@@ -134,7 +120,6 @@ rm body.html &> /dev/null
 
 # cp -rf sh.html "$dest_dir"/"$filename".html
 
-echo "==> "$dest_dir"/"$filename".html generated succesfully"
-echo ""
+echo "==> "$filename".html generated succesfully"
 
 # apply_syntax_highlight "$filename.html"

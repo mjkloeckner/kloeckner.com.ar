@@ -29,7 +29,8 @@ img {
 	/* max-width: 5em; */
 	/* flex-basis: 40% */
 	width: 3em;
-	padding-right: .5em;
+	min-width: 2em;
+	padding-right: .75em;
 }
 
 #article-title-with-icon {
