@@ -71,6 +71,7 @@ lang="en"
 generator="Shell script"
 template="$templ"
 filename="$(basename $input | sed 's/\.[^.]*$//')"
+last_update="$(date -r $input '+%d-%b-%Y')"
 
 # echo "file: $input"
 # echo "filename: $filename"
@@ -84,7 +85,7 @@ sed '/^% /d' $input | lowdown --html-no-head-ids --html-no-escapehtml --html-no-
 
 # puts ids to <h1> tag and adds paragraph next to it with the article-date
 sed -i -e 's/<h1>/<h1 id=article-title>/g' \
-	-e "s/<\/h1>/<\/h1><p class=\"article-date\">"$date"<\/p>/" body.html
+	-e "s/<\/h1>/<\/h1><p class=\"article-date\">$date (last update $last_update)<\/p>/" body.html
 
 # indent: sed + `-e 's/^/\t\t\t/'`
 # (applying indent makes final html more pleasant to view, but causes code
@@ -106,7 +107,7 @@ insert_div_article_title_w_logo() {
 
 	sed -i -e "s^$title_line^<div id=\"article-title-with-icon\">\
 		<div id=\"article-icon\"> <img src=\"$logo_src\" title=\"$logo_title\" alt=\"$logo_alt\">\
-		<\/div> <h1 id=\"article-title\">$h1_title<\/h1><\/div><p class=\"article-date\">$date</p>^"\
+		<\/div> <h1 id=\"article-title\">$h1_title<\/h1><\/div><p class=\"article-date\">$date (last update $last_update)</p>^"\
 		"$dest_dir"/"$filename".html
 
 	sed -i -E '/(^<p>).*?(article-icon).*?<\/p>/d' "$dest_dir"/"$filename".html
@@ -116,10 +117,10 @@ insert_div_article_title_w_logo() {
 
 rm body.html &> /dev/null
 
-# ./syntax-highlight "$dest_dir"/"$filename".html > sh.html
+./scripts/syntax-highlight "$dest_dir"/"$filename".html > tmp.html
+
+mv tmp.html "$dest_dir"/"$filename".html
 
 # cp -rf sh.html "$dest_dir"/"$filename".html
 
 echo "==> "$filename".html generated succesfully"
-
-# apply_syntax_highlight "$filename.html"

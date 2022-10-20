@@ -10,7 +10,7 @@ blog_folders=$("$root_folder"/scripts/sort_blog_index.py "$blog_folder")
 # set -xe
 
 generate_blog_index() {
-	rm $root_folder/$blog_index_file 2> /dev/null
+	rm -rf $root_folder/$blog_index_file ||:
 	touch $root_folder/$blog_index_file
 
 	# for i in $(eval $root_folder/scritps/sort_blog_index.py $root_folder/$blog_folder); do
@@ -25,7 +25,7 @@ generate_blog_index() {
 }
 
 generate_latest_uploads() {
-	rm $root_folder/$latest_uploads_file &> /dev/null
+	rm -rf $root_folder/$latest_uploads_file ||:
 
 	tail -n 5 $root_folder/$blog_index_file > $root_folder/$latest_uploads_file
 }
