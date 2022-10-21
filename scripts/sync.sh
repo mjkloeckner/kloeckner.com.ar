@@ -2,6 +2,7 @@
 
 root_folder="/home/mk/soydev/webp/kloeckner.com.ar"
 blog_folder="md"
+html_folder="blog"
 blog_index_file="common/blog_index.shtml"
 latest_uploads_file="common/latest_uploads.shtml"
 rss_feed_file=$root_folder/"rss.xml"   # RSS feed file
@@ -15,11 +16,11 @@ generate_blog_index() {
 
 	# for i in $(eval $root_folder/scritps/sort_blog_index.py $root_folder/$blog_folder); do
 	for i in ${blog_folders[@]}; do
-		article_date=$(cat $i | grep -oP '(?<=<meta name="article-date" content=")(.*?)(?=")')
-		article_title=$(cat $i | grep -oP '(?<=<meta name="article-title" content=")(.*?)(?=")')
+		article_date=$(cat $i | grep -oP '(?<=% date: \")(.*?)(?=\")')
+		article_title=$(cat $i | grep -oP '(?<=% title: \")(.*?)(?=\")')
 		file_name=$(echo "$i" | grep -oE '[^/]*$' | cut -d '.' -f 1)
 
-		printf "<li><time>%s</time> <a href=\"/$blog_folder/$file_name/$file_name\">%s</a></li>\n" \
+		printf "<li><time>%s</time> <a href=\"/$html_folder/$file_name/$file_name.html\">%s</a></li>\n" \
 			"${article_date}" "${article_title}" >> $root_folder/$blog_index_file
     done
 }
@@ -37,8 +38,10 @@ generate_rss_feed() {
 	printf "<lastBuildDate>%s</lastBuildDate>\n" "$(date)" >> $rss_feed_file
 
 	for i in ${blog_folders[@]}; do
-		article_date=$(cat $i | grep -oP '(?<=<meta name="article-date" content=")(.*?)(?=")')
-		article_title=$(cat $i | grep -oP '(?<=<meta name="article-title" content=")(.*?)(?=")')
+		# article_date=$(cat $i | grep -oP '(?<=<meta name="article-date" content=")(.*?)(?=")')
+		# article_title=$(cat $i | grep -oP '(?<=<meta name="article-title" content=")(.*?)(?=")')
+		article_date=$(cat $i | grep -oP '(?<=% date: \")(.*?)(?=\")')
+		article_title=$(cat $i | grep -oP '(?<=% title: \")(.*?)(?=\")')
 		file_name=$(echo "$i" | grep -oE '[^/]*$' | cut -d '.' -f 1)
 
 		article_description="$(md2html $root_folder/md/$file_name/$file_name.md |\

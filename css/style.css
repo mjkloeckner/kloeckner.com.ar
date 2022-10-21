@@ -10,19 +10,6 @@
 		 url('/fonts/Futura/FuturaBT-Medium.ttf'); /* IE9 Compat Modes */
 }
 
-/* @font-face { */
-/* 	font-family: 'Ubuntu Mono'; */
-/* 	src: local('Ubuntu Mono'), */
-/* 		 local('UbuntuMono-Regular'), */
-/* 		 local('UbuntuMono'), */
-/* 		 url('/fonts/UbuntuMono/UbuntuMono-Regular.woff2') format('woff2'), /1* Modern Browsers *1/ */
-/* 		 url('/fonts/UbuntuMono/UbuntuMono-Regular.woff') format('woff'), /1* Modern Browsers *1/ */
-/* 		 url('/fonts/UbuntuMono/UbuntuMono-Regular.ttf') format('truetype'), /1* Safari, Android, iOS *1/ */
-/* 		 url('/fonts/UbuntuMono/UbuntuMono-Regular.svg#svgUbuntuMono') format('svg'), /1* Legacy iOS *1/ */
-/* 		 url('/fonts/UbuntuMono/UbuntuMono-Regular.eot?#iefix') format('embedded-opentype'), /1* IE6-IE8 *1/ */
-/* 		 url('/fonts/UbuntuMono/UbuntuMono-Regular.ttf'); /1* IE9 Compat Modes *1/ */
-/* } */
-
 /* latin only */
 @font-face {
 	font-family: 'Ubuntu Mono';
@@ -309,9 +296,7 @@ ul {
 	padding-bottom: 1em;
 }
 
-h1 {
-	font-size: 1.5em;
-}
+h1 { font-size: 1.5em; }
 
 h2 {
 	font-size: 1.25em;
@@ -328,10 +313,7 @@ h3 {
 	padding-bottom: .5em;
 }
 
-h4 {
-	padding-top: .5em;
-	text-align: left;
-}
+h4 { padding-top: .5em; text-align: left; }
 
 h5 {
 	/* padding-top: .5em; */
@@ -339,59 +321,38 @@ h5 {
 	font-size: 1em;
 }
 
-p {
-	padding-bottom: 1em;
-}
-
+p { padding-bottom: 1em; }
 
 code {
-    text-align: left;
-
-    padding-top: .5em;
-    padding-bottom: .5em;
-	padding-left: .75em;
-	padding-right: .75em;
-
-    border-radius: .2em;
-
-    /* background-color: #03230c; */
-    /* background-color: #333333; */
-    background-color: #111111;
-
-    width: auto;
-
-    display: block;
-
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: .25em;
-    margin-bottom: 1.25em;
-
-    /* max-width: 23em; */
-    border-width: thin;
-    border-color: antiquewhite;
-    border-style: dashed;
-
-	box-shadow: 5px 5px 7px black;
-
-	overflow: auto;
-
 	font-size: 1em;
 	font-family: "Ubuntu Mono", monospace;
 }
 
-#command {
-	/* color: green; */
-	color: #33ff11;
+pre {
+    text-align: left;
+
+    padding-top: .5em;
+    padding-bottom: .5em;
+    padding-left: .75em;
+    padding-right: .75em;
+    border-radius: .2em;
+    background-color: #111111;
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: .25em;
+    margin-bottom: 1.25em;
+    border-width: thin;
+    border-color: antiquewhite;
+    border-style: dashed;
+    box-shadow: 5px 5px 7px black;
+    overflow: auto;
 }
 
-#command_sym {
-	color: #ff1694;
-}
-
-#command_red {
-	color: gold;
-}
+#command { color: #33ff11; }
+#command_sym { color: #ff1694; }
+#command_red { color: gold; }
 
 a.anchor{
     display:block;
@@ -477,15 +438,10 @@ time {
 		margin-top: 0;
 		box-shadow: 0px 0px 0px;
 	}
-	#command {
-		color: inherit;
-	}
-	#command_sym {
-		color: inherit;
-	}
-	#command_red {
-		color: inherit;
-	}
+	#command { color: inherit; }
+	#command_sym { color: inherit; }
+	#command_red { color: inherit; }
+
 	#go_top:hover {
 		color: #CC2936;
 	}
@@ -496,4 +452,3 @@ time {
 		background: white;
 	}
 }
-
