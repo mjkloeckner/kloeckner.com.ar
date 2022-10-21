@@ -5,9 +5,9 @@
 
 A window manager is a software that can manage the layout and appearance
 of every window spawned in your desktop, most people confuse them with
-desktop enviroments, which isn't the same since a desktop enviroment is
-more of an ecosystem, they come with a more 'complete' set of tools,
-like a basic web browser, a terminal emulator or calculator, an example
+desktop enviroments, which aren't the same since a desktop enviroment is
+more like an ecosystem, they come with a more 'complete' set of tools,
+like a basic web browser, a terminal emulator or a graphical calculator, an example
 of desktop enviroment would be gnome, xfce or kde plasma; instead a
 window manager is only the program that manages the windows spawned,
 although there are window managers that come with a little more, like
@@ -16,7 +16,7 @@ docks or taskbars (openbox for example).
 In my case I use dwm, which is a window manager written in C developed
 by suckless software. The most relevant thing of this window manager is
 that out of the box it comes with the most basic functionallity, and if
-you want to extend it you need to patch it.
+you want to extend it you need to patch it (I explain patching later).
 
 By default dwm comes with 9 workspaces, in which you can open as many
 windows as you please; to spawn a new window for example a web browser
@@ -29,23 +29,23 @@ you need to assign it a keybinding or use an application launcher like
 
 ### Requisites
 
--   GNU/Linux or BSD based operating system
--   A C library and a C compiler
--   make utility installed
--   X server installed
--   dwm source code, you can clone the repository or download as a tar file at the web
+- GNU/Linux or BSD based operating system
+- A C library and a C compiler
+- make utility installed
+- X server installed
+- dwm source code
 
 As you can see above you can only install dwm on GNU/Linux or BSD based
-distros, unfortunally dwm is not available for Windows users but I'm
-sure there is an alternative.
+distros, unfortunally dwm is not available for Windows users and I'm not
+sure if there is an alternative.
 
-### Installation
+### Steps
 
-In order to install dwm you can visit the web of the creators at
-[suckless.org/dwm](https://dwm.suckless.org/), where you can download
-the source code as a tar file, or clone the repository.
+In order to install dwm download the source code from [suckless.org/dwm](https://dwm.suckless.org/),
+you can clone the repo from [git.suckless.org/dwm](https://git.suckless.org/dwm) or
+download it as a tar file.
 
-After you obtain the source code you need to navigate to the root folder
+After you obtain the source code navigate to the root folder
 of the source code and execute the following command
 
 ```console
@@ -53,64 +53,68 @@ $ sudo make install
 ```
 
 after that you can log out of you user account, if you use a display
-manager you can select dwm as window manager and log back in, if you
-dont use a display manager you need to edit your .xinitrc file located
-at you home folder so that when you start X dwm gets launched too, you
+manager, select dwm as window manager on it and log back in, if you
+don't use a display manager, you need to edit your .xinitrc file located
+at your home folder, so that when you start Xorg dwm gets launched, you
 do this by adding \`exec dwm\` to the end of the .xinitrc
-file, its important that you add it to the end of the file.
+file, its *important* that you add it to the end of the file.
 
 ```console
 $ cat $HOME/.xinitrc
 exec dwm
 ```
 
-Then you can start the X server by executing \`startx\` on a tty and it
-should open dwm without any problems.
+Then you can start the X server by executing \`startx\` on a tty and
+dwm should start without any problems.
 
-## How do you configure dwm?
+## Customizing dwm
 
-Basically you configure it by editing its source code, inside the root
+Basically you configure dwm by editing its source code, inside the root
 folder of the project there is a C header file named
-[config.def.h](https://github.com/klewer-martin/dotfiles/blob/master/.config/dwm/config.def.h)
-which if you open with a text editor you can see that there is some C
-code that you can edit, for example the line \"static const int topbar\"
+[config.def.h](https://github.com/mjkoeckner/dotfiles/blob/master/.config/dwm/config.def.h)
+which if you open with a text editor you can see that is a C
+file that you can edit, for example the line \"static const int topbar\"
 defines a variable named topbar which you can set to 1 or 0, to select
-if the status bar should spawn in the top or the bottom of the screen.
+if the status bar should spawn in the top or the bottom of the screen respectively.
 After every change you make to the source code you need to copy
 config.def.h to config.h and then recompile dwm
 
 ### Show information on the status bar
 
 dwm by default won't show any information on the status bar, this is
-done by using the xsetroot utility, which sets the WM\_NAME enviroment
-variable that dwm uses, lets assume you want to set the clock and date
-on the status bar, well you could execute the following command
+done by using the xsetroot utility, which sets the value of WM\_NAME enviroment
+variable, the content of this variable is automatically displayed by dwm on the
+right side of the statusbar. Lets assume you want to set the clock and date
+on the status bar, well you could accomplish this by executing the following command
 
 ```console
 $ xsetroot -iname $(date)
 ```
 
-and all the output of the command \`date\` would be printed on the status bar, this
+and all the output of the command \`date\` would be stored on the WM\_NAME variable
+causing dwm to print the date on the statusbar, this
 makes dwm status bar highly scriptable, in fact there are a ton of status
 bar implementations, the one that I use is called
 [dwmblocks](https://github.com/torrinfail/dwmblocks) and its also
 written in C and the configuration its pretty much the same as dwm, in
 order to get information you need to have scripts that prints the
-desired data to stdout, then you can include it on the config.h of
-dwmblocks by having them on a folder which is included in the \$PATH
-variable of your user.
+desired data to stdout, then you can include them on the config.h of
+dwmblocks. It is important that the scripts are on your user's PATH, otherwise
+it won't work.
 
 ### Getting emoji support on dwm
 
 dwm by default doesn't come with emoji support, if you want to render
-an emoji in the status bar its going to either show it as a box or in
-the worst case crash, so in order to get emoji support first you need to
-get a font with emojis, I'm using [JoyPixels®
-font](https://www.joypixels.com/) you can also use
-[Google's noto font](https://fonts.google.com/noto), or any other font
-that comes with emoji support. Then open dwm configuration file and
-append to the fonts array the name of the font you want,
-in my case it's JoyPixels®.
+an emoji in the status bar, it's going to either show it as a box or in
+the worst case crash.
+
+In order to get emoji support first make sure you have installed \`libxft\`,
+then you need to get a font with emoji support, I'm using [JoyPixels® font](https://www.joypixels.com/)
+you can also use [Google's noto font](https://fonts.google.com/noto),
+or any other font that comes with emoji support, then open dwm \`config.def.h\` and
+append to the fonts array the name of the font you want to use as fallback for the first font,
+since the emojis are not being printed because the font used doesn't include emojis, my
+config looks like this:
 
 ```c
 static const char *fonts[] = { "Source Code Pro:style=Regular:size=9",
@@ -118,15 +122,15 @@ static const char *fonts[] = { "Source Code Pro:style=Regular:size=9",
 								 "DejaVu Sans" };
 ```
 
+I've also added \`DejaVu Sans\` to the fonts array because, sometimes, the emojis where being displayed
+with a little box or square next to them, this was a quick solution.
+
 After you setup the font you need to remove or comment a chunk of code
 from drw.c, a file located in the root of the folder where dwm source
 code resides, between lines 136-150 there is a function named IsCol, you
-need to remove it or comment it.
+need to remove it or comment it, since this causes dwm to crash sometimes.
 
-Finally you can recompile dwm and you will get emoji support. Sometimes
-even though you made all this procedure you still get boxes insted of
-the proper emoji, I solved this by adding another font name in the
-fonts array, like a fallback font.
+Finally you can recompile dwm and, if everything went fine, you will get emoji support.
 
 ### Patches in dwm
 
@@ -138,13 +142,15 @@ from [suckless.org/patches](https://dwm.suckless.org/patches/), then
 make sure you got it 'patch' installed, although I think it comes with
 most linux distributions by default nowdays.
 
+To apply a patch navigate to dwm's root folder and execute this command
 ```console
 $ patch -p1 < <file.diff>
 ```
+being \`file.diff\` the patch file downloaded previoulsy of course.
 
 If you never patched dwm before then probably no errors would be
-reportjd, but if you already have applied a ton of patches then probably
-you would get a HUNK \## FAILED, in this case you need to get your hands
+reported, but if you already have applied a ton of patches, (or sometimes just a couple)
+then probably you would get a HUNK \## FAILED, in this case you need to get your hands
 dirty, and manually patch all the files that failed, you do this by
 opening the files with .rej extension (short for rejected), and the
 corresponding file to be patched, for example dwm.c and dwm.c.rej, and
