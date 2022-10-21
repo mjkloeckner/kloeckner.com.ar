@@ -1,3 +1,2 @@
-* linguist-vendored
-about_style.css linguist-vendored=false
-article_style.css linguist-vendored=false
+css/about_style.css linguist-vendored
+css/article_style.css linguist-vendored
