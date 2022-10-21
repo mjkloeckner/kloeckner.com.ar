@@ -1,2 +1,5 @@
 * linguist-vendored
-index.html linguist-vendored=false
+*.html linguist-vendored=false
+css/article_style.css linguist-vendored=false
+*.sh linguist-vendored=false
+*.py linguist-vendored=false
