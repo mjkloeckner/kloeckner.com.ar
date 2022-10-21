@@ -1,7 +1,7 @@
 #!/bin/sh
 
 root_folder="/home/mk/soydev/webp/kloeckner.com.ar"
-blog_folder="blog"
+blog_folder="md"
 blog_index_file="common/blog_index.shtml"
 latest_uploads_file="common/latest_uploads.shtml"
 rss_feed_file=$root_folder/"rss.xml"   # RSS feed file
@@ -68,21 +68,23 @@ generate_rss_feed() {
 
 check_rss_feed_last_build() {
 	[ ! -e $rss_feed_file ] && echo "+ Regenerating rss feed" && generate_rss_feed && return
+	updated=false
     for i in $(ls $root_folder/$blog_folder); do
 		# if exists and it's a directory
         if [ -d $root_folder/$blog_folder/$i ]; then
-			last_modified=$(stat $root_folder/$blog_folder/$i/$i.html --format "%Y")
+			last_modified=$(stat $root_folder/$blog_folder/$i/$i.md --format "%Y")
 			rss_file_date=$(stat $rss_feed_file --format "%Y")
 
 			if [ $last_modified -gt $rss_file_date ]
 			then
-				echo "==> $i.html is newer than $rss_feed_file"
+				echo "     └─ $i.html is newer than $rss_feed_file"
 				echo "+ Regenerating rss feed"
-				generate_rss_feed
+				generate_rss_feed && updated=true
 				break
 			fi
         fi
     done
+	$updated || echo "     └─ Rss feed file up to date"
 }
 
 [ ! -d $root_folder ] && echo "error: root_folder: $root_folder not found" && exit 1

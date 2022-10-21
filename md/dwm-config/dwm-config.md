@@ -60,26 +60,65 @@ do this by adding \`exec dwm\` to the end of the .xinitrc
 file, its *important* that you add it to the end of the file.
 
 ```console
-$ cat $HOME/.xinitrc
 exec dwm
 ```
 
 Then you can start the X server by executing \`startx\` on a tty and
 dwm should start without any problems.
 
+This is what vanilla dwm looks like:
+
+[![Vanilla dwm](vanilla.jpeg)](vanilla.png "Vanilla dwm")
+
 ## Customizing dwm
 
-Basically you configure dwm by editing its source code, inside the root
-folder of the project there is a C header file named
-[config.def.h](https://github.com/mjkoeckner/dotfiles/blob/master/.config/dwm/config.def.h)
-which if you open with a text editor you can see that is a C
-file that you can edit, for example the line \"static const int topbar\"
-defines a variable named topbar which you can set to 1 or 0, to select
-if the status bar should spawn in the top or the bottom of the screen respectively.
-After every change you make to the source code you need to copy
-config.def.h to config.h and then recompile dwm
+### Setting a wallpaper
 
-### Show information on the status bar
+Before getting into dwm configuration, let's add a wallpaper to make things look
+a little bit nicer. You can set a wallpaper from different ways, the simpler for
+me is installing feh and the executing the following command
+
+```console
+$ feh --bg-fill <image>
+```
+
+you can also avoid setting --bg-fill and chossing other feh options to set the wallpaper
+(read man feh).
+
+Then add \`.fehbg &\` to your .xinitrc so the wallpaper gets loaded when Xorg starts, it is important
+that you add it before dwm gets executed, otherwise it will never be ran
+
+```console
+$HOME/.fehbg &
+
+exec dwm
+```
+
+A graphical way of setting a wallpaper is with nitrogen, just install nitrogen open it
+with dmenu (MOD+p by default), include the folder where you have your wallpaper, select the
+image you want and the apply. To make changes persistent on every startup
+add this to you .xinirc file
+
+```console
+nitrogen --restore
+
+exec dwm
+```
+### dwm configuration
+
+Basically you configure dwm by editing its source code, there is a C header file, named
+[config.h](https://github.com/mjkoeckner/dotfiles/blob/master/.config/dwm/config.def.h)
+in the root folder of dwm, if you open it with a text editor you can see a
+lot of variables, for example the line \`static const int topbar = 0\`
+defines a variable named topbar which you can set to 1 or 0, to select
+if the status bar should spawn in the top or bottom of the screen respectively.
+You can also change the MOD key (by default its left alt), I like to remap
+mine to left Super (windows key).
+
+After every change you make to the source code you need to *recompile dwm*.
+
+
+#### Show information on the status bar
 
 dwm by default won't show any information on the status bar, this is
 done by using the xsetroot utility, which sets the value of WM\_NAME enviroment
@@ -102,7 +141,7 @@ desired data to stdout, then you can include them on the config.h of
 dwmblocks. It is important that the scripts are on your user's PATH, otherwise
 it won't work.
 
-### Getting emoji support on dwm
+#### Getting emoji support on dwm
 
 dwm by default doesn't come with emoji support, if you want to render
 an emoji in the status bar, it's going to either show it as a box or in
@@ -126,13 +165,27 @@ I've also added \`DejaVu Sans\` to the fonts array because, sometimes, the emoji
 with a little box or square next to them, this was a quick solution.
 
 After you setup the font you need to remove or comment a chunk of code
-from drw.c, a file located in the root of the folder where dwm source
-code resides, between lines 136-150 there is a function named IsCol, you
-need to remove it or comment it, since this causes dwm to crash sometimes.
+from drw.c, between lines 136-150 there is a function named \`iscol\`, you
+need to remove it or comment it, since this causes dwm to crash.
+
+```c
+/* Do not allow using color fonts. This is a workaround for a BadLength
+ * error from Xft with color glyphs. Modelled on the Xterm workaround. See
+ * https://bugzilla.redhat.com/show_bug.cgi?id=1498269
+ * https://lists.suckless.org/dev/1701/30932.html
+ * https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=916349
+ * and lots more all over the internet.
+ */
+FcBool iscol;
+if(FcPatternGetBool(xfont->pattern, FC_COLOR, 0, &iscol) == FcResultMatch && iscol) {
+    XftFontClose(drw->dpy, xfont);
+    return NULL;
+}
+```
 
 Finally you can recompile dwm and, if everything went fine, you will get emoji support.
 
-### Patches in dwm
+#### Patching dwm
 
 Since dwm is a simple program than doesn't include much features, if
 you want to extend it, for example by adding a
@@ -143,9 +196,11 @@ make sure you got it 'patch' installed, although I think it comes with
 most linux distributions by default nowdays.
 
 To apply a patch navigate to dwm's root folder and execute this command
+
 ```console
 $ patch -p1 < <file.diff>
 ```
+
 being \`file.diff\` the patch file downloaded previoulsy of course.
 
 If you never patched dwm before then probably no errors would be
@@ -160,6 +215,18 @@ put the chunks of code because in the rej file you can see at the start
 of every chunk there is a '@@' followed by a number of line; also
 lines starting with plus means add, and minus means delete, if I'm not
 clear you should google how to use diff and patch to modify a file.
+
+## More screenshots
+
+#### Debugging [6502 emulator](https://github.com/mjkloeckner/6502) with dwm, vim and tmux
+
+[![Debugging 6502 emulator](debugging.jpeg)](debugging.png "Debugging 6502 emulator")
+&nbsp;
+
+
+#### Floating window manager?
+
+[![Floating show](floating.jpeg)](floating.png "Floating show while raining")
 
 ## Useful links
 

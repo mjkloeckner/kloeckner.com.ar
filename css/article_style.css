@@ -38,8 +38,24 @@ img {
 	align-items: center;
 }
 
+h2 {
+	padding-bottom: 1em;
+}
+
+h3 {
+	font-size: 1.15em;
+}
+
+h4 {
+	padding-bottom: .5em;
+}
+
 p {
 	padding-bottom: 1em;
+}
+
+em {
+	font-weight: bold;
 }
 
 ul {

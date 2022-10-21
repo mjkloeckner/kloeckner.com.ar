@@ -12,21 +12,6 @@
 # The article title is considered to be the first h1 header found
 # in the markdown file
 
-# TODO: ...
-apply_syntax_highlight() {
-	commands=("make" "cat" "grep" "sed")
-	ul_commands=("sudo")
-
-	# Requires GNU grep
-	grep -zoP '<code.*>(.|\n)*?<\/code>' $1
-	for i in ${commands[@]}; do
-		echo $i
-	done
-	for i in ${ul_commands[@]}; do
-		echo $i
-	done
-}
-
 div_article_title_w_logo() {
 	logo_src=$(echo $1 | grep -zoP '(?<=src=\")(.*?)(?=\")' | tr -d '\0')
 	logo_alt=$(echo $1 | grep -zoP '(?<=alt=\")(.*?)(?=\")' | tr -d '\0')
@@ -120,7 +105,5 @@ rm body.html &> /dev/null
 ./scripts/syntax-highlight "$dest_dir"/"$filename".html > tmp.html
 
 mv tmp.html "$dest_dir"/"$filename".html
-
-# cp -rf sh.html "$dest_dir"/"$filename".html
 
 echo "==> "$filename".html generated succesfully"

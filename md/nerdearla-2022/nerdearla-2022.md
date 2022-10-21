@@ -9,6 +9,6 @@ This will be my second time that I attend to this event since I've been there fo
 
 [![Nerdearla 2019](nerdearla-2019.jpeg)](nerdearla-2019.png "Nerdearla 2019")
 
-It was my first talk ever and I loved it, sadly, because of the pandemic the event could only be remote the past two years.
+That time was my first talk ever, and I loved it, sadly, because of the pandemic, the event could only be remote the past two years.
 
-The event is half remote half presential and the entrance is free, you can get your free tickets at [registro.nerdear.la](https://registro.nerdear.la/). It takes place at Centro cultural Konex at Once, Buenos Aires, on Oct 19 to Oct 22.
+This time the event is hibrid, meaning half remote half presential, as always the entrance is free, you can get your free tickets at [registro.nerdear.la](https://registro.nerdear.la/). The presential part takes place at Centro cultural Konex at Once, Buenos Aires, on Oct 19 to Oct 22 of 2022.

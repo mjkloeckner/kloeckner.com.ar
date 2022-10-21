@@ -30,8 +30,9 @@ import datetime
 import sys
 
 date_delimiter = "-"
-regex = re.compile('(?<=<meta name="article-date" content=")(.*?)(?=")')
-suffix = '.html'
+# regex = re.compile('(?<=<meta name="article-date" content=")(.*?)(?=")')
+regex = re.compile('(?<=% date: \")(.*?)(?=\")')
+suffix = '.md'
 paths = []
 
 if len(sys.argv) == 1:
