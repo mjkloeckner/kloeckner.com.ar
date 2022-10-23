@@ -10,6 +10,7 @@ ul {
 @media (max-width: 800px) {
 	.article_bottom_bar{
 		width: 45%;
+		margin-top: 1em;
 	}
 }
 
@@ -39,6 +40,6 @@ ul {
 
 @media (prefers-color-scheme: light) {
 	.article_bottom_bar {
-		border-top: 1px dashed white;
+		border-top: 1px dashed #191919;
 	}
 }

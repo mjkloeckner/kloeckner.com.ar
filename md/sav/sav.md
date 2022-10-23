@@ -1,7 +1,7 @@
-% title: "Sorting Algorithms Visualized with SDL2"
+% title: "Sorting Algorithms Visualized"
 % date: "18-Sep-2022"
 
-# Sorting Algorithms Visualized with SDL2
+# Sorting Algorithms Visualized
 
 SAV, short for Sorting Algorithms Visualized, is a desktop app that shows how an array is being sorted using different algorithms.
 

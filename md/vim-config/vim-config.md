@@ -79,3 +79,6 @@ Plug 'morhetz/gruvbox'
 Plug 'alvan/vim-closetag'
 Plug 'hankchiutw/nerdtree-ranger.vim'
 ```
+
+then, in the case of vim-plug, you need to run `:PlugInstall` to install all the new
+plugins added.

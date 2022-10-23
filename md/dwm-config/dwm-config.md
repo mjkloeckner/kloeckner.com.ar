@@ -1,7 +1,7 @@
-% title: "dwm - A tiling window manager configuration"
+% title: "dwm - The dynamic window manager"
 % date: "23-Oct-2021"
 
-# dwm - A tiling window manager configuration
+# dwm - The dynamic window manager
 
 A window manager is a software that can manage the layout and appearance
 of every window spawned in your desktop, most people confuse them with
@@ -56,14 +56,14 @@ after that you can log out of you user account, if you use a display
 manager, select dwm as window manager on it and log back in, if you
 don't use a display manager, you need to edit your .xinitrc file located
 at your home folder, so that when you start Xorg dwm gets launched, you
-do this by adding \`exec dwm\` to the end of the .xinitrc
+do this by adding `exec dwm` to the end of the .xinitrc
 file, its *important* that you add it to the end of the file.
 
 ```console
 exec dwm
 ```
 
-Then you can start the X server by executing \`startx\` on a tty and
+Then you can start the X server by executing `startx` on a tty and
 dwm should start without any problems.
 
 This is what vanilla dwm looks like:
@@ -85,7 +85,7 @@ $ feh --bg-fill <image>
 you can also avoid setting --bg-fill and chossing other feh options to set the wallpaper
 (read man feh).
 
-Then add \`.fehbg &\` to your .xinitrc so the wallpaper gets loaded when Xorg starts, it is important
+Then add `.fehbg &` to your .xinitrc so the wallpaper gets loaded when Xorg starts, it is important
 that you add it before dwm gets executed, otherwise it will never be ran
 
 ```console
@@ -109,7 +109,7 @@ exec dwm
 Basically you configure dwm by editing its source code, there is a C header file, named
 [config.h](https://github.com/mjkoeckner/dotfiles/blob/master/.config/dwm/config.def.h)
 in the root folder of dwm, if you open it with a text editor you can see a
-lot of variables, for example the line \`static const int topbar = 0\`
+lot of variables, for example the line `static const int topbar = 0`
 defines a variable named topbar which you can set to 1 or 0, to select
 if the status bar should spawn in the top or bottom of the screen respectively.
 You can also change the MOD key (by default its left alt), I like to remap
@@ -130,7 +130,7 @@ on the status bar, well you could accomplish this by executing the following com
 $ xsetroot -iname $(date)
 ```
 
-and all the output of the command \`date\` would be stored on the WM\_NAME variable
+and all the output of the command `date` would be stored on the WM\_NAME variable
 causing dwm to print the date on the statusbar, this
 makes dwm status bar highly scriptable, in fact there are a ton of status
 bar implementations, the one that I use is called
@@ -147,25 +147,25 @@ dwm by default doesn't come with emoji support, if you want to render
 an emoji in the status bar, it's going to either show it as a box or in
 the worst case crash.
 
-In order to get emoji support first make sure you have installed \`libxft\`,
+In order to get emoji support first make sure you have installed `libxft`,
 then you need to get a font with emoji support, I'm using [JoyPixels® font](https://www.joypixels.com/)
 you can also use [Google's noto font](https://fonts.google.com/noto),
-or any other font that comes with emoji support, then open dwm \`config.def.h\` and
+or any other font that comes with emoji support, then open dwm `config.def.h` and
 append to the fonts array the name of the font you want to use as fallback for the first font,
 since the emojis are not being printed because the font used doesn't include emojis, my
 config looks like this:
 
 ```c
 static const char *fonts[] = { "Source Code Pro:style=Regular:size=9",
-								"JoyPixels:style=Regular:size=8",
-								 "DejaVu Sans" };
+                                "JoyPixels:style=Regular:size=8",
+                                 "DejaVu Sans" };
 ```
 
-I've also added \`DejaVu Sans\` to the fonts array because, sometimes, the emojis where being displayed
+I've also added `DejaVu Sans` to the fonts array because, sometimes, the emojis where being displayed
 with a little box or square next to them, this was a quick solution.
 
 After you setup the font you need to remove or comment a chunk of code
-from drw.c, between lines 136-150 there is a function named \`iscol\`, you
+from drw.c, between lines 136-150 there is a function named `iscol`, you
 need to remove it or comment it, since this causes dwm to crash.
 
 ```c
@@ -201,7 +201,7 @@ To apply a patch navigate to dwm's root folder and execute this command
 $ patch -p1 < <file.diff>
 ```
 
-being \`file.diff\` the patch file downloaded previoulsy of course.
+being `file.diff` the patch file downloaded previoulsy of course.
 
 If you never patched dwm before then probably no errors would be
 reported, but if you already have applied a ton of patches, (or sometimes just a couple)

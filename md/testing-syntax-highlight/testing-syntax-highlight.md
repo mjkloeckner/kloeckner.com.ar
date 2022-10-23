@@ -17,10 +17,10 @@ For example, this is some C code:
 #include <stdio.h>
 
 int main(void) {
-	char *hw = "Hello, world!\n";
+    char *hw = "Hello, world!\n";
 
-	printf("%s\n", hw);
-	return 0;
+    printf("%s\n", hw);
+    return 0;
 }
 ```
 
@@ -29,22 +29,23 @@ from markdown files
 
 ```console
 sed -e "s/\$article-title\\$/$title/" -e "s/\$article-date\\$/$date/" \
-	-e "s/\$pagetitle\\$/$pagetitle/" -e '/\$body\$/r./body.html' \
-	-e "s/\$lang\\$/$lang/" -e "s/\$generator\\$/$generator/" \
-	-e '/\$body\$/d' $template > "$dest_dir"/"$filename".html
+    -e "s/\$pagetitle\\$/$pagetitle/" -e '/\$body\$/r./body.html' \
+    -e "s/\$lang\\$/$lang/" -e "s/\$generator\\$/$generator/" \
+    -e '/\$body\$/d' $template > "$dest_dir"/"$filename".html
 ```
 
 This is an old JavaScript script that I was using to add the last modified date to a blog
 post:
 
 ```js
-// https://stackoverflow.com/questions/3552461/how-do-i-format-a-date-in-javascript
+// How do I format a date in javascript?
+// stackoverflow.com/questions/3552461
 function join(t, a, s) {
-   function format(m) {
-	  let f = new Intl.DateTimeFormat('en', m);
-	  return f.format(t);
-   }
-   return a.map(format).join(s);
+    function format(m) {
+        let f = new Intl.DateTimeFormat('en', m);
+        return f.format(t);
+    }
+    return a.map(format).join(s);
 }
 
 var dt = new Date(document.lastModified);
@@ -62,7 +63,8 @@ This code is part of the script that I'm using for highlighting code blocks. It'
 golang, a language that I didn't knew until I needed to modify [markdown-code-highlight-go](https://github.com/zupzup/markdown-code-highlight-go) to make it work on my use case.
 
 ```go
-rp := strings.NewReplacer("<code class=\"language-", "", "\">", "", "</code>", "")
+rp := strings.NewReplacer("<code class=\"language-", "",
+                           "\">", "", "</code>", "")
 
 style := styles.Get("monokai")
 if style == nil {
