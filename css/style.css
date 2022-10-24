@@ -1,13 +1,13 @@
 @font-face {
 	font-family: 'Futura Medium';
 	src: local('Futura Medium'),
-		 local('FuturaBT-Medium'),
-		 url('/fonts/Futura/FuturaBT-Medium.woff2') format('woff2'), /* Modern Browsers */
-	  	 url('/fonts/Futura/FuturaBT-Medium.woff') format('woff'),
-		 url('/fonts/Futura/FuturaBT-Medium.ttf') format('truetype'), /* Safari, Android, iOS */
-		 url('/fonts/Futura/FuturaBT-Medium.svg#svgFutura') format('svg'), /* Legacy iOS */
-	     url('/fonts/Futura/FuturaBT-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-		 url('/fonts/Futura/FuturaBT-Medium.ttf'); /* IE9 Compat Modes */
+          local('FuturaBT-Medium'),
+          url('/fonts/Futura/FuturaBT-Medium.woff2') format('woff2'), /* Modern Browsers */
+          url('/fonts/Futura/FuturaBT-Medium.woff') format('woff'),
+          url('/fonts/Futura/FuturaBT-Medium.ttf') format('truetype'), /* Safari, Android, iOS */
+          url('/fonts/Futura/FuturaBT-Medium.svg#svgFutura') format('svg'), /* Legacy iOS */
+          url('/fonts/Futura/FuturaBT-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+          url('/fonts/Futura/FuturaBT-Medium.ttf'); /* IE9 Compat Modes */
 }
 
 /* latin only */
@@ -58,7 +58,6 @@ body {
 	background: #191919;
 	/* background: #2F4F4F; */
 
-	/* margin-top: .5em; */
 	margin-bottom: 15em;
 	margin-left: .5em;
 	margin-right: .5em;
@@ -70,7 +69,6 @@ body {
 
 header {
 	color: crimson;
-	/* background: #191919; */
 
 	max-width: 40em;
 
@@ -80,7 +78,6 @@ header {
 	margin-bottom: .25em;
 
 	text-align: center;
-	/* text-shadow: 5px 5px 5px black; */
 
 	padding-top: 1em;
 	padding-bottom: .25em;
@@ -90,17 +87,6 @@ header {
 
 .header_button {
 	float: left;
-}
-
-.header_buttons {
-	margin: 0;
-	margin-top: .80em;
-	font-size: 1.5em;
-	display: inline;
-	align-self: last baseline;
-	padding-bottom: .16em;
-	/* padding-top: 1em; */
-	list-style-type: none;
 }
 
 .header_flex_div {
@@ -114,8 +100,6 @@ header {
 	clear:both;
 
 	display:block;
-
-	/* background-color: #191919; */
 
 	width: 80%;
 	max-width: 35em;
@@ -149,7 +133,6 @@ header {
 
 article {
 	color: antiquewhite;
-	/* background: #191919; */
 
 	max-width: 40em;
 
@@ -173,15 +156,13 @@ article {
 
 	display: block;
 
-	/* background-color: #191919; */
-
 	width: 60%;
 	max-width: 20em;
 	height: 0px;
 
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 2em;
+	margin-top: 1.5em;
 	margin-bottom: 0;
 
 	padding-top: 0;
@@ -195,13 +176,12 @@ footer {
 	text-align: center;
 	font-size: 0.75em;
 
-	/* color: #151515; */
 	color: dimgrey;
 	font-family: monospace;
 }
 
 .footer-div {
-	padding: .5em 2em 2em 2em;
+	padding: 0em 2em 2.5em 2em;
 	margin-left: auto;
 	margin-right:auto;
 }
@@ -209,11 +189,9 @@ footer {
 #index-title {
 	text-align: center;
 	color: #DAA520;
-	/* text-shadow: 5px 5px 5px black; */
-	padding-top: .75em;
-	padding-bottom: 1em;
+	padding-top: .5em;
+	padding-bottom: .75em;
 }
-
 
 img {
 	/* border-radius: .3em; */
@@ -253,6 +231,16 @@ ul {
 	padding: 0;
 	padding-bottom: .5em;
 	margin: 0; /* Remove margins */
+}
+
+.header_buttons {
+	margin: 0;
+	margin-top: .80em;
+	font-size: 1.5em;
+	display: inline;
+	align-self: last baseline;
+	padding-bottom: .18em;
+	list-style-type: none;
 }
 
 h1 { font-size: 1.75em; }
@@ -367,6 +355,12 @@ hr {
 	text-align: left;
 }
 
+#latest-uploads {
+	display: flex; 
+	align-items: center;
+	padding-bottom: .5em;
+}
+
 time {
 	font-family: "Ubuntu Mono", monospace;
 	/* font-family: "IBMPlexMono"; */
@@ -417,10 +411,13 @@ time {
 		padding-top: .5em;
 		padding-bottom: .75em;
 	}
+	#latest-uploads {
+		padding-bottom: .25em;
+	}
 	p { padding-bottom: .5em; }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 400px) {
 	#header_title {
 		font-size: 2.75em;
 		padding-left: .25em;
@@ -433,6 +430,9 @@ time {
 		padding-top: .25em;
 		padding-bottom: .5em;
 		font-size: 1.5em;
+	}
+	#latest-uploads {
+		padding-bottom: 0;
 	}
 	p { padding-bottom: .75em; }
 	.article_bottom_bar {
@@ -497,4 +497,3 @@ time {
 		background: white;
 	}
 }
-
