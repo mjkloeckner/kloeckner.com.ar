@@ -1,5 +1,7 @@
-% title: "I'm going to Nerdearla 2022"
-% date: "23-Sep-2022"
+%%
+title: "I'm going to Nerdearla 2022"
+date: "23-Sep-2022"
+%%
 
 # I'm going to Nerdearla 2022
 

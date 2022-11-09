@@ -1,5 +1,7 @@
-% title: "dwm - The dynamic window manager"
-% date: "23-Oct-2021"
+%%
+title: "dwm - The dynamic window manager"
+date: "23-Oct-2021"
+%%
 
 # dwm - The dynamic window manager
 

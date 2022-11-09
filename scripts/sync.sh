@@ -16,8 +16,13 @@ generate_blog_index() {
 
 	# for i in $(eval $root_folder/scritps/sort_blog_index.py $root_folder/$blog_folder); do
 	for i in ${blog_folders[@]}; do
-		article_date=$(cat $i | grep -oP '(?<=% date: \")(.*?)(?=\")')
-		article_title=$(cat $i | grep -oP '(?<=% title: \")(.*?)(?=\")')
+		# deprecated format
+		# article_date=$(cat $i | grep -oP '(?<=% date: \")(.*?)(?=\")')
+		# article_title=$(cat $i | grep -oP '(?<=% title: \")(.*?)(?=\")')
+		article_date=$(cat $i | sed '/^%%/,/^%%/!d' | grep -oP '(?<=date: \")(.*?)(?=\")')
+		article_title=$(cat $i | sed '/^%%/,/^%%/!d' | grep -oP '(?<=title: \")(.*?)(?=\")')
+		[ -z "$article_title" ] || [ -z "$article_date" ] && echo "error: no metadata found on file $input" && exit 1
+
 		file_name=$(echo "$i" | grep -oE '[^/]*$' | cut -d '.' -f 1)
 
 		printf "<li><time>%s</time> <a href=\"/$html_folder/$file_name/$file_name.html\">%s</a></li>\n" \
@@ -28,7 +33,7 @@ generate_blog_index() {
 generate_latest_uploads() {
 	rm -rf $root_folder/$latest_uploads_file ||:
 
-	tail -n 5 $root_folder/$blog_index_file > $root_folder/$latest_uploads_file
+	head -n 5 $root_folder/$blog_index_file > $root_folder/$latest_uploads_file
 }
 
 generate_rss_feed() {
@@ -40,11 +45,17 @@ generate_rss_feed() {
 	for i in ${blog_folders[@]}; do
 		# article_date=$(cat $i | grep -oP '(?<=<meta name="article-date" content=")(.*?)(?=")')
 		# article_title=$(cat $i | grep -oP '(?<=<meta name="article-title" content=")(.*?)(?=")')
-		article_date=$(cat $i | grep -oP '(?<=% date: \")(.*?)(?=\")')
-		article_title=$(cat $i | grep -oP '(?<=% title: \")(.*?)(?=\")')
+		# deprecated format
+		# article_date=$(cat $i | grep -oP '(?<=% date: \")(.*?)(?=\")')
+		# article_title=$(cat $i | grep -oP '(?<=% title: \")(.*?)(?=\")')
+
+		article_date=$(cat $i | sed '/^%%/,/^%%/!d' | grep -oP '(?<=date: \")(.*?)(?=\")')
+		article_title=$(cat $i | sed '/^%%/,/^%%/!d' | grep -oP '(?<=title: \")(.*?)(?=\")')
+		[ -z "$article_title" ] || [ -z "$article_date" ] && echo "error: no metadata found on file $input" && exit 1
+
 		file_name=$(echo "$i" | grep -oE '[^/]*$' | cut -d '.' -f 1)
 
-		article_description="$(sed '/^% /d' $root_folder/md/$file_name/$file_name.md | md2html |\
+		article_description="$(sed '/^%%/,/^%%/d' $root_folder/md/$file_name/$file_name.md | md2html |\
 			sed -E -e 's/ \(last\ update//g' -e 's/\{[^\}]*\}//g'\
 			       -e 's/<code>|<\/code>//g' -e 's/<em>|<\/em>//g')"
 
@@ -87,7 +98,7 @@ check_rss_feed_last_build() {
 			fi
         fi
     done
-	$updated || echo "     └─ Rss feed file up to date"
+	$updated || echo "     └─ Rss feed file up to date" && echo ""
 }
 
 [ ! -d $root_folder ] && echo "error: root_folder: $root_folder not found" && exit 1

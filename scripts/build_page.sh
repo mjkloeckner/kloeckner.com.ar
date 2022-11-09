@@ -49,8 +49,12 @@ check_opt() {
 
 check_opt $@
 
-title=$(cat $input | head -n 3 | grep -oP '(?<=% title: \")(.*?)(?=\")')
-date=$(cat $input | head -n 3 | grep -oP '(?<=% date: \")(.*?)(?=\")')
+# deprecated format
+# title=$(cat $input | head -n 3 | grep -oP '(?<=% title: \")(.*?)(?=\")')
+# date=$(cat $input | head -n 3 | grep -oP '(?<=% date: \")(.*?)(?=\")')
+
+title=$(cat $input | sed '/^%%/,/^%%/!d' | grep -oP '(?<=title: \")(.*?)(?=\")')
+date=$(cat $input | sed '/^%%/,/^%%/!d' | grep -oP '(?<=date: \")(.*?)(?=\")')
 pagetitle="Martin Klöckner's Webpage"
 lang="en"
 generator="Shell script"
@@ -60,13 +64,17 @@ last_update="$(date -r $input '+%d-%b-%Y')"
 
 # echo "file: $input"
 # echo "filename: $filename"
-# echo "title: $title"
-# echo "date: $date"
+echo "title: $title"
+echo "date: $date"
 # echo "dest dir: $dest_dir"
 # echo "template: $template"
 
+[ -z "$title" ] || [ -z "$date" ] && echo "error: no metadata found on file $input" && exit 1
+
 # generate body (skips lines starting with `%`, they're considered metadata)
-sed '/^% /d' $input | lowdown --html-no-head-ids --html-no-escapehtml --html-no-owasp > body.html
+# sed '/^% /d' $input | lowdown --html-no-head-ids --html-no-escapehtml --html-no-owasp > body.html
+# sed '/^%%/,/^%%/'
+sed '/^%%/,/^%%/d' $input | lowdown --html-no-head-ids --html-no-escapehtml --html-no-owasp > body.html
 
 # puts ids to <h1> tag and adds paragraph next to it with the article-date
 sed -i -e 's/<h1>/<h1 id=article-title>/g' \
@@ -107,3 +115,4 @@ rm body.html &> /dev/null
 mv tmp.html "$dest_dir"/"$filename".html
 
 echo "==> "$filename".html generated succesfully"
+echo ""

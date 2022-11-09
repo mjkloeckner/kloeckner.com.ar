@@ -1,5 +1,7 @@
-% title: "Sorting Algorithms Visualized"
-% date: "18-Sep-2022"
+%%
+title: "Sorting Algorithms Visualized"
+date: "18-Sep-2022"
+%%
 
 # Sorting Algorithms Visualized
 

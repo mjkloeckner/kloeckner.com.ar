@@ -31,7 +31,14 @@ import sys
 
 date_delimiter = "-"
 # regex = re.compile('(?<=<meta name="article-date" content=")(.*?)(?=")')
-regex = re.compile('(?<=% date: \")(.*?)(?=\")')
+
+# r_metadata_begin = re.compile('(?<=%%)(.*)(?=%%)')
+r_metadata_tag = re.compile('^%%')
+r1 = re.compile('(?<=% date: \")(.*?)(?=\")')
+
+# compatible with deprecated metadata format
+r2 = re.compile('(?<=^date: \")(.*?)(?=\")')
+
 suffix = '.md'
 paths = []
 
@@ -42,12 +49,51 @@ if len(sys.argv) == 1:
 else:
     root_folder = sys.argv[1]
 
-def get_content(file_name):
+def get_content_old(file_name):
     with open(file_name) as f:
         for line in f:
-            result = regex.search(line)
+            metadata = r_metadata.search(line)
+            print(metadata)
+            result = r1.search(metadata)
             if result is not None:
                 return time.mktime(datetime.datetime.strptime(result.group(0), "%d-%b-%Y").timetuple())
+            else:
+                result = r2.search(metadata)
+                if result is not None:
+                    return time.mktime(datetime.datetime.strptime(result.group(0), "%d-%b-%Y").timetuple())
+                else:
+                    result = r2.search(line)
+                    if result is not None:
+                        return time.mktime(datetime.datetime.strptime(result.group(0), "%d-%b-%Y").timetuple())
+                    else:
+                        print('error: no metadata found on file {}'.format(file_name))
+                        quit()
+
+
+def get_content(file_name):
+    get = False
+    with open(file_name) as f:
+        for line in f:
+            if get == True:
+                result = r1.search(line)
+                if result is not None:
+                    return time.mktime(datetime.datetime.strptime(result.group(0), "%d-%b-%Y").timetuple())
+                else:
+                    result = r2.search(line)
+                    if result is not None:
+                        return time.mktime(datetime.datetime.strptime(result.group(0), "%d-%b-%Y").timetuple())
+
+                if r_metadata_tag.search(line) is not None:
+                    get = False
+                    quit()
+
+            if r_metadata_tag.search(line) is not None:
+                get = True
+
+        if get == True:
+            print('error: metadata corrupted or incorrect format on file {}'.format(file_name))
+            quit()
+
 
 folders = os.listdir(root_folder)
 for folder in folders:

@@ -1,5 +1,7 @@
-% title: "vim - The keyboard driven text editor"
-% date: "04-Mar-2021"
+%%
+title: "vim - The keyboard driven text editor"
+date: "04-Mar-2021"
+%%
 
 ![Vim logo](vim_logo.png "Vim logo"){.article-icon}
 

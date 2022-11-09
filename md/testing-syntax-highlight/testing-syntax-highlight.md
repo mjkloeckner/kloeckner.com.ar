@@ -1,5 +1,7 @@
-% title: "Testing code syntax highlight"
-% date: "21-Oct-2022"
+%%
+title: "Testing code syntax highlight"
+date: "21-Oct-2022"
+%%
 
 # Testing code syntax highlight
 
