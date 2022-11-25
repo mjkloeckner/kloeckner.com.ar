@@ -7,10 +7,28 @@ blog_index_file="common/blog_index.shtml"
 latest_uploads_file="common/latest_uploads.shtml"
 rss_feed_file=$root_folder/"rss.xml"   # RSS feed file
 blog_folders=$("$root_folder"/scripts/sort_blog_index.py "$blog_folder")
-
-# set -xe
+index_latest_uploads_count=6
 
 generate_blog_index() {
+	update=false
+    for i in $(ls $root_folder/$blog_folder); do
+		# if exists and it's a directory
+        if [ -d $root_folder/$blog_folder/$i ]; then
+			last_modified=$(stat $root_folder/$blog_folder/$i/$i.md --format "%Y")
+			blog_index_file_date=$(stat $blog_index_file --format "%Y")
+
+			if [ $last_modified -gt $blog_index_file_date ]
+			then
+				echo "     └─ $i.html is newer than $blog_index_file"
+				echo "+ Regenerating blog index file"
+				update=true
+				break
+			fi
+        fi
+    done
+
+	$update || echo "     └─ Blog index file up to date" && return 1
+
 	rm -rf $root_folder/$blog_index_file ||:
 	touch $root_folder/$blog_index_file
 
@@ -33,7 +51,7 @@ generate_blog_index() {
 generate_latest_uploads() {
 	rm -rf $root_folder/$latest_uploads_file ||:
 
-	head -n 5 $root_folder/$blog_index_file > $root_folder/$latest_uploads_file
+	head -n $index_latest_uploads_count $root_folder/$blog_index_file > $root_folder/$latest_uploads_file
 }
 
 generate_rss_feed() {
@@ -101,7 +119,8 @@ check_rss_feed_last_build() {
 	$updated || echo "     └─ Rss feed file up to date" && echo ""
 }
 
-[ ! -d $root_folder ] && echo "error: root_folder: $root_folder not found" && exit 1
+[ ! -d $root_folder ] && \
+	echo "error: root_folder: $root_folder not found" && exit 1
 
 echo "* root_folder: $root_folder"
 echo "* blog_folder: $blog_folder"
@@ -112,10 +131,15 @@ echo ""
 echo "+ generate_blog_index"
 generate_blog_index
 
-echo "+ generate_latest_uploads"
-generate_latest_uploads
+if [ $? -eq 1 ]; then
+	echo "+ generate_latest_uploads"
+	generate_latest_uploads
+else
+	echo "+ generate_latest_uploads"
+	echo "     └─ Index file up to date"
+fi
 
 case "$1" in
 	--force-rss) echo "+ generate_rss_feed"; generate_rss_feed;;
-	*) echo "==> Checking if rss feed needs to be rebuild"; check_rss_feed_last_build;;
+	*) echo "+ check_rss_feed_last_build"; check_rss_feed_last_build;;
 esac

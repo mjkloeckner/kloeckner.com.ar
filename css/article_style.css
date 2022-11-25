@@ -1,7 +1,7 @@
 #article-title {
 	/* text-decoration: underline; */
 	text-align: left;
-	padding-top: 1em;
+	padding-top: .5em;
 	padding-bottom: .75em;
 }
 
@@ -93,8 +93,8 @@ ul {
 		margin-top: 1em;
 	}
 	#article-title {
-		padding-top: .5em;
-		padding-bottom: .75em;
+		padding-top: .25em;
+		padding-bottom: .5em;
 	}
 	#article-title-with-icon {
 		padding-bottom: .75em;

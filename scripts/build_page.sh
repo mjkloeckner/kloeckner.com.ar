@@ -16,7 +16,8 @@ div_article_title_w_logo() {
 	logo_src=$(echo $1 | grep -zoP '(?<=src=\")(.*?)(?=\")' | tr -d '\0')
 	logo_alt=$(echo $1 | grep -zoP '(?<=alt=\")(.*?)(?=\")' | tr -d '\0')
 	logo_title=$(echo $1 | grep -zoP '(?<=title=\")(.*?)(?=\")' | tr -d '\0')
-	h1_title=$(echo $2 | grep -zoP '(?<=<h1 id=article-title>)(.*?)(?=</h1>)' | tr -d '\0')
+	h1_title=$(echo $2 | grep -zoP '(?<=<h1 id=article-title>)(.*?)(?=</h1>)' |\
+		tr -d '\0')
 }
 
 usage() {
@@ -42,8 +43,10 @@ check_opt() {
 	[ $OPTIND -eq 1 ] && missing_operand && exit 2
 	shift "$((OPTIND-1))"
 
-	[ -z "$input" ] || [ ! -e "$input" ] && echo "error: no input file" && exit 1
-	[ -z "$templ" ] || [ ! -e "$templ" ] && echo "error: no template fshellile" && exit 1
+	[ -z "$input" ] || [ ! -e "$input" ] &&\
+		echo "error: no input file" && exit 1
+	[ -z "$templ" ] || [ ! -e "$templ" ] &&\
+		echo "error: no template fshellile" && exit 1
 	[ -z "$dest_dir" ] && dest_dir="."
 }
 
@@ -69,20 +72,20 @@ echo "date: $date"
 # echo "dest dir: $dest_dir"
 # echo "template: $template"
 
-[ -z "$title" ] || [ -z "$date" ] && echo "error: no metadata found on file $input" && exit 1
+[ -z "$title" ] || [ -z "$date" ] \
+	&& echo "error: no metadata found on file $input" && exit 1
 
 # generate body (skips lines starting with `%`, they're considered metadata)
-# sed '/^% /d' $input | lowdown --html-no-head-ids --html-no-escapehtml --html-no-owasp > body.html
+# sed '/^% /d' $input | \ 
+# lowdown --html-no-head-ids --html-no-escapehtml --html-no-owasp > body.html
 # sed '/^%%/,/^%%/'
-sed '/^%%/,/^%%/d' $input | lowdown --html-no-head-ids --html-no-escapehtml --html-no-owasp > body.html
+sed '/^%%/,/^%%/d' $input |\
+	lowdown --html-no-head-ids --html-no-escapehtml --html-no-owasp > body.html
 
-# puts ids to <h1> tag and adds paragraph next to it with the article-date
+# puts id to <h1> tag and adds paragraph next to it with the article-date
 sed -i -e 's/<h1>/<h1 id=article-title>/g' \
-	-e "s/<\/h1>/<\/h1><p class=\"article-date\">$date (last update $last_update)<\/p>/" body.html
-
-# indent: sed + `-e 's/^/\t\t\t/'`
-# (applying indent makes final html more pleasant to view, but causes code
-#     block to not be displayed properly)
+	-e "s/<\/h1>/<\/h1><p class=\"article-date\">$date (last update $last_update)<\/p>/"\
+	body.html
 
 sed -e "s/\$article-title\\$/$title/" -e "s/\$article-date\\$/$date/" \
 	-e "s/\$pagetitle\\$/$pagetitle/" -e '/\$body\$/r./body.html' \
@@ -98,15 +101,21 @@ insert_div_article_title_w_logo() {
 
 	div_article_title_w_logo "$logo_line" "$title_line"
 
-	sed -i -e "s^$title_line^<div id=\"article-title-with-icon\">\
-		<div id=\"article-icon\"> <img src=\"$logo_src\" title=\"$logo_title\" alt=\"$logo_alt\">\
-		<\/div> <h1 id=\"article-title\">$h1_title<\/h1><\/div><p class=\"article-date\">$date (last update $last_update)</p>^"\
-		"$dest_dir"/"$filename".html
+	sed -i -e "s^$title_line^\
+\	<div id=\"article-title-with-icon\">\
+\	<div id=\"article-icon\">\
+\	<img src=\"$logo_src\" title=\"$logo_title\" alt=\"$logo_alt\">\
+\	<\/div>\
+\	<h1 id=\"article-title\">$h1_title<\/h1>\
+\	<\/div>\
+\	<p class=\"article-date\">$date (last update $last_update)</p>^"\
+	"$dest_dir"/"$filename".html
 
 	sed -i -E '/(^<p>).*?(article-icon).*?<\/p>/d' "$dest_dir"/"$filename".html
 }
 
-[ ! -z "$logo_line" ] && insert_div_article_title_w_logo "$logo_line" "$title_line"
+[ ! -z "$logo_line" ] && \
+	insert_div_article_title_w_logo "$logo_line" "$title_line"
 
 rm body.html &> /dev/null
 
@@ -116,3 +125,4 @@ mv tmp.html "$dest_dir"/"$filename".html
 
 echo "==> "$filename".html generated succesfully"
 echo ""
+
