@@ -10,8 +10,6 @@ This is a backup of my webpage
 
 ## License
 
-Webpage generating scripts are licensed under
-[MIT](https://github.com/mjkloeckner/kloeckner.com.ar/blob/main/LICENSE)
+Webpage generating scripts are licensed under [MIT]().
 
-The content of the webpage is licensed under [CC BY
-4.0](https://creativecommons.org/licenses/by/4.0/)
+The content of the webpage is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
