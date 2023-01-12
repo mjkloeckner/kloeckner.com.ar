@@ -1,4 +1,4 @@
-profile*
+.gitignore
 logos
 fonts/Futura
 deploy.sh
