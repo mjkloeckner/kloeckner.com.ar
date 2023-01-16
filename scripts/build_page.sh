@@ -65,6 +65,8 @@ template="$templ"
 filename="$(basename $input | sed 's/\.[^.]*$//')"
 last_update="$(date -r $input '+%d-%b-%Y')"
 
+mkdir -p $dest_dir &> /dev/null
+
 # echo "file: $input"
 # echo "filename: $filename"
 echo "title: $title"

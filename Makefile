@@ -9,6 +9,7 @@ build:
 	./scripts/sync.sh ${ROOT_PATH}
 
 sync: build
+	./scripts/sync.sh
 	sudo ./scripts/deploy_local.sh ${ROOT_PATH}
 
 deploy:

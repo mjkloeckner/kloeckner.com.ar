@@ -1,13 +1,18 @@
-root_folder="/home/mk/soydev/webp/kloeckner.com.ar"
+#!/bin/sh
 
-[[ $EUID -ne 0 ]] && echo "erro: this script must be run with root privileges" && exit 1
+root_folder="$1"
+
+if [ "$(id -u)" -ne "0" ] ; then
+    echo "This script must be executed with root privileges."
+    exit 1
+fi
 
 set -xe
 
-rm -rf /var/www/html &>/dev/null ||:
+rm -drf /var/www/html >/dev/null 2>&1 ||:
 
 cp -rf "$root_folder" /var/www/html
 
-rm /var/www/html/README.md &> /dev/null
+rm /var/www/html/README.md &>/dev/null 2>&1 ||:
 
-systemctl restart nginx
+sv restart nginx

@@ -296,7 +296,7 @@ pre {
     border-width: thin;
     border-color: antiquewhite;
     border-style: dashed;
-    box-shadow: 5px 5px 7px black;
+    /* box-shadow: 5px 5px 7px black; */
     overflow: auto;
 }
 

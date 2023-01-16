@@ -1,6 +1,6 @@
 #!/bin/sh
 
-root_folder="/home/mk/soydev/webp/kloeckner.com.ar"
+root_folder="$(pwd)"
 blog_folder="md"
 html_folder="blog"
 blog_index_file="common/blog_index.shtml"
@@ -32,7 +32,6 @@ generate_blog_index() {
 	rm -rf $root_folder/$blog_index_file ||:
 	touch $root_folder/$blog_index_file
 
-	# for i in $(eval $root_folder/scritps/sort_blog_index.py $root_folder/$blog_folder); do
 	for i in ${blog_folders[@]}; do
 		# deprecated format
 		# article_date=$(cat $i | grep -oP '(?<=% date: \")(.*?)(?=\")')
@@ -127,7 +126,6 @@ echo "* blog_folder: $blog_folder"
 echo "* blog_index_file: $blog_index_file"
 echo "* latest_uploads_file: $latest_uploads_file"
 echo "* rss_feed_file: $rss_feed_file"
-echo ""
 echo "+ generate_blog_index"
 generate_blog_index
 

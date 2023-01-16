@@ -4,7 +4,7 @@
 # Copies entire folder to blog folder, generates an html file
 # converting the markdown file *named the same as the subfolder*
 
-root_folder="$HOME/soydev/webp/kloeckner.com.ar"
+root_folder="$HOME/prg/kloeckner.com.ar"
 
 for i in $(ls $root_folder/md); do
 	cp -ur "$root_folder"/md/$i "$root_folder"/blog/ >/dev/null 2>&1
