@@ -1,6 +1,6 @@
 * linguist-vendored
 *.html linguist-vendored=false
-css/article_style.css linguist-vendored=false
+css/article_style.css linguist-vendored=true
 css/about_style.css linguist-vendored=false
 scripts/sync.sh linguist-vendored=false
 *.py linguist-vendored=false
