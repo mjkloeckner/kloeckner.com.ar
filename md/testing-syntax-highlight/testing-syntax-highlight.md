@@ -58,9 +58,9 @@ let dts = join(dt, format, '-');
 document.querySelector('.article-date').innerHTML += " (last updated " + dts + ")";
 ```
 I removed it from the webpage because it was not working properly, the
-\`document.lastModified\` was always returning the current date. In stead, I
+`document.lastModified` was always returning the current date. In stead, I
 added a new part to the shell script that builds the pages, the new content
-parses the output of \`stat\` command and appends it to the article date.
+parses the output of `stat` command and appends it to the article date.
 
 This code is part of the script that I'm using for highlighting code blocks.
 It's written in golang, a language that I didn't knew until I needed to modify
