@@ -57,6 +57,7 @@ a.d, a.h, a.i, a.line {
 
 #last-commit {
 	white-space: nowrap;
+	text-align: right;
 }
 
 #index,
@@ -104,6 +105,10 @@ a.d, a.h, a.i, a.line {
 	padding: 2em;
 	margin-top: 1em;
 	border-radius: .5em;
+}
+
+#readme p {
+	line-height: 1.5
 }
 
 #readme-hr, #owner {
@@ -337,7 +342,7 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 
 #readme code {
 	font-family: "Ubuntu Mono", monospace;
-	background-color: rgba(110,118,129,0.4);
+	background-color: rgba(110,118,129,0.2);
 	padding: .1em .4em;
 	margin: 0;
 	border-radius: 6px;
@@ -496,6 +501,7 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 		padding-left: 0px;
 		font-size: .85em;
 		color: gray;
+		text-align: left;
 	}
 	#last-commit a {
 		color: gray;

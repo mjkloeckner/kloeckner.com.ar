@@ -15,4 +15,4 @@ cp -rf "$root_folder" /var/www/html
 
 rm /var/www/html/README.md &>/dev/null 2>&1 ||:
 
-sv restart nginx
+systemctl restart nginx
