@@ -1,4 +1,4 @@
-KEY       = ${HOME}/.ssh/key-mini
+KEY       = ${HOME}/.ssh/key-x441
 DOMAIN    = kloeckner.com.ar
 ROOT_PATH = $(CURDIR)
 
