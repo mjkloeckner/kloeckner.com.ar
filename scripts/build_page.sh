@@ -127,4 +127,3 @@ mv tmp.html "$dest_dir"/"$filename".html
 
 echo "==> "$filename".html generated succesfully"
 echo ""
-
