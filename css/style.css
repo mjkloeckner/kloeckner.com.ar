@@ -8,6 +8,8 @@
           url('/fonts/Futura/FuturaBT-Medium.svg#svgFutura') format('svg'), /* Legacy iOS */
           url('/fonts/Futura/FuturaBT-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
           url('/fonts/Futura/FuturaBT-Medium.ttf'); /* IE9 Compat Modes */
+
+	font-display: swap;
 }
 
 /* latin only */
@@ -361,6 +363,18 @@ hr {
 	padding-bottom: .5em;
 }
 
+#urgent-announcement {
+	color: antiquewhite;
+	font-weight: bold;
+	padding: 0.5em 0em 1em 0em;
+}
+
+#urgent-announcement a {
+	color: orangered;
+	text-decoration: underline;
+}
+
+
 time {
 	font-family: "Ubuntu Mono", monospace;
 	/* font-family: "IBMPlexMono"; */
@@ -492,6 +506,9 @@ time {
 	}
 	#go_top {
 		color: #a04a00;
+	}
+	#urgent-announcement {
+		color: #090909;
 	}
 	img {
 		background: white;
