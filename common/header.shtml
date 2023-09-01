@@ -6,8 +6,8 @@
 		 <ul class="header_buttons">
 			 <li class="header_button" style="padding-right: 10px"><a href="https://git.kloeckner.com.ar/" style="text-decoration: none;">git</a></li>
 			 <li class="header_button" style="padding-right: 10px"><a href="/blog" style="text-decoration: none;">blog</a></li>
+			 <li class="header_button" style="padding-right: 10px"><a href="/files" style="text-decoration: none;">files</a></li>
 			 <li class="header_button" style="padding-right: 10px"><a href="/about" style="text-decoration: none;">about</a></li>
-			 <li class="header_button"><a href="/cv.pdf" style="text-decoration: none;" target="_blank">cv<i class="icon-download">&#xe800;</i></a></li>
 		</ul>
 	</div>
 </header>

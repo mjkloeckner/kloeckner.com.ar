@@ -1,0 +1,51 @@
+* {
+	font-family: monospace;
+}
+
+body {
+	margin-left: auto;
+	margin-right: auto;
+	padding: 1em;
+	max-width: 60em;
+	font-size: 14px;
+}
+
+body pre {
+	overflow: hidden;
+}
+
+a {
+	color: #a04a00;
+	text-decoration: none;
+}
+
+a:hover {
+	color: crimson;
+	text-decoration: underline;
+}
+
+pre a {
+	padding-right: 169px;
+}
+
+body pre {
+	border: 1px solid #505050;
+	padding: 1em;
+	border-radius: .5em;
+}
+
+hr {
+	display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+	* {
+		color: antiquewhite;
+	}
+	body {
+		background: #191919;
+	}
+	a {
+		color: peru;
+	}
+}

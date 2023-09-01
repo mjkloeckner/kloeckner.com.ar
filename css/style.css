@@ -208,14 +208,7 @@ img {
 	background: #191919;
 }
 
-a:visited {
-	color: #C5C8C6;
-	color: #575B61;
-	color: peru;
-}
-
-a:link {
-	color: #81A2BE;
+a:visited, a:active, a:link {
 	color: peru;
 	text-decoration: none;
 }
