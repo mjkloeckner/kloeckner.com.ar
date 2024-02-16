@@ -23,7 +23,8 @@ body {
 footer {
 	color: grey;
 	font-size: .85em;
-	padding-left: 1em;
+	padding: 2em;
+	text-align: center;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -108,7 +109,7 @@ a.d, a.h, a.i, a.line {
 }
 
 #readme p {
-	line-height: 1.5
+	line-height: 1.25;
 }
 
 #readme-hr, #owner {
@@ -474,7 +475,7 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 
 @media (max-width: 800px) {
 	body {
-		font-size: 18px;
+		font-size: 16px;
 		max-width: 97%;
 	}
 	#owner {
@@ -539,13 +540,16 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 		margin: 0;
 	}
 
+	#index,
+	#refs,
 	#files,
 	#dir-files,
 	#log,
 	#commit-summary,
 	#commit-diff {
-		padding: .75em;
+		padding: .5em;
 	}
+
 	#files #file-mode, #dir-files #file-mode {
 		display: none;
 	}
