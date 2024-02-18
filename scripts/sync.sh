@@ -42,7 +42,7 @@ generate_blog_index() {
 
 		file_name=$(echo "$i" | grep -oE '[^/]*$' | cut -d '.' -f 1)
 
-		printf "<li><time>%s</time> <a href=\"/$html_folder/$file_name/$file_name.html\">%s</a></li>\n" \
+		printf "<li><b-time>%s</b-time> <a href=\"/$html_folder/$file_name/$file_name.html\">%s</a></li>\n" \
 			"${article_date}" "${article_title}" >> $root_folder/$blog_index_file
 	done
 }
