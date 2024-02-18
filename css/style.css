@@ -62,6 +62,7 @@ body {
 	margin-right: .5em;
 	font-size: 16px;
 	font-family: inconsolata, "DejaVu Sans", sans, "Verdana", sans-serif, "Georgia", serif;
+	color: antiquewhite;
 }
 
 header {
@@ -212,7 +213,7 @@ img {
 	width: 100%;
 
 	color: black;
-	background: #191919;
+	background: transparent;
 }
 
 a:visited, a:active, a:link {
@@ -411,6 +412,10 @@ time {
 		align-self: center;
 		padding-top: 0em;
 		padding-bottom: .5em;
+
+		a:hover {
+			color: peru;
+		}
 	}
 	.header_bottom_bar{
 		width: 55%;
@@ -468,7 +473,7 @@ time {
 
 @media (prefers-color-scheme: light) {
 	body {
-		background-color: white;
+		background: white;
 		color: #090909;
 	}
 	article {
