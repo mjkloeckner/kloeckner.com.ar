@@ -5,10 +5,10 @@
 			<a href="/" id="header_link_short">Martin's Webpage</a>
 		</h1>
 		 <ul class="header_buttons">
-			 <li class="header_button" style="padding-right: 10px"><a href="https://git.kloeckner.com.ar/" style="text-decoration: none;">git</a></li>
-			 <li class="header_button" style="padding-right: 10px"><a href="/blog" style="text-decoration: none;">blog</a></li>
-			 <li class="header_button" style="padding-right: 10px"><a href="/files" style="text-decoration: none;">files</a></li>
-			 <li class="header_button" style="padding-right: 10px"><a href="/about" style="text-decoration: none;">about</a></li>
+			 <li class="header_button" style="padding-right: 14px"><a href="https://git.kloeckner.com.ar/" style="text-decoration: none;">git</a></li>
+			 <li class="header_button" style="padding-right: 14px"><a href="/blog" style="text-decoration: none;">blog</a></li>
+			 <li class="header_button" style="padding-right: 14px"><a href="/files" style="text-decoration: none;">files</a></li>
+			 <li class="header_button" style="padding-right:  0px"><a href="/about" style="text-decoration: none;">about</a></li>
 		</ul>
 	</div>
 </header>
