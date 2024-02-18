@@ -67,12 +67,8 @@ last_update="$(date -r $input '+%d-%b-%Y')"
 
 mkdir -p $dest_dir &> /dev/null
 
-# echo "file: $input"
-# echo "filename: $filename"
 echo "title: $title"
 echo "date: $date"
-# echo "dest dir: $dest_dir"
-# echo "template: $template"
 
 [ -z "$title" ] || [ -z "$date" ] \
 	&& echo "error: no metadata found on file $input" && exit 1

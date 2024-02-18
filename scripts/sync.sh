@@ -11,9 +11,9 @@ index_latest_uploads_count=6
 
 generate_blog_index() {
 	update=false
-    for i in $(ls $root_folder/$blog_folder); do
+	for i in $(ls $root_folder/$blog_folder); do
 		# if exists and it's a directory
-        if [ -d $root_folder/$blog_folder/$i ]; then
+		if [ -d $root_folder/$blog_folder/$i ]; then
 			last_modified=$(stat $root_folder/$blog_folder/$i/$i.md --format "%Y")
 			blog_index_file_date=$(stat $blog_index_file --format "%Y")
 
@@ -24,8 +24,8 @@ generate_blog_index() {
 				update=true
 				break
 			fi
-        fi
-    done
+		fi
+	done
 
 	$update || echo "     └─ Blog index file up to date" && return 1
 
@@ -89,20 +89,20 @@ generate_rss_feed() {
 		echo "$article_date"
 		echo "</item>" >> $rss_feed_file
 		echo "" >> $rss_feed_file
-    done
+	done
 
-    # Close the RSS feed file
-    echo "" >> $rss_feed_file
-    echo "</channel>" >> $rss_feed_file
-    echo "</rss>" >> $rss_feed_file
+	# Close the RSS feed file
+	echo "" >> $rss_feed_file
+	echo "</channel>" >> $rss_feed_file
+	echo "</rss>" >> $rss_feed_file
 }
 
 check_rss_feed_last_build() {
 	[ ! -e $rss_feed_file ] && echo "+ Regenerating rss feed" && generate_rss_feed && return
 	updated=false
-    for i in $(ls $root_folder/$blog_folder); do
+	for i in $(ls $root_folder/$blog_folder); do
 		# if exists and it's a directory
-        if [ -d $root_folder/$blog_folder/$i ]; then
+		if [ -d $root_folder/$blog_folder/$i ]; then
 			last_modified=$(stat $root_folder/$blog_folder/$i/$i.md --format "%Y")
 			rss_file_date=$(stat $rss_feed_file --format "%Y")
 
@@ -113,8 +113,8 @@ check_rss_feed_last_build() {
 				generate_rss_feed && updated=true
 				break
 			fi
-        fi
-    done
+		fi
+	done
 	$updated || echo "     └─ Rss feed file up to date" && echo ""
 }
 
