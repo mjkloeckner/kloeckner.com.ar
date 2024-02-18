@@ -1,6 +1,27 @@
 <footer class="footer">
 	<div class="footer-div">
-		The content of this webpage is licensed under <a style="white-space: nowrap;" rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+		The content of this webpage is licensed under <a style="white-space: nowrap;" rel="license" href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
 	</div>
-	<a href="http://creativecommons.org/licenses/by/4.0/"><img id="cc-logo" alt="Creative Commons License" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by.png"/></a>
+	<a href="http://creativecommons.org/licenses/by/4.0/">
+		<img id="footer-buttons" alt="CC License" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by.png"/>
+	</a>
+	<a href="https://www.debian.org/">
+		<img id="footer-buttons" alt="Debian Logo" src="/common/debian_no_shadow.gif"/>
+	</a>
+	<a href="https://www.nginx.com/">
+		<img id="footer-buttons" alt="Nginx Logo" src="/common/nginx.gif"/>
+	</a>
+	<a href="https://github.com/mjkloeckner">
+		<img id="footer-buttons" alt="Nginx Logo" src="/common/github-check.gif"/>
+	</a>
+	<br>
+	<a href="https://neovim.io/">
+		<img id="footer-buttons" alt="Made using neovim" src="/common/neovim.gif"/>
+	</a>
+	<a href="https://github.com/mjkloeckner">
+		<img id="footer-buttons" alt="Messivrve" src="/common/messirve.gif"/>
+	</a>
+	<a href="https://pagespeed.web.dev/analysis/https-kloeckner-com-ar/nn0gdw6h2u?form_factor=mobile">
+		<img id="footer-buttons" alt="Google Page Speed Insights" src="/common/fast.gif"/>
+	</a>
 </footer>
