@@ -1,9 +1,9 @@
 %%
-title: "dwm - The dynamic window manager"
+title: "dwm: The dynamic window manager"
 date: "23-Oct-2021"
 %%
 
-# dwm - The dynamic window manager
+# dwm: The dynamic window manager
 
 A window manager is a software that can manage the layout and appearance
 of every window spawned in your desktop, most people confuse them with

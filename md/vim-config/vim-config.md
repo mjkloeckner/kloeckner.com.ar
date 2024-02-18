@@ -1,5 +1,5 @@
 %%
-title: "vim - The keyboard driven text editor"
+title: "vim: The keyboard driven text editor"
 date: "04-Mar-2021"
 %%
 
