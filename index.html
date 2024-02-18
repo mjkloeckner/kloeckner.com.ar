@@ -44,7 +44,19 @@
 				<!--#include virtual="/common/latest_uploads.shtml" -->
 			</ul>
 
-			<p>See more <a href="/blog">blog entries</a></p>
+			<p id=blog-entries>See all <a href="/blog">blog entries</a></p>
+
+			<script>
+				var file;
+				fetch('/common/blog_index.shtml')
+					.then(response => response.text())
+					.then((data) => {
+						var match = data.match(/\r?\n/g);
+						// alert(match.length);
+						var content = document.getElementById('blog-entries');
+						content.innerHTML += " (" + match.length + ")";
+					})
+			</script>
 			<hr class="article_bottom_bar">
 		</article>
 
