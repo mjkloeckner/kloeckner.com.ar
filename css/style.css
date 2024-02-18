@@ -204,6 +204,7 @@ footer {
 	color: #DAA520;
 	padding-top: .25em;
 	padding-bottom: .5em;
+	animation: zoom-in-zoom-out 5s ease-in-out infinite;
 }
 
 img {
@@ -523,7 +524,16 @@ time {
 	#urgent-announcement {
 		color: #090909;
 	}
-	img {
-		background: white;
+}
+
+@keyframes zoom-in-zoom-out {
+	0% {
+		transform: scale(1, 1);
+	}
+	50% {
+		transform: scale(1.12, 1.12);
+	}
+	100% {
+		transform: scale(1, 1);
 	}
 }
