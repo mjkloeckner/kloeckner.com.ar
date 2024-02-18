@@ -56,13 +56,13 @@ html {
 }
 
 body {
+	color: antiquewhite;
 	background: #191919;
 	margin-bottom: 15em;
 	margin-left: .5em;
 	margin-right: .5em;
 	font-size: 16px;
 	font-family: inconsolata, "DejaVu Sans", sans, "Verdana", sans-serif, "Georgia", serif;
-	color: antiquewhite;
 }
 
 header {
@@ -202,7 +202,7 @@ footer {
 #index-title {
 	text-align: center;
 	color: #DAA520;
-	padding-top: .25em;
+	padding-top: 0em;
 	padding-bottom: .5em;
 	animation: zoom-in-zoom-out 5s ease-in-out infinite;
 }
@@ -364,7 +364,7 @@ hr {
 #latest-uploads {
 	display: flex;
 	align-items: center;
-	padding-top: .5em;
+	padding-top: 0em;
 	padding-bottom: .5em;
 }
 
@@ -387,7 +387,6 @@ time {
 
 @media (max-width: 800px) {
 	body {
-		font-size: 16px;
 		margin-left: 0em;
 		margin-right: 0em;
 	}
@@ -432,13 +431,12 @@ time {
 		padding-bottom: .10em;
 	}
 	#index-title {
-		padding-top: .25em;
+		padding-top: 0;
 		padding-bottom: .5em;
 	}
 	#latest-uploads {
 		padding-bottom: .25em;
 	}
-	p { padding-bottom: .5em; }
 	#header_link {
 		display: none;
 	}
@@ -448,6 +446,9 @@ time {
 }
 
 @media (max-width: 400px) {
+	body {
+		font-size: 14px;
+	}
 	#header_title {
 		font-size: 2.25em;
 	}
