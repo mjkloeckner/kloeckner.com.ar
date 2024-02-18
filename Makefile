@@ -9,7 +9,11 @@ build:
 	./scripts/sync.sh ${ROOT_PATH}
 
 sync: build
-	./scripts/sync.sh
+	sudo ./scripts/deploy_local.sh ${ROOT_PATH}
+
+force-sync:
+	./scripts/build.sh ${ROOT_PATH}
+	./scripts/sync.sh --force-update ${ROOT_PATH}
 	sudo ./scripts/deploy_local.sh ${ROOT_PATH}
 
 deploy:

@@ -27,7 +27,9 @@ generate_blog_index() {
 		fi
 	done
 
-	$update || echo "     └─ Blog index file up to date" && return 1
+	[ ! -z "$1" ] && update=true;
+	[ "$update" = "false" ] && echo \"     └─ Blog index file up to date\" && return 1
+	echo "     └─ Updating blog index"
 
 	rm -rf $root_folder/$blog_index_file ||:
 	touch $root_folder/$blog_index_file
@@ -138,6 +140,8 @@ else
 fi
 
 case "$1" in
-	--force-rss) echo "+ generate_rss_feed"; generate_rss_feed;;
+	--force-update) 
+		echo "+ generate_rss_feed"; generate_rss_feed;
+		echo "+ generate_blog_index"; generate_blog_index "force-update";;
 	*) echo "+ check_rss_feed_last_build"; check_rss_feed_last_build;;
 esac
