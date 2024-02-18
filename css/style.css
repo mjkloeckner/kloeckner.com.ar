@@ -61,7 +61,7 @@ body {
 	margin-left: .5em;
 	margin-right: .5em;
 	font-size: 16px;
-	font-family: "DejaVu Sans", sans, "Verdana", sans-serif, "Georgia", serif;
+	font-family: inconsolata, "DejaVu Sans", sans, "Verdana", sans-serif, "Georgia", serif;
 }
 
 header {
@@ -112,7 +112,7 @@ header {
 	color: inherit;
 	transition: .75;
 
-	font-family: "Futura Medium";
+	font-family: inconsolata, "Futura Medium";
 }
 
 #header_link:hover {
