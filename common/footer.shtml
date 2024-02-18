@@ -6,7 +6,7 @@
 		<img id="footer-buttons" alt="CC License" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by.png"/>
 	</a>
 	<a href="https://www.debian.org/">
-		<img id="footer-buttons" alt="Debian Logo" src="/common/debian_no_shadow.gif"/>
+		<img id="footer-buttons" alt="Debian Logo" src="/common/debian.gif"/>
 	</a>
 	<a href="https://www.nginx.com/">
 		<img id="footer-buttons" alt="Nginx Logo" src="/common/nginx.gif"/>
