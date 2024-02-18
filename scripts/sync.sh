@@ -44,7 +44,7 @@ generate_blog_index() {
 
 		printf "<li><time>%s</time> <a href=\"/$html_folder/$file_name/$file_name.html\">%s</a></li>\n" \
 			"${article_date}" "${article_title}" >> $root_folder/$blog_index_file
-    done
+	done
 }
 
 generate_latest_uploads() {
@@ -56,7 +56,7 @@ generate_latest_uploads() {
 generate_rss_feed() {
 	rm $rss_feed_file &> /dev/null
 
-    cp "$root_folder"/scripts/rss_feed_top.xml $rss_feed_file
+	cp "$root_folder"/scripts/rss_feed_top.xml $rss_feed_file
 	printf "<lastBuildDate>%s</lastBuildDate>\n" "$(date)" >> $rss_feed_file
 
 	for i in ${blog_folders[@]}; do

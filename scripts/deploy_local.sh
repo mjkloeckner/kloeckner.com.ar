@@ -4,8 +4,8 @@ root_folder="$1"
 html_folder="/var/www/html"
 
 if [ "$(id -u)" -ne "0" ] ; then
-    echo "This script must be executed with root privileges."
-    exit 1
+	echo "This script must be executed with root privileges."
+	exit 1
 fi
 
 echo -n "override folder $html_folder with $root_folder? (Y/n)? "
