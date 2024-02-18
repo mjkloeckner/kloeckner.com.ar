@@ -11,7 +11,7 @@ html {
 body {
 	color: #000;
 	background-color: #fff;
-	font-family: monospace;
+	font-family: inconsolata, monospace;
 	font-size: 14px;
 	max-width: 70em;
 	margin-left: auto;
