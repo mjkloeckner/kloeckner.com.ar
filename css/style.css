@@ -153,12 +153,16 @@ footer {
 	margin-right:auto;
 }
 
-#index-title {
+#index-title, #blog-title {
 	text-align: center;
 	color: #DAA520;
 	padding-top: 0em;
 	padding-bottom: .5em;
 	animation: zoom-in-zoom-out 5s ease-in-out infinite;
+}
+
+#blog-title {
+	animation: none;
 }
 
 img {
