@@ -3,7 +3,7 @@
 		The content of this webpage is licensed under <a style="white-space: nowrap;" rel="license" href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
 	</div>
 	<a href="http://creativecommons.org/licenses/by/4.0/">
-		<img id="footer-buttons" alt="CC License" src=/common/by.png>
+		<img id="footer-buttons" alt="CC License" src="/common/by.png"/>
 	</a>
 	<a href="https://www.debian.org/">
 		<img id="footer-buttons" alt="Debian Logo" src="/common/debian.gif"/>
@@ -21,7 +21,7 @@
 	<a href="https://github.com/mjkloeckner">
 		<img id="footer-buttons" alt="Messivrve" src="/common/messirve.gif"/>
 	</a>
-	<a href="https://pagespeed.web.dev/analysis/https-kloeckner-com-ar/nn0gdw6h2u?form_factor=mobile">
+	<a href="https://pagespeed.web.dev/analysis/https-kloeckner-com-ar/nn0gdw6h2u?form_factor=desktop">
 		<img id="footer-buttons" alt="Google Page Speed Insights" src="/common/fast.gif"/>
 	</a>
 </footer>

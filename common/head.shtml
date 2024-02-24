@@ -1,20 +1,13 @@
-<!-- <link rel="preload" href="/fonts/Futura/FuturaBT-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous"> -->
-<!-- <link rel="preload" href="/fonts/Futura/FuturaBT-Medium.woff" as="font" type="font/woff" crossorigin="anonymous"> -->
-<!-- <link rel="preload" href="/fonts/Futura/FuturaBT-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"> -->
-<!-- <link rel="preload" href="/fonts/Futura/FuturaBT-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous"> -->
-
 <meta charset="utf-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" as="font" type="font/woff2" crossorigin="anonymous"> -->
-<!-- <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap"> -->
 
 <link 
     as="style"
     rel="stylesheet preload prefetch" 
-    href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" 
+    href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400&display=swap" 
     type="text/css" 
     crossorigin="anonymous"/>
 
-<link rel='stylesheet' type='text/css' href="/css/style.css?ver=0.1">
+<link rel='stylesheet' type='text/css' href="/css/style.css?ver=0.2">
 <link rel="icon" type="image/x-icon" href="favicon.webp">
