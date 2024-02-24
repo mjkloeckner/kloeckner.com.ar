@@ -2,7 +2,7 @@
 	<div class="header_flex_div">
 		<h1 id="header_title">
 			<a href="/" id="header_link">Martin Klöckner's Webpage</a>
-			<a href="/" id="header_link_short">Martin's Webpage</a>
+			<a href="/" id="header_link_short" style="display: none;">Martin's Webpage</a>
 		</h1>
 		 <ul class="header_buttons">
 			 <li class="header_button" style="padding-right: 14px"><a href="https://git.kloeckner.com.ar/" style="text-decoration: none;">git</a></li>

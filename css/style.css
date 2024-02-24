@@ -73,8 +73,7 @@ header {
 	font-family: inconsolata, "Futura Medium";
 }
 
-#header_link_short {
-	display: none;
+	font-family: "inconsolata", monospace, "DejaVu Sans", sans, sans-serif;
 }
 
 #header_link:hover {
@@ -398,7 +397,7 @@ b-time {
 		display: none;
 	}
 	#header_link_short {
-		display: initial;
+		display: initial !important;
 	}
 }
 
