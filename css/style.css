@@ -15,7 +15,7 @@ html {
 
 body {
 	color: antiquewhite;
-	background: #191919;
+	background: #141414;
 	margin-bottom: 15em;
 	margin-left: .5em;
 	margin-right: .5em;
@@ -93,7 +93,7 @@ article {
 	margin-right: auto;
 	margin-bottom: .9em;
 
-	text-align: justify;
+	text-align: left;
 
 	padding-left: 0.5em;
 	padding-right: 0.5em;
@@ -453,10 +453,10 @@ b-time {
 		color: #a04a00;
 	}
 	.header_bottom_bar {
-		border-top: 1px dashed #191919;
+		border-top: 1px dashed #141414;
 	}
 	.article_bottom_bar {
-		border-top: 1px dashed #191919;
+		border-top: 1px dashed #141414;
 	}
 	a:visited {
 		color: #a04a00;
