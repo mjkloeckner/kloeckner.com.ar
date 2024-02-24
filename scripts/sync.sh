@@ -1,7 +1,7 @@
 #!/bin/sh
 
 root_folder="$(pwd)"
-blog_folder="md"
+blog_folder="blog"
 html_folder="blog"
 blog_index_file="common/blog_index.shtml"
 latest_uploads_file="common/latest_uploads.shtml"
@@ -44,7 +44,7 @@ generate_blog_index() {
 
 		file_name=$(echo "$i" | grep -oE '[^/]*$' | cut -d '.' -f 1)
 
-		printf "<li><b-time>%s</b-time> <a href=\"/$html_folder/$file_name/$file_name.html\">%s</a></li>\n" \
+		printf "<li><b-time>%s</b-time> <a href=\"/$blog_folder/$file_name/$file_name.html\">%s</a></li>\n" \
 			"${article_date}" "${article_title}" >> $root_folder/$blog_index_file
 	done
 }

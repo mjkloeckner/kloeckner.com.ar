@@ -6,10 +6,10 @@
 
 root_folder="$1"
 
-for i in $(ls $root_folder/md); do
-	cp -ur "$root_folder"/md/$i "$root_folder"/blog/ >/dev/null 2>&1
+for i in $(ls $root_folder/blog); do
+	# cp -ur "$root_folder"/md/$i "$root_folder"/blog/ >/dev/null 2>&1
 	"$root_folder"/scripts/build_page.sh \
-		-i "$root_folder"/md/$i/$i.md \
+		-i "$root_folder"/blog/$i/$i.md \
 		-t "$root_folder"/scripts/template.html \
 		-d "$root_folder"/blog/$i;
 done
