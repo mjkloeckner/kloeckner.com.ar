@@ -17,10 +17,13 @@ force-sync:
 	sudo ./scripts/deploy_local.sh ${ROOT_PATH}
 
 deploy:
-	rsync -e "ssh -i $(KEY)" -rahvPt --delete --delete-excluded --exclude=.git \
-		--exclude=${ROOT_PATH}/scripts --exclude=${ROOT_PATH}/style/git.css \
+	rsync -e "ssh -i $(KEY)" -rahvPt --delete --delete-excluded \
+		--exclude=.git \
+		--exclude=${ROOT_PATH}/scripts \
+		--exclude=${ROOT_PATH}/style/git.css \
 		./ root@$(DOMAIN):/var/www/html/
-	rsync -e "ssh -i $(KEY)" -rahvPt --delete --delete-excluded --exclude=.git \
+	rsync -e "ssh -i $(KEY)" -rahvPt --delete --delete-excluded \
+		--exclude=.git \
 		./css/git.css root@$(DOMAIN):/var/www/git/style.css
 	ssh -i $(KEY) root@$(DOMAIN) -t 'systemctl restart nginx'
 
