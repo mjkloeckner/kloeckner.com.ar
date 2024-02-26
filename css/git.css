@@ -114,6 +114,10 @@ a.d, a.h, a.i, a.line {
 	display: none;
 }
 
+#name {
+	font-weight: bold;
+}
+
 #repo-name {
 	font-size: 1.75em;
 }
@@ -151,6 +155,7 @@ a.d, a.h, a.i, a.line {
 
 #repo-top-buttons {
 	padding: .5em 2em 1em 2em;
+	font-weight: bold;
 }
 
 #log-date,
@@ -628,7 +633,7 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 		font-size: 20px;
 	}
 	#repo-name {
-		font-size: 1.25em;
+		font-size: 1.5em;
 	}
 	#dir-name {
 		padding-left: 0;
