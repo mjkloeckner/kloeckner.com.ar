@@ -661,7 +661,7 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 		overflow: scroll;
 	}
 
-	#openfile-name, #dir-title {
+	#open-file-name, #dir-title {
 		padding: .75em;
 		margin-right: auto;
 	}
