@@ -182,7 +182,7 @@ a.d, a.h, a.i, a.line {
 
 #blob {
     border: 1px dashed #505050;
-    padding-top: 1em;
+    padding: .5em;
     margin-top: 0;
     border-radius: .5em;
     border-top-left-radius: 0;
@@ -344,6 +344,20 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 
 #open-file-name {
 	font-weight: bold;
+}
+
+.line {
+	display: inline;
+	margin-left: -.5em;
+}
+
+#line-checkbox {
+	margin-right: .5em;
+}
+
+#line-checkbox-div {
+	padding-right: 1em;
+	margin-left: auto;
 }
 
 #file-parent-path {
@@ -694,8 +708,22 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 		padding: .25em .50em .75em .50em;
 	}
 
+	#open-file-header {
+		padding: .5em;
+	}
+
+	#file-raw a {
+		margin-right: .5em;
+	}
+
 	a:hover {
 		color: #a04a00;
+	}
+
+	#line-checkbox-div {
+		text-align: center;
+		width: min-content;
+		white-space: nowrap;
 	}
 
 	@media (prefers-color-scheme: dark) {
