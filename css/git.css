@@ -343,8 +343,10 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 	margin-bottom: 0;
 
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
+	white-space: initial;
 }
 
 #open-file-name {
