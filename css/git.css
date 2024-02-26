@@ -80,9 +80,8 @@ a.d, a.h, a.i, a.line {
 #files {
 	min-width: 100%;
 	border: 1px dashed #505050;
-	padding: 1em;
+	padding: 1em 1.4em 1em 1.4em;
 	border-radius: .5em;
-	margin-top: 1em;
 }
 
 #dir-files {
@@ -115,8 +114,18 @@ a.d, a.h, a.i, a.line {
 	display: none;
 }
 
-#main-name, #repo-name {
-	font-size: 1.5em;
+#repo-name {
+	font-size: 1.75em;
+}
+
+#repo-header-table {
+	padding: .25em 2em .75em 2em;
+}
+
+#main-name {
+	font-size: 1.75em;
+	color: crimson;
+	padding-bottom: .25em;
 }
 
 #dir-name {
@@ -127,7 +136,6 @@ a.d, a.h, a.i, a.line {
 	border: 1px dashed #505050;
 	padding: 1em 1.48em;
 	margin-bottom: 0;
-	margin-top: 1em;
 	border-top-left-radius: .5em;
 	border-top-right-radius: .5em;
 }
@@ -142,7 +150,7 @@ a.d, a.h, a.i, a.line {
 }
 
 #repo-top-buttons {
-	padding: 1em .4em 0em .4em;
+	padding: .5em 2em 1em 2em;
 }
 
 #log-date,
@@ -150,9 +158,26 @@ a.d, a.h, a.i, a.line {
 	white-space: nowrap;
 }
 
-#legends td,
-#header-table td {
+#legends td {
 	padding: 0 0.4em;
+}
+
+#main-header-table {
+	display: flex;
+	justify-content: center;
+	padding-bottom: .5em;
+	td {
+		text-align: center;
+	}
+}
+
+#main-header-logo, #repo-logo {
+	display: none;
+}
+
+#main-header-table tbody {
+	display: flex;
+	justify-content: center;
 }
 
 #blob {
@@ -271,7 +296,7 @@ td.num {
 
 .main-desc {
 	color: #555;
-	font-size: 1.10em;
+	font-size: 1.25em;
 }
 
 hr {
@@ -303,7 +328,7 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 	text-decoration: none;
 }
 
-#openfile-name {
+#open-file-header {
 	padding: 0 0.4em;
 	border: 1px dashed #505050;
 	padding: 1em;
@@ -311,6 +336,33 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 	border-top-right-radius: .5em;
 	border-bottom: none;
 	margin-bottom: 0;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#open-file-name {
+	font-weight: bold;
+}
+
+#file-parent-path {
+	font-weight: bold;
+	display: inline;
+	padding: 0;
+	margin: 0;
+}
+
+#file-raw a {
+	padding: .5em;
+	border: 1px solid #505050;
+	border-radius: .5em;
+}
+
+#file-raw a:hover{
+	text-decoration: none;
+	background: #505050;
+	color: white;
 }
 
 #readme h1 {
@@ -590,6 +642,7 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 
 	#openfile-name, #dir-title {
 		padding: .75em;
+		margin-right: auto;
 	}
 
 	#log thead,
@@ -631,6 +684,14 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 	#log tr:hover td,
 	#files tr:hover td {
 		background-color: #fff;
+	}
+
+	#repo-top-buttons {
+		padding: .5em .50em 1em .50em;
+	}
+
+	#repo-header-table {
+		padding: .25em .50em .75em .50em;
 	}
 
 	a:hover {
