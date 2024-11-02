@@ -13,7 +13,7 @@ body {
 	background-color: #fff;
 	font-family: inconsolata, monospace;
 	font-size: 14px;
-	max-width: 65em;
+	max-width: 120ch;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 10em;
@@ -66,7 +66,7 @@ a.d, a.h, a.i, a.line {
 #commit-summary,
 #commit-diff {
 	width: 100%;
-	border: 1px dashed #505050;
+	border: 1px solid #505050;
 	padding: 1em;
 	border-radius: .5em;
 	margin-top: 1em;
@@ -79,14 +79,14 @@ a.d, a.h, a.i, a.line {
 
 #files {
 	min-width: 100%;
-	border: 1px dashed #505050;
+	border: 1px solid #505050;
 	padding: 1em 1.4em 1em 1.4em;
 	border-radius: .5em;
 }
 
 #dir-files {
 	min-width: 100%;
-	border: 1px dashed #505050;
+	border: 1px solid #505050;
 	padding: 1em;
 	margin-top: 0em;
 	border-radius: .5em;
@@ -100,7 +100,7 @@ a.d, a.h, a.i, a.line {
 }
 
 #readme {
-	border: 1px dashed #505050;
+	border: 1px solid #505050;
 	padding: 2em;
 	margin-top: 1em;
 	border-radius: .5em;
@@ -137,7 +137,7 @@ a.d, a.h, a.i, a.line {
 }
 
 #dir-title {
-	border: 1px dashed #505050;
+	border: 1px solid #505050;
 	padding: 1em 1.48em;
 	margin-bottom: 0;
 	border-top-left-radius: .5em;
@@ -145,7 +145,7 @@ a.d, a.h, a.i, a.line {
 }
 
 #binary-file {
-	border: 1px dashed #505050;
+	border: 1px solid #505050;
 	padding: 1em;
 	margin-top: 0;
 	border-radius: .5em;
@@ -186,12 +186,12 @@ a.d, a.h, a.i, a.line {
 }
 
 #blob {
-    border: 1px dashed #505050;
-    padding: .5em;
-    margin-top: 0;
-    border-radius: .5em;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+	border: 1px solid #505050;
+	padding: .5em;
+	margin-top: 0;
+	border-radius: .5em;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
 }
 
 #blob a {
@@ -335,7 +335,7 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 
 #open-file-header {
 	padding: 0 0.4em;
-	border: 1px dashed #505050;
+	border: 1px solid #505050;
 	padding: 1em;
 	border-top-left-radius: .5em;
 	border-top-right-radius: .5em;
