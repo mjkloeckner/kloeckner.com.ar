@@ -3,8 +3,8 @@ logos
 fonts/Futura
 deploy.sh
 rss.xml
-blog
 syntax-highlight
 webp_exclude
-blog/**
 common/latest_uploads.shtml
+.directory
+blog/**/*.html
