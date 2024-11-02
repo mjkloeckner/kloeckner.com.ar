@@ -19,12 +19,17 @@ force-sync:
 deploy:
 	rsync -e "ssh -i $(KEY)" -rahvPt --delete --delete-excluded \
 		--exclude=.git \
-		--exclude=${ROOT_PATH}/scripts \
-		--exclude=${ROOT_PATH}/style/git.css \
+		--exclude=./scripts \
+		--exclude=./style/git.css \
+		--exclude=./common/logo.webp \
 		./ root@$(DOMAIN):/var/www/html/
 	rsync -e "ssh -i $(KEY)" -rahvPt --delete --delete-excluded \
 		--exclude=.git \
 		./css/git.css root@$(DOMAIN):/var/www/git/style.css
+	rsync -e "ssh -i $(KEY)" -rahvPt --delete --delete-excluded \
+		--exclude=.git \
+		./common/logo.webp root@$(DOMAIN):/var/www/git/logo.png
+
 	ssh -i $(KEY) root@$(DOMAIN) -t 'systemctl restart nginx'
 
 .PHONY: build sync force-sync deploy
