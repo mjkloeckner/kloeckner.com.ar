@@ -3,7 +3,6 @@ logos
 fonts/Futura
 deploy.sh
 rss.xml
-syntax-highlight
 webp_exclude
 common/latest_uploads.shtml
 .directory
