@@ -4,7 +4,7 @@
 		<tbody id="blog-index-tbody">
 		<tr id="entry" onclick="window.location='/blog/grub-linux-version-fix/grub-linux-version-fix.html';">
 			<td id="date"><a href="/blog/grub-linux-version-fix/grub-linux-version-fix.html">02-Nov-2024</a></td>
-			<td id="title"><a href="/blog/grub-linux-version-fix/grub-linux-version-fix.html">GRUB: Incorrect Linux version `booting Linux linux ...`</a></td>
+			<td id="title"><a href="/blog/grub-linux-version-fix/grub-linux-version-fix.html">GRUB menu: Linux version not detected</a></td>
 		</tr>
 		<tr id="entry" onclick="window.location='/blog/spending-money-on-thinkpads/spending-money-on-thinkpads.html';">
 			<td id="date"><a href="/blog/spending-money-on-thinkpads/spending-money-on-thinkpads.html">14-Oct-2023</a></td>
