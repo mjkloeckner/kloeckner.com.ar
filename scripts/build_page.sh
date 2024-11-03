@@ -115,12 +115,13 @@ insert_div_article_title_w_logo() {
 [ ! -z "$logo_line" ] && \
 	insert_div_article_title_w_logo "$logo_line" "$title_line"
 
-rm body.html &> /dev/null
+rm -v body.html &> /dev/null
 
 ./scripts/syntax-highlight "$dest_dir"/"$filename".html > tmp.html
 
-mv tmp.html "$dest_dir"/"$filename".html
 cp -v ./favicon.webp "$dest_dir"/
+
+mv -v tmp.html "$dest_dir"/"$filename".html
 
 echo "==> "$filename".html generated succesfully"
 echo ""
