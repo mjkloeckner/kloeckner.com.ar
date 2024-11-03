@@ -74,7 +74,7 @@ generate_rss_feed() {
 
 		file_name=$(echo "$i" | grep -oE '[^/]*$' | cut -d '.' -f 1)
 
-		article_description="$(sed '/^%%/,/^%%/d' $root_folder/md/$file_name/$file_name.md | md2html |\
+		article_description="$(sed '/^%%/,/^%%/d' $root_folder/$blog_folder/$file_name/$file_name.md | md2html |\
 			sed -E -e 's/ \(last\ update//g' -e 's/\{[^\}]*\}//g'\
 			       -e 's/<code>|<\/code>//g' -e 's/<em>|<\/em>//g')"
 
