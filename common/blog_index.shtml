@@ -1,8 +1,38 @@
-<li><b-time>02-Nov-2024</b-time> <a href="/blog/grub-linux-version-fix/grub-linux-version-fix.html">GRUB: Incorrect Linux version `booting Linux linux ...`</a></li>
-<li><b-time>14-Oct-2023</b-time> <a href="/blog/spending-money-on-thinkpads/spending-money-on-thinkpads.html">Spending money on thinkpads</a></li>
-<li><b-time>26-Oct-2022</b-time> <a href="/blog/bought-a-thinkpad/bought-a-thinkpad.html">I bought a ThinkPad x200 for $27</a></li>
-<li><b-time>21-Oct-2022</b-time> <a href="/blog/testing-syntax-highlight/testing-syntax-highlight.html">Testing code syntax highlight</a></li>
-<li><b-time>23-Sep-2022</b-time> <a href="/blog/nerdearla-2022/nerdearla-2022.html">I'm going to Nerdearla 2022</a></li>
-<li><b-time>18-Sep-2022</b-time> <a href="/blog/sav/sav.html">Sorting Algorithms Visualized</a></li>
-<li><b-time>23-Oct-2021</b-time> <a href="/blog/dwm-config/dwm-config.html">dwm: The dynamic window manager</a></li>
-<li><b-time>04-Mar-2021</b-time> <a href="/blog/vim-config/vim-config.html">vim: The keyboard driven text editor</a></li>
+	<table id="blog-index-table">
+		<thead id="blog-index-thead">
+		</thead>
+		<tbody id="blog-index-tbody">
+		<tr id="entry" onclick="window.location='/blog/grub-linux-version-fix/grub-linux-version-fix.html';">
+			<td id="date"><a href="/blog/grub-linux-version-fix/grub-linux-version-fix.html">02-Nov-2024</a></td>
+			<td id="title"><a href="/blog/grub-linux-version-fix/grub-linux-version-fix.html">GRUB: Incorrect Linux version `booting Linux linux ...`</a></td>
+		</tr>
+		<tr id="entry" onclick="window.location='/blog/spending-money-on-thinkpads/spending-money-on-thinkpads.html';">
+			<td id="date"><a href="/blog/spending-money-on-thinkpads/spending-money-on-thinkpads.html">14-Oct-2023</a></td>
+			<td id="title"><a href="/blog/spending-money-on-thinkpads/spending-money-on-thinkpads.html">Spending money on thinkpads</a></td>
+		</tr>
+		<tr id="entry" onclick="window.location='/blog/bought-a-thinkpad/bought-a-thinkpad.html';">
+			<td id="date"><a href="/blog/bought-a-thinkpad/bought-a-thinkpad.html">26-Oct-2022</a></td>
+			<td id="title"><a href="/blog/bought-a-thinkpad/bought-a-thinkpad.html">I bought a ThinkPad x200 for $27</a></td>
+		</tr>
+		<tr id="entry" onclick="window.location='/blog/testing-syntax-highlight/testing-syntax-highlight.html';">
+			<td id="date"><a href="/blog/testing-syntax-highlight/testing-syntax-highlight.html">21-Oct-2022</a></td>
+			<td id="title"><a href="/blog/testing-syntax-highlight/testing-syntax-highlight.html">Testing code syntax highlight</a></td>
+		</tr>
+		<tr id="entry" onclick="window.location='/blog/nerdearla-2022/nerdearla-2022.html';">
+			<td id="date"><a href="/blog/nerdearla-2022/nerdearla-2022.html">23-Sep-2022</a></td>
+			<td id="title"><a href="/blog/nerdearla-2022/nerdearla-2022.html">I'm going to Nerdearla 2022</a></td>
+		</tr>
+		<tr id="entry" onclick="window.location='/blog/sav/sav.html';">
+			<td id="date"><a href="/blog/sav/sav.html">18-Sep-2022</a></td>
+			<td id="title"><a href="/blog/sav/sav.html">Sorting Algorithms Visualized</a></td>
+		</tr>
+		<tr id="entry" onclick="window.location='/blog/dwm-config/dwm-config.html';">
+			<td id="date"><a href="/blog/dwm-config/dwm-config.html">23-Oct-2021</a></td>
+			<td id="title"><a href="/blog/dwm-config/dwm-config.html">dwm: The dynamic window manager</a></td>
+		</tr>
+		<tr id="entry" onclick="window.location='/blog/vim-config/vim-config.html';">
+			<td id="date"><a href="/blog/vim-config/vim-config.html">04-Mar-2021</a></td>
+			<td id="title"><a href="/blog/vim-config/vim-config.html">vim: The keyboard driven text editor</a></td>
+		</tr>
+	</tbody>
+</table>

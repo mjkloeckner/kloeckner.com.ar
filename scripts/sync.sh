@@ -8,33 +8,53 @@ latest_uploads_file="common/latest_uploads.shtml"
 rss_feed_file=$root_folder/"rss.xml"   # RSS feed file
 blog_folders=$("$root_folder"/scripts/sort_blog_index.py "$blog_folder")
 index_latest_uploads_count=6
+blog_index_need_regen=false
 
-generate_blog_index() {
-	update=false
+check_if_blog_index_needs_regen() {
 	for i in $(ls $root_folder/$blog_folder); do
-		# if exists and it's a directory
 		if [ -d $root_folder/$blog_folder/$i ]; then
-			last_modified=$(stat $root_folder/$blog_folder/$i/$i.md --format "%Y")
-			blog_index_file_date=$(stat $blog_index_file --format "%Y")
+			last_modified=$(stat "$root_folder/$blog_folder/$i/$i.md" --format "%Y")
+			blog_index_file_date=$(stat "$blog_index_file" --format "%Y")
 
-			if [ $last_modified -gt $blog_index_file_date ]
+			if [ "$last_modified" -gt "$blog_index_file_date" ]
 			then
 				echo "     └─ $i.html is newer than $blog_index_file"
-				echo "+ Regenerating blog index file"
-				update=true
+				echo "+ Blog index file needs to be regenerated"
+				blog_index_need_regen=true
 				break
 			fi
 		fi
 	done
+}
 
-	[ ! -z "$1" ] && update=true;
-	[ "$update" = "false" ] && echo \"     └─ Blog index file up to date\" && return 1
+# $destination_file, $entries_count=all (optional)
+generate_blog_index() {
+	[ "$blog_index_need_regen" = "false" ] && \
+		echo \"     └─ Blog index file up to date\" && return 1
+
 	echo "     └─ Updating blog index"
+	generate_blog_index_table
+}
 
-	rm -rf $root_folder/$blog_index_file ||:
-	touch $root_folder/$blog_index_file
+# $destination_file, $entries_count=all (optional)
+generate_blog_index_table() {
+	[ ! -z "$1" ] && destination_file="$1" || destination_file="$root_folder/$blog_index_file"
+	[ ! -z "$2" ] && count="$2" || count=
 
+	rm -rfv "$destination_file" ||:
+	touch "$destination_file"
+
+	cat << EOF > "$destination_file"
+	<table id="blog-index-table">
+		<thead id="blog-index-thead">
+		</thead>
+		<tbody id="blog-index-tbody">
+EOF
+
+	curr_count=1
 	for i in ${blog_folders[@]}; do
+		[ ! -z "$count" ] && [ "$curr_count" -gt "$count" ] && break
+
 		# deprecated format
 		# article_date=$(cat $i | grep -oP '(?<=% date: \")(.*?)(?=\")')
 		# article_title=$(cat $i | grep -oP '(?<=% title: \")(.*?)(?=\")')
@@ -44,16 +64,40 @@ generate_blog_index() {
 
 		file_name=$(echo "$i" | grep -oE '[^/]*$' | cut -d '.' -f 1)
 
-		printf "<li><b-time>%s</b-time> <a href=\"/$blog_folder/$file_name/$file_name.html\">%s</a></li>\n" \
-			"${article_date}" "${article_title}" >> $root_folder/$blog_index_file
+		# printf "<li><b-time>%s</b-time> <a href=\"/$blog_folder/$file_name/$file_name.html\">%s</a></li>\n" \
+		# 	"${article_date}" "${article_title}" >> $root_folder/$blog_index_file
+
+		# printf "<li><b-time>%s</b-time> <a href=\"/$blog_folder/$file_name/$file_name.html\">%s</a></li>\n" \
+		# 	"${article_date}" "${article_title}" >> $root_folder/$blog_index_file
+
+		cat << EOF >> "$destination_file"
+		<tr id="entry" onclick="window.location='/$blog_folder/$file_name/$file_name.html';">
+			<td id="date"><a href="/$blog_folder/$file_name/$file_name.html">$article_date</a></td>
+			<td id="title"><a href="/$blog_folder/$file_name/$file_name.html">$article_title</a></td>
+		</tr>
+EOF
+
+		curr_count=$((curr_count + 1))
 	done
+
+	cat << EOF >> "$destination_file"
+	</tbody>
+</table>
+EOF
 }
 
 generate_latest_uploads() {
-	rm -rf $root_folder/$latest_uploads_file ||:
+	[ "$blog_index_need_regen" = "false" ] && \
+		echo \"     └─ Latest uploads up to date\" && return 1
 
-	head -n $index_latest_uploads_count $root_folder/$blog_index_file > $root_folder/$latest_uploads_file
+	echo "     └─ Updating latest uploads file"
+
+	rm -rf "$root_folder/$latest_uploads_file" ||:
+
+	# head -n "$index_latest_uploads_count" "$root_folder/$blog_index_file" > "$root_folder/$latest_uploads_file"
+	generate_blog_index_table "$root_folder/$latest_uploads_file" "$index_latest_uploads_count"
 }
+
 
 generate_rss_feed() {
 	rm $rss_feed_file &> /dev/null
@@ -128,20 +172,29 @@ echo "* blog_folder: $blog_folder"
 echo "* blog_index_file: $blog_index_file"
 echo "* latest_uploads_file: $latest_uploads_file"
 echo "* rss_feed_file: $rss_feed_file"
+
+check_if_blog_index_needs_regen
+case "$1" in
+	--force-update) 
+		echo "+ [FORCED] generate_rss_feed"; generate_rss_feed;
+		echo "+ [FORCED] blog_index_need_regen=true"; blog_index_need_regen=true;
+		break;;
+	*) echo "+ check_rss_feed_last_build"; check_rss_feed_last_build;;
+esac
+
 echo "+ generate_blog_index"
 generate_blog_index
 
-if [ $? -eq 1 ]; then
-	echo "+ generate_latest_uploads"
-	generate_latest_uploads
-else
-	echo "+ generate_latest_uploads"
-	echo "     └─ Index file up to date"
-fi
+echo "+ generate_latest_uploads"
+generate_latest_uploads
 
-case "$1" in
-	--force-update) 
-		echo "+ generate_rss_feed"; generate_rss_feed;
-		echo "+ generate_blog_index"; generate_blog_index "force-update";;
-	*) echo "+ check_rss_feed_last_build"; check_rss_feed_last_build;;
-esac
+# <table>
+# 	<thead id="blog-index-thead">
+# 	</thead>
+# 	<tbody id="blog-index-tbody">
+# 		<tr id="entry">
+# 			<td id="date"></td>
+# 			<td id="title"></td>
+# 		</tr>
+# 	</tbody>
+# </table>

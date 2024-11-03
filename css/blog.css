@@ -1,0 +1,10 @@
+#blog-index-tbody #date a {
+	color: antiquewhite;
+	text-decoration: none;
+	padding-right: 5px;
+}
+
+#blog-index-tbody #date {
+	text-wrap: nowrap;
+	vertical-align: top;
+}
