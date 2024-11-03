@@ -22,7 +22,7 @@ to the kernel file (for example `/boot/vmlinuz-linux`).
 The solution is to to modify the file `/etc/grub.d/10_linux` and make the
 following changes (also as a [diff file](https://gist.githubusercontent.com/mjkloeckner/214a0ee42c920affe572e12e933a1bb0/raw/24bda0dfa02c7baba3b983fb71662c1904645fa8/fix-grub-linux-display-version.diff)):
 
-```patch
+```diff
 --- /etc/grub.d/10_linux
 +++ /etc/grub.d/10_linux
 @@ -144,7 +144,7 @@
@@ -45,7 +45,8 @@ following changes (also as a [diff file](https://gist.githubusercontent.com/mjkl
 @@ -290,7 +291,7 @@
    fi
  
-   if [ "x$is_top_level" = xtrue ] && [ "x${GRUB_DISABLE_SUBMENU}" != xtrue ]; then -    linux_entry "${OS}" "${version}" simple \
+   if [ "x$is_top_level" = xtrue ] && [ "x${GRUB_DISABLE_SUBMENU}" != xtrue ]; then
+-    linux_entry "${OS}" "${version}" simple \
 +    linux_entry "${OS}" "${display_version}" simple \
      "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
  
