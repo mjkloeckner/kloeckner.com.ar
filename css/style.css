@@ -93,7 +93,11 @@ article {
 	margin-right: auto;
 	margin-bottom: .9em;
 
-	text-align: left;
+	/* text-align: left; */
+	text-align: justify;
+	/* text-justify: distribute; */
+	word-spacing: -2px;
+	hyphens: auto;
 
 	padding-left: 0.5em;
 	padding-right: 0.5em;
@@ -238,10 +242,11 @@ code {
 	font-size: 85%;
 	font-family: "Ubuntu Mono", monospace;
 	background-color: rgba(110,118,129,0.4);
-	padding: .1em .4em;
+	padding: 0 .1em;
 	margin: 0;
 	border-radius: 6px;
-	white-space: nowrap;
+	white-space: wrap;
+	word-break: break-all;
 }
 
 pre {
@@ -416,9 +421,6 @@ b-time {
 }
 
 @media (max-width: 400px) {
-	body {
-		font-size: 14px;
-	}
 	header {
 		padding-top: 0em;
 		padding-bottom: 0;
@@ -507,6 +509,10 @@ b-time {
 	}
 	#urgent-announcement {
 		color: #090909;
+	}
+
+	code {
+		background-color: rgba(190,198,219,0.2);
 	}
 }
 

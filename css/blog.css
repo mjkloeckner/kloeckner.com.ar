@@ -8,3 +8,10 @@
 	text-wrap: nowrap;
 	vertical-align: top;
 }
+
+
+@media (prefers-color-scheme: light) {
+	#blog-index-tbody #date a {
+		color: #000000;
+	}
+}
