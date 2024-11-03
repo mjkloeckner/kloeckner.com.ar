@@ -120,6 +120,7 @@ rm body.html &> /dev/null
 ./scripts/syntax-highlight "$dest_dir"/"$filename".html > tmp.html
 
 mv tmp.html "$dest_dir"/"$filename".html
+cp -v ./favicon.webp "$dest_dir"/
 
 echo "==> "$filename".html generated succesfully"
 echo ""
