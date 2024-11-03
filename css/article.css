@@ -159,6 +159,7 @@ ul {
 /* GenericEmph */ .chroma .ge { font-style: italic }
 /* GenericHeading */ .chroma .gh { color: #a2cbff; font-weight: bold }
 /* GenericInserted */ .chroma .gi { color: #a6e22e }
+/* Generic X (used for diff file remove line) */ .chroma .gd { color: red }
 /* GenericOutput */ .chroma .go { color: #a6e22e }
 /* GenericPrompt */ .chroma .gp { color: #a6e22e }
 /* GenericStrong */ .chroma .gs { font-weight: bold }
