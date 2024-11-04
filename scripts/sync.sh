@@ -30,7 +30,7 @@ check_if_blog_index_needs_regen() {
 # $destination_file, $entries_count=all (optional)
 generate_blog_index() {
 	[ "$blog_index_need_regen" = "false" ] && \
-		echo \"     └─ Blog index file up to date\" && return 1
+		echo "     └─ Blog index file up to date" && return
 
 	echo "     └─ Updating blog index"
 	generate_blog_index_table
@@ -88,7 +88,7 @@ EOF
 
 generate_latest_uploads() {
 	[ "$blog_index_need_regen" = "false" ] && \
-		echo \"     └─ Latest uploads up to date\" && return 1
+		echo "     └─ Latest uploads up to date" && return
 
 	echo "     └─ Updating latest uploads file"
 

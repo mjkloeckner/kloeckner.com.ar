@@ -19,9 +19,10 @@ force-sync:
 deploy:
 	rsync -e "ssh -i $(KEY)" -rahvPt --delete --delete-excluded \
 		--exclude=.git \
-		--exclude=./scripts \
+		--exclude=./scripts/^js \
 		--exclude=./style/git.css \
 		--exclude=./common/logo.webp \
+		--exclude=Makefile \
 		./ root@$(DOMAIN):/var/www/html/
 	rsync -e "ssh -i $(KEY)" -rahvPt --delete --delete-excluded \
 		--exclude=.git \
