@@ -10,16 +10,15 @@ displays it wrong in the prompt menu at boot, like in my case in which appeared
 as `Arch Linux with Linux version linux`, you can solve it by modifying the
 helper scripts which grub uses to build the configuration file.
 
-The problem is cause by the script `grub-mkconfig` which is used to build the
-grub configuration file `grub.cfg` (generally located on `/boot/grub/grub.cfg`).
+The problem is caused by the script `grub-mkconfig` which is used to build the
+grub configuration file `grub.cfg` (generally located on `/boot/grub/`).
 
 The script `grub-mkconfig` uses other helper scripts located on `/etc/grub.d/`,
 and in particular the file used to detect the Linux version is
-`/etc/grub.d/10_linux`. The script `10_linux` uses the file name of the kernel
-for which the menu entry is being built (for example
-`/boot/vmlinuz-6.1.0-25-amd64`) to get the Linux version, but there are
-distributions like Arch Linux that doesn't add the suffix of version to the
-kernel file (for example `/boot/vmlinuz-linux`).
+`/etc/grub.d/10_linux`, which uses the file name of the kernel file
+to detect the version (for example `/boot/vmlinuz-6.1.0-25-amd64`). The issue is
+caused on distributions like Arch Linux that doesn't add the suffix of version
+to the main kernel file (for example `/boot/vmlinuz-linux`).
 
 The solution is to to modify the file `/etc/grub.d/10_linux` and make the
 following changes (also as a [diff file](https://gist.githubusercontent.com/mjkloeckner/214a0ee42c920affe572e12e933a1bb0/raw/24bda0dfa02c7baba3b983fb71662c1904645fa8/fix-grub-linux-display-version.diff)):
@@ -55,11 +54,10 @@ following changes (also as a [diff file](https://gist.githubusercontent.com/mjkl
      submenu_indentation="$grub_tab"
 ```
 
-This modification makes the script `10_linux` get the Linux version of the
-kernel file, from the output of the `file` command executed on that kernel
-file (for example `$ file /boot/vmlinuz-linux`). *Note* that the output of the
-command gets parsed with GNU grep, which has the option of enabling Perl
-regular expressions (`-P` option) this allows the use of positive look-behind
-(`(?<=version)`).
+This modification makes the script `10_linux` get the Linux version, from the
+output of the `file` command executed on the kernel file (for example `$ file
+/boot/vmlinuz-linux`). *Note* that the output of the command is filtered using
+GNU grep with Perl syntax (`-P` option) this allows the use of positive
+look-behind regex `(?<=version)`.
 
 * [Previous diff file as GitHub gist](https://gist.github.com/mjkloeckner/214a0ee42c920affe572e12e933a1bb0)
