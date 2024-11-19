@@ -6,11 +6,12 @@
 }
 
 .article-date {
-	font-size: .9em;
+	font-size: 1em;
 	padding-bottom: 2.75em;
 	/* color: #588B8B; */
 	color: #9D96B8;
 	font-style: italic;
+	font-family: "inconsolata", monospace;
 }
 
 img {
