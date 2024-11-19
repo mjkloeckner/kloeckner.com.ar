@@ -20,7 +20,7 @@ body {
 	margin-left: .5em;
 	margin-right: .5em;
 	font-size: 16px;
-	font-family: "inconsolata", monospace, "DejaVu Sans", sans, "Verdana", sans-serif, "Georgia", serif;
+	font-family: "Nimbus Sans", "Nimbus Sans L", "Inter", "Helvetica", "inconsolata", monospace, "DejaVu Sans", sans, "Verdana", sans-serif, "Georgia", serif;
 }
 
 header {
@@ -71,7 +71,8 @@ header {
 	color: inherit;
 	transition: .75;
 
-	font-family: "inconsolata", monospace, "DejaVu Sans", sans, sans-serif;
+	/* font-family: "inconsolata", monospace, "DejaVu Sans", sans, sans-serif; */
+	font-family: "Nimbus Sans", "Nimbus Sans L", "Inter", "Helvetica", "inconsolata", monospace, "DejaVu Sans", sans, "Verdana", sans-serif, "Georgia", serif;
 }
 
 #header_link:hover {
@@ -326,11 +327,13 @@ hr {
 	color: antiquewhite;
 	text-decoration: none;
 	padding-right: 5px;
+	font-family: "inconsolata", monospace;
 }
 
 #blog_entries #date {
 	text-wrap: nowrap;
 	vertical-align: top;
+	font-family: "inconsolata", monospace;
 }
 
 #blog_entries {
