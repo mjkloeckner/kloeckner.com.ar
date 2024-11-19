@@ -2,6 +2,10 @@
 		<thead id="blog-index-thead">
 		</thead>
 		<tbody id="blog-index-tbody">
+		<tr id="entry" onclick="window.location='/blog/imagemagick-use-case-export-and-process-ltspice-schematics/imagemagick-use-case-export-and-process-ltspice-schematics.html';">
+			<td id="date"><a href="/blog/imagemagick-use-case-export-and-process-ltspice-schematics/imagemagick-use-case-export-and-process-ltspice-schematics.html">19-Nov-2024</a></td>
+			<td id="title"><a href="/blog/imagemagick-use-case-export-and-process-ltspice-schematics/imagemagick-use-case-export-and-process-ltspice-schematics.html">ImageMagick use case: export and process LTSpice schematic images</a></td>
+		</tr>
 		<tr id="entry" onclick="window.location='/blog/grub-linux-version-fix/grub-linux-version-fix.html';">
 			<td id="date"><a href="/blog/grub-linux-version-fix/grub-linux-version-fix.html">02-Nov-2024</a></td>
 			<td id="title"><a href="/blog/grub-linux-version-fix/grub-linux-version-fix.html">GRUB menu: Linux version not detected</a></td>
