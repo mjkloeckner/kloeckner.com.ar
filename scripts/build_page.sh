@@ -64,7 +64,7 @@ generator="Shell script"
 template="$templ"
 filename="$(basename $input | sed 's/\.[^.]*$//')"
 # last_update="$(date -r $input '+%d-%b-%Y')"
-last_update="$( git --no-pager log -n 1 --pretty=format:%cd $input)"
+last_update="$(git --no-pager log -n 1 --date=format:'%d-%b-%Y' --pretty=format:%cd $input)"
 
 mkdir -p $dest_dir &> /dev/null
 
