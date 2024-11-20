@@ -25,11 +25,11 @@ h4 {
 	/* border-width: 1.75px; */
 	border-radius: 0em;
 
-	box-shadow: 1px 1px 5px black;
+	/* box-shadow: 1px 1px 5px black; */
 }
 
 .contact_me {
-	animation: blinker 1s linear infinite;
+	/* animation: blinker 1s linear infinite; */
 }
 
 @media (max-width: 800px) {
