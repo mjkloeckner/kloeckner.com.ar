@@ -17,7 +17,7 @@ further use in a report paper or any similar document.
 > white (`-colorspace grey`) and cropped to the contents of the image (`-trim`)
 > 
 > ```console
-> xclip -selection clipboard -t image/bmp -o | magick - -colorspace grey -trim schematic.png
+> $ xclip -selection clipboard -t image/bmp -o | magick - -colorspace grey -trim schematic.png
 > ```
 > <!--`-->
 
