@@ -7,7 +7,7 @@ fetch('/common/blog_index.shtml')
 
 		// var match = data.match(/\r?\n/g);
 		// alert(match.length);
-		var content = document.getElementById('blog-entries');
+		var content = document.getElementById('see-all-blog-entries');
 		var count = doc.getElementById("blog-index-table").rows.length;
 		content.innerHTML += " (" + count + ")";
 	})

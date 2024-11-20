@@ -13,7 +13,6 @@
 		<title>Martin Klöckner's Webpage</title>
 
 		<!--#include virtual="/common/head.shtml" -->
-		<link rel='stylesheet' type='text/css' href="/css/blog.css">
 	</head>
 
 	<body>
@@ -27,17 +26,19 @@
 			<p>Make sure to subscribe to my <a href=/rss.xml>RSS feed</a> to get updates on my blog. Of course if you have any questions or comments, <a href="mailto:mjkloeckner@gmail.com">send me an email</a>, I will respond kindly!</p>
 
 			<div id=latest-uploads >
-				<h2 style="text-align: left; padding: 0;"><u>Latest blog uploads</u></h2>
-				<div style="margin-top: 5px; margin-left: .5em">
-					<a href="/rss.xml" id="rss"><img style="width: 1.5em;" src="/common/rss_logo.png" alt="rss logo"></a>
+				<div id=latest-uploads-title >
+					<h2>Latest blog uploads</h2>
+					<div style="margin-top: 2px; margin-left: .5em">
+						<a href="/rss.xml" id="rss"><img style="width: 1.25em;" src="/common/rss_logo.png" alt="rss logo"></a>
+					</div>
 				</div>
-			</div>
 
-			<div id=blog_entries>
-				<!--#include virtual="/common/latest_uploads.shtml" -->
-			</div>
+				<div id=latest-uploads-blog-entries>
+					<!--#include virtual="/common/latest_uploads.shtml" -->
+				</div>
 
-			<p id=blog-entries>See all <a href="/blog">blog entries</a></p>
+				<p id=see-all-blog-entries>See all <a href="/blog">blog entries</a></p>
+			</div>
 
 			<script src="/scripts/js/count-blog-posts.js" defer> </script>
 			<hr class="article_bottom_bar">

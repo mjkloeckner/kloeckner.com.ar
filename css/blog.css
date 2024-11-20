@@ -11,4 +11,24 @@
 	}
 }
 
+@media (max-width: 800px) {
+	#blog-index-table {
+		/* border: 1px solid #505050; */
+		/* border-radius: .5em; */
+		/* padding: .5em; */
+		#entry {
+			display: flex;
+			flex-direction: column-reverse;
+		}
+		#date {
+			padding-bottom: 1em;
+		}
+		#title a {
+			/* color: var(--fg-color); */
+			font-size: 1.25em;
+		}
+		#date a {
+			/* color: var(--article-date); */
+		}
+	}
 }
