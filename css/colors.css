@@ -4,7 +4,7 @@
 	--accent-color: crimson;
 	--secondary-accent-color: peru;
 	--hover-color: peru;
-	--code-bg: #303030;
+	--code-bg: #262626;
 	--link-color: peru;
 	--link-hover-color: crimson;
 	--title-color: #DAA520;
@@ -31,8 +31,8 @@
 	--grey1: #D0D0D0;
 
 	/* Monokai light theme */
-	/* Background */ .bg { color: #272822; background-color: #fafafa; -moz-tab-size: 4; -o-tab-size: 4; tab-size: 4 }
-	/* PreWrapper */ .chroma { color: #272822; background-color: #fafafa; -moz-tab-size: 4; -o-tab-size: 4; tab-size: 4; }
+	/* Background */ .bg { color: #272822; background-color: var(--code-bg); -moz-tab-size: 4; -o-tab-size: 4; tab-size: 4 }
+	/* PreWrapper */ .chroma { color: #272822; background-color: var(--code-bg); -moz-tab-size: 4; -o-tab-size: 4; tab-size: 4; }
 	/* Error */ .chroma .err { color: #960050; background-color: #1e0010 }
 	/* LineTableTD */ .chroma .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; }
 	/* LineTable */ .chroma .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; }

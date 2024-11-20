@@ -276,14 +276,14 @@ pre {
 
     padding: .75em;
     border-radius: 0em;
-    background-color: var(--pre-bg-color);
+    background-color: var(--code-bg);
     width: auto;
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: .25em;
     margin-bottom: 1.00em;
-    border-width: 2px;
+    border-width: 0px;
     border-color: var(--pre-border-color);
     border-style: solid;
     /* box-shadow: 5px 5px 7px black; */

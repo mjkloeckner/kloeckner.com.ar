@@ -97,8 +97,8 @@ blockquote {
 }
 
 /* Monokai theme */
-/* Background */ .bg { color: antiquewhite; background-color: #111111; -moz-tab-size: 4; -o-tab-size: 4; tab-size: 4 }
-/* PreWrapper */ .chroma { color: antiquewhite; background-color: #111111; -moz-tab-size: 4; -o-tab-size: 4; tab-size: 4; }
+/* Background */ .bg { color: antiquewhite; background-color: var(--code-bg); -moz-tab-size: 4; -o-tab-size: 4; tab-size: 4 }
+/* PreWrapper */ .chroma { color: antiquewhite; background-color: var(--code-bg); -moz-tab-size: 4; -o-tab-size: 4; tab-size: 4; }
 /* Punctuation */ .chroma .p { color: antiquewhite; }
 /* LineTableTD */ .chroma .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; }
 /* LineTable */ .chroma .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; }
