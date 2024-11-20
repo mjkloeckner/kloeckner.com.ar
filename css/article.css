@@ -87,6 +87,15 @@ ul {
 	border-top: 1px dashed peru;
 }
 
+blockquote {
+	border-left: 4px solid var(--grey1);
+	padding-left: 1em;
+	font-style: italic;
+	pre {
+		font-style: normal;
+	}
+}
+
 /* Monokai theme */
 /* Background */ .bg { color: antiquewhite; background-color: #111111; -moz-tab-size: 4; -o-tab-size: 4; tab-size: 4 }
 /* PreWrapper */ .chroma { color: antiquewhite; background-color: #111111; -moz-tab-size: 4; -o-tab-size: 4; tab-size: 4; }
