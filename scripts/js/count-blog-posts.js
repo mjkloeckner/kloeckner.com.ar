@@ -11,4 +11,3 @@ fetch('/common/blog_index.shtml')
 		var count = doc.getElementById("blog-index-table").rows.length;
 		content.innerHTML += " (" + count + ")";
 	})
-
