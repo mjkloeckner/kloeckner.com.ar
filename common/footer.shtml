@@ -5,6 +5,7 @@
 	<a href="http://creativecommons.org/licenses/by/4.0/">
 		<img id="footer-buttons" alt="CC License" src="/common/by.png"/>
 	</a>
+	<!--
 	<a href="https://www.debian.org/">
 		<img id="footer-buttons" alt="Debian Logo" src="/common/debian.gif"/>
 	</a>
@@ -24,4 +25,5 @@
 	<a href="https://pagespeed.web.dev/analysis/https-kloeckner-com-ar/nn0gdw6h2u?form_factor=desktop">
 		<img id="footer-buttons" alt="Google Page Speed Insights" src="/common/fast.gif"/>
 	</a>
+	-->
 </footer>
