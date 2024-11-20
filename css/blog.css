@@ -1,17 +1,14 @@
-#blog-index-tbody #date a {
-	color: antiquewhite;
-	text-decoration: none;
-	padding-right: 5px;
-}
+@import "/css/colors.css";
 
-#blog-index-tbody #date {
+#blog-index-table #date {
 	text-wrap: nowrap;
 	vertical-align: top;
+	a {
+		color: var(--fg-color);
+		text-decoration: none;
+		padding-right: 5px;
+		font-family: "inconsolata", monospace;
+	}
 }
 
-
-@media (prefers-color-scheme: light) {
-	#blog-index-tbody #date a {
-		color: #000000;
-	}
 }
