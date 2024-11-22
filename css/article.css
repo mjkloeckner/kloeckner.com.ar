@@ -64,29 +64,6 @@ ul {
 	list-style-position: inside;
 }
 
-.article_bottom_bar {
-	border: 0;
-	clear:both;
-
-	display:block;
-
-	background-color: #191919;
-
-	width: 60%;
-	max-width: 20em;
-	height: 0px;
-
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 2em;
-	margin-bottom: 0;
-
-	padding-top: 0;
-	padding-bottom: 0;
-	/*! border-bottom: dashed; */
-	border-top: 1px dashed peru;
-}
-
 blockquote {
 	border-left: 4px solid var(--grey1);
 	padding-left: 1em;
