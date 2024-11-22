@@ -291,16 +291,18 @@ pre {
     font-size: 90%;
     scrollbar-color: var(--pre-border-color);
     scrollbar-width: thin;
+    text-wrap: wrap;
 }
 
 pre code {
 	font-size: 1em;
 	background-color: inherit;
-	/* background: rgba(0,0,0,0.5); */
 	padding: 0;
 	margin: 0;
 	border-radius: 0;
-	white-space: inherit;
+	word-break: normal;
+	overflow-wrap: normal;
+	white-space: normal;
 }
 
 /* #command { color: #33ff11; } */

@@ -115,8 +115,7 @@ effectively it is a bitmap file.
 
 ```console
 $ file schematic_raw
-schematic_raw: PC bitmap, Windows 3.x format, 1916 x 966 x 32, 3 compression,
-image size 7403424, cbSize 7403490, bits offset 66
+schematic_raw: PC bitmap, Windows 3.x format, 1916 x 966 x 32, 3 compression, image size 7403424, cbSize 7403490, bits offset 66
 ```
 
 The raw schematic image, in bitmap format, looks exactly as shown in the LTSpice
@@ -146,8 +145,8 @@ The final image results as follows
 ![Resulting Image](schematic.png)
 
 ImageMagick can also read from a file, for example if you took a screenshot of
-the schematic, you can process it by specifying the input file name, instead of
-reading from standard input.
+the schematic, you can process it by specifying the file name as input, instead
+of reading from standard input.
 
 ```console
 $ magick schematic_screenshot.png -colorspace grey -trim schematic.png
