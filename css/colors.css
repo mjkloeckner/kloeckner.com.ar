@@ -103,5 +103,6 @@
 	/* CommentPreprocFile */ .chroma .cpf { color: #75715e }
 	/* GenericEmph */ .chroma .ge { font-style: italic }
 	/* GenericStrong */ .chroma .gs { font-weight: bold }
+	/* GenericInserted */ .chroma .gi { color: #34d058 }
 }
 
