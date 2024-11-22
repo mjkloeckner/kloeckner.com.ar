@@ -16,8 +16,7 @@ picky, I was looking for a cheap old ThinkPad like this for a while and this was
 the perfect opportunity.
 
 So I contacted the owner, and we agree to meet the next day so I could pick it
-up. Fortunately the owner was about 30 minutes in public transport from my place
-so this was also a plus point for the publication.
+up. Fortunately the owner was about 30 minutes in public transport from my place.
 
 When the owner give it to me obviously it was very dirty but also I felt like
 something inside was a little bit loose; the transaction was very quick, in a
@@ -43,8 +42,8 @@ I started to look carefully at the machine again, and noticed that there was a
 "Lenovo enhanced experience" sticker on the bottom, so it couldn't be a copy,
 after searching for Intel Centrino on internet I found that it wasn't a
 processor but a network card, which the genuine x200 came with, so it actually
-was a *genuine ThinkPad*, in fact the cheap clones where more rare than the
-x200 itself.
+was a *genuine ThinkPad*, and in fact the cheap clones where rarer than the
+genuine x200 itself.
 
 Since I hadn't the charger, I couldn't test if it worked, so I started to deep
 clean it, at least all the exterior dirt, and the keyboard, which was
