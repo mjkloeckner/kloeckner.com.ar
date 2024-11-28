@@ -71,9 +71,9 @@ EOF
 		# 	"${article_date}" "${article_title}" >> $root_folder/$blog_index_file
 
 		cat << EOF >> "$destination_file"
-		<tr id="entry" onclick="window.location='/$blog_folder/$file_name/$file_name.html';">
-			<td id="date"><a href="/$blog_folder/$file_name/$file_name.html">$article_date</a></td>
-			<td id="title"><a href="/$blog_folder/$file_name/$file_name.html">$article_title</a></td>
+		<tr id="entry" onclick="window.location='/$blog_folder/$file_name/';">
+			<td id="date"><a href="/$blog_folder/$file_name/">$article_date</a></td>
+			<td id="title"><a href="/$blog_folder/$file_name/">$article_title</a></td>
 		</tr>
 EOF
 
@@ -97,7 +97,6 @@ generate_latest_uploads() {
 	# head -n "$index_latest_uploads_count" "$root_folder/$blog_index_file" > "$root_folder/$latest_uploads_file"
 	generate_blog_index_table "$root_folder/$latest_uploads_file" "$index_latest_uploads_count"
 }
-
 
 generate_rss_feed() {
 	rm $rss_feed_file &> /dev/null

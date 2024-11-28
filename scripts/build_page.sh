@@ -122,7 +122,7 @@ rm -v body.html &> /dev/null
 
 cp -v ./favicon.webp "$dest_dir"/
 
-mv -v tmp.html "$dest_dir"/"$filename".html
+mv -v tmp.html "$dest_dir"/index.html
 
 echo "==> "$filename".html generated succesfully"
 echo ""
