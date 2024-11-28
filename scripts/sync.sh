@@ -176,8 +176,7 @@ check_if_blog_index_needs_regen
 case "$1" in
 	--force-update) 
 		echo "+ [FORCED] generate_rss_feed"; generate_rss_feed;
-		echo "+ [FORCED] blog_index_need_regen=true"; blog_index_need_regen=true;
-		break;;
+		echo "+ [FORCED] blog_index_need_regen=true"; blog_index_need_regen=true;;
 	*) echo "+ check_rss_feed_last_build"; check_rss_feed_last_build;;
 esac
 
