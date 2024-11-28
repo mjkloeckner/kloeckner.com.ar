@@ -15,3 +15,4 @@
 
 <link rel='stylesheet' type='text/css' href="/css/style.css?ver=0.5.1">
 <link rel="icon" type="image/x-icon" href="favicon.webp">
+<script type="text/javascript" src="/scripts/js/color-scheme-toggle.js"></script>

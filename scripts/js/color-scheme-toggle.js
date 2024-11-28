@@ -1,4 +1,3 @@
-
 function toggleColorScheme() {
 	const dataTheme = document.documentElement.getAttribute("data-theme");
 	const systemDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -60,4 +59,3 @@ function removeLocalStorage() {
 
 window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", removeLocalStorage);
 window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", removeLocalStorage);
-updateColorSchemeButton()
