@@ -79,7 +79,9 @@ echo "date: $date"
 # lowdown --html-no-head-ids --html-no-escapehtml --html-no-owasp > body.html
 # sed '/^%%/,/^%%/'
 sed '/^%%/,/^%%/d' $input |\
-	lowdown --html-no-head-ids --html-no-escapehtml --html-no-owasp > body.html
+	lowdown --html-no-head-ids \
+        --html-no-skiphtml --html-no-escapehtml \
+        --html-no-owasp > body.html
 
 # puts id to <h1> tag and adds paragraph next to it with the article-date
 sed -i -e 's/<h1>/<h1 id=article-title>/g' \
