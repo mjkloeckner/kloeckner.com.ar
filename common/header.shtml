@@ -10,7 +10,7 @@
 			 <li class="header_button" style="padding-right: 14px"><a href="/files" style="text-decoration: none;">files</a></li>
 			 <li class="header_button" style="padding-right: 14px"><a href="https://git.kloeckner.com.ar/" style="text-decoration: none;">git</a></li>
              <li class="header_button" style="padding-right: 0px"><a
-                     href="mailto:mjkloeckner@gmail.com">mail</a></li>
+                     href="mailto:mjkloeckner@gmail.com" style="text-decoration: none;">mail</a></li>
 
 		</ul>
 		<a title="Toggle color scheme" id="color-scheme-button" onClick="toggleColorScheme()">
