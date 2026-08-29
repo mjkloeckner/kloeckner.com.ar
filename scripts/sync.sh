@@ -7,16 +7,16 @@ blog_index_file="common/blog_index.shtml"
 latest_uploads_file="common/latest_uploads.shtml"
 rss_feed_file=$root_folder/"rss.xml"   # RSS feed file
 blog_folders=$("$root_folder"/scripts/sort_blog_index.py "$blog_folder")
-index_latest_uploads_count=6
+index_latest_uploads_count=8
 blog_index_need_regen=false
 
 check_if_blog_index_needs_regen() {
 	for i in $(ls $root_folder/$blog_folder); do
 		if [ -d $root_folder/$blog_folder/$i ]; then
-			last_modified=$(stat "$root_folder/$blog_folder/$i/$i.md" --format "%Y")
-			blog_index_file_date=$(stat "$blog_index_file" --format "%Y")
+			last_modified=$(stat "$root_folder/$blog_folder/$i/$i.md" --format "%Y" 2>/dev/null)
+			blog_index_file_date=$(stat "$blog_index_file" --format "%Y" 2>/dev/null)
 
-			if [ "$last_modified" -gt "$blog_index_file_date" ]
+			if [ -z $last_modified ] || [ -z $blog_index_file_date ] || [ "$last_modified" -gt "$blog_index_file_date" ]
 			then
 				echo "     └─ $i.html is newer than $blog_index_file"
 				echo "+ Blog index file needs to be regenerated"
