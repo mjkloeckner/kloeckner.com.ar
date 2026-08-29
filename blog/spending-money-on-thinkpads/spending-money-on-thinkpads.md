@@ -1,5 +1,5 @@
 %%
-title: "Spending money on thinkpads"
+title: "Spending Money On Thinkpads"
 date: "14-Oct-2023"
 %%
 

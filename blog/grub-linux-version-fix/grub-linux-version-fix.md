@@ -1,9 +1,9 @@
 %%
-title: "GRUB menu: Linux version not detected"
+title: "GRUB Menu: Linux Version Not Detected"
 date: "02-Nov-2024"
 %%
 
-# GRUB menu: Linux version not detected
+# GRUB Menu: Linux Version Not Detected
 
 If your grub installation doesn't detect the Linux versions properly, and
 displays it wrong in the prompt menu at boot, like in my case in which appeared

@@ -1,9 +1,9 @@
 %%
-title: "ImageMagick use case: export and process LTSpice schematic images"
+title: "ImageMagick Use Case: Process LTspice Schematic Images"
 date: "19-Nov-2024"
 %%
 
-# ImageMagick use case: export and process LTSpice schematic images
+# ImageMagick Use Case: Process LTspice Schematic Images
 
 In this post I explain how I managed to simplify to a 'one-liner' the series of
 steps involved in exporting and processing the image of an LTSpice schematic for

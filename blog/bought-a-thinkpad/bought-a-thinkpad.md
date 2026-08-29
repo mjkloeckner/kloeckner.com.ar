@@ -1,9 +1,9 @@
 %%
-title: "I bought a ThinkPad x200 for $27"
+title: "I Bought a ThinkPad X200 for $27"
 date: "26-Oct-2022"
 %%
 
-# I bought a ThinkPad x200 for $27
+# I Bought a ThinkPad X200 for $27
 
 A few weeks ago I was scrolling through Facebook marketplace when I saw what It
 looked like a ThinkPad published for exactly ARS$ 8000 (around USD $27). When I

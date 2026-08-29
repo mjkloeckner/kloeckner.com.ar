@@ -1,9 +1,9 @@
 %%
-title: "Testing code syntax highlight"
+title: "Testing Code Syntax Highlight"
 date: "21-Oct-2022"
 %%
 
-# Testing code syntax highlight
+# Testing Code Syntax Highlight
 
 This is a testing page for a script that I'm using to highlight code blocks
 within an html file.
