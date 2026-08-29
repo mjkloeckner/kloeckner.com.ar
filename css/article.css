@@ -19,6 +19,25 @@ img {
 	padding-bottom: .75em;
 }
 
+.centered-img {
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center;     /* Vertical centering */
+    padding-bottom: .75em;
+}
+
+.side-by-side {
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center;     /* Vertical centering */
+    gap: 0.5em;
+    padding-bottom: .75em;
+}
+
+.side-by-side img {
+  width: 49.6%;
+}
+
 #article-screenshot {
 	text-align: center;
 }
@@ -172,9 +191,26 @@ blockquote {
 	#article-icon img {
 		max-width: 2.5em;
 	}
+
 	#article-icon {
 		padding-right: .5em
 	}
+
+    .side-by-side {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Horizontal centering */
+        align-items: center;     /* Vertical centering */
+    }
+
+    .side-by-side img {
+        width: 70%;
+    }
+
+    img {
+        width: 100%;
+    }
+
 }
 
 @media (max-width: 400px) {
@@ -190,9 +226,11 @@ blockquote {
 		padding-bottom: .5em;
 		padding-top: .5em;
 	}
+
 	#article-icon img {
 		max-width: 2em;
 	}
+
 	#article-icon {
 		padding-right: .25em
 	}

@@ -21,11 +21,10 @@
 			flex-direction: column-reverse;
 		}
 		#date {
-			padding-bottom: 1em;
 		}
 		#title a {
 			/* color: var(--fg-color); */
-			font-size: 1.25em;
+			font-size: 1.20em;
 		}
 		#date a {
 			/* color: var(--article-date); */
