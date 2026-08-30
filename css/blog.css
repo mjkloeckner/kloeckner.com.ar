@@ -20,14 +20,15 @@
 			display: flex;
 			flex-direction: column-reverse;
 		}
-		#date {
-		}
-		#title a {
+		/* #date { */
+			/* padding-bottom: 0.5em; */
+		/* } */
+		/* #title a { */
 			/* color: var(--fg-color); */
-			font-size: 1.20em;
-		}
-		#date a {
+			/* font-size: 1.20em; */
+		/* } */
+		/* #date a { */
 			/* color: var(--article-date); */
-		}
+		/* } */
 	}
 }

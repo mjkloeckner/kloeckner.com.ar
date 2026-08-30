@@ -15,6 +15,16 @@ html {
 	overflow-y: scroll;
 }
 
+::selection {
+    color: var(--selection-fg-color);
+    background: var(--selection-bg-color);
+}
+
+::-moz-selection {
+    color: var(--selection-fg-color);
+    background: var(--selection-bg-color);
+}
+
 body {
 	color: var(--fg-color);
 	background: var(--bg-color);
@@ -22,7 +32,7 @@ body {
 	margin-left: .5em;
 	margin-right: .5em;
 	font-size: 18px;
-	font-family: "Nimbus Sans", "Nimbus Sans L", "Inter", "Helvetica", "inconsolata", monospace, "DejaVu Sans", sans, "Verdana", sans-serif, "Georgia", serif;
+	font-family: "Nimbus Sans", "Nimbus Sans L", "Inter", "Helvetica", "inconsolata", "DejaVu Sans", sans, "Verdana", sans-serif, "Georgia", serif, monospace;
 }
 
 header {
@@ -38,10 +48,15 @@ header {
 	text-align: center;
 
 	padding-top: .75em;
+	/* padding-bottom: .25em; */
 	padding-left: 0.75em;
 	padding-right: 0.75em;
 
 	border-top: 1em;
+}
+
+table {
+    border-spacing: 0px;
 }
 
 #color-scheme-button-light {
@@ -96,7 +111,6 @@ header {
 	color: inherit;
 	transition: .75;
 
-	/* font-family: "inconsolata", monospace, "DejaVu Sans", sans, sans-serif; */
 	font-family: "Nimbus Sans", "Nimbus Sans L", "Inter", "Helvetica", "inconsolata", monospace, "DejaVu Sans", sans, "Verdana", sans-serif, "Georgia", serif;
 }
 
@@ -111,7 +125,7 @@ header {
 }
 
 #header_link:hover {
-	color: var(--hover-color);
+	color: var(--header-hover-fg-color);
 }
 
 #header_title {
@@ -130,7 +144,6 @@ article {
 	margin-bottom: .9em;
 
 	text-align: justify;
-	/* text-justify: distribute; */
 
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
@@ -154,6 +167,7 @@ a {
 
     word-break: auto-phrase;
 }
+
 
 .article_bottom_bar {
 	border: 0;
@@ -234,8 +248,10 @@ a:visited, a:active, a:link {
 }
 
 a:hover {
-	color: var(--link-hover-color);
+	/* color: var(--link-hover-color); */
 	text-decoration: underline;
+    text-decoration: none;
+    background: var(--hover-bg-color);
 }
 
 ol {
@@ -252,6 +268,7 @@ ul {
 }
 
 .header_buttons {
+	/* margin: 0 0 .100em 0; */
 	margin: 0;
 	padding-bottom: 0em;
 	font-size: 1.65em;
@@ -266,7 +283,7 @@ h1 { font-size: 1.75em; }
 h2 {
 	font-size: 1.25em;
 
-	padding-top: 1em;
+	padding-top: .5em;
 	padding-bottom: .5em;
 }
 
@@ -407,6 +424,22 @@ hr {
 	}
 }
 
+#latest-uploads-blog-entries, #blog_entries {
+    #title a:hover {
+        text-decoration: none;
+    }
+
+    tr:hover {
+        /* background: #000; */
+        background: var(--hover-bg-color);
+        cursor: pointer;
+    }
+
+    td a {
+        display: block;
+    }
+}
+
 #urgent-announcement {
 	color: var(--fg-color);
 	font-weight: bold;
@@ -419,6 +452,10 @@ hr {
 
 b-time {
 	font-family: "inconsolata", monospace;
+}
+
+#blog-index-table {
+    width: 100%;
 }
 
 @media (max-width: 800px) {
@@ -439,6 +476,10 @@ b-time {
 	footer {
 		padding-top: .5em;
 	}
+    a {
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+    }
 	.header_flex_div{
 		flex-direction: column;
 		align-items: center;
@@ -451,18 +492,22 @@ b-time {
 		padding-bottom: .25em;
 
 		a:hover {
-			color: peru;
+			color: var(--hover-fg-color);
 		}
 	}
 	.header_bottom_bar{
+		/* width: 55%; */
 	}
 	.article_bottom_bar {
+		/* width: 40%; */
 		padding-top: .5em;
 		margin-top: .5em;
+		margin-bottom: .75em;
 	}
 	#header_title {
 		font-size: 2.20em;
 		line-height: 1.10em;
+		/* padding-bottom: .10em; */
 	}
 	#index-title {
 		padding-top: 0;
@@ -479,10 +524,13 @@ b-time {
             color: var(--link-color);
             text-decoration: none;
         }
+        /* border: 1px solid #505050; */
+        /* border-radius: .5em; */
+        /* padding: .5em; */
         #entry {
             display: flex;
             flex-direction: column-reverse;
-            padding-bottom: 1em;
+            margin-bottom: .5em;
         }
         #date {
             /* padding-top: .10em; */
@@ -493,7 +541,7 @@ b-time {
         }
         #title a {
             /* color: var(--fg-color); */
-            font-size: 1.20em;
+            font-size: 1.00em;
             display: block;
         }
         #date a {
@@ -506,6 +554,15 @@ b-time {
         }
     }
 
+    /*
+    @media (hover: hover) and (pointer: fine) {
+        tr:hover {
+            cursor: pointer;
+            background-color: #000;
+        }
+    }
+    */
+
 	#latest-uploads {
         tr:nth-child(n + 6) {
             display: none !important;
@@ -513,10 +570,8 @@ b-time {
         tr:nth-child(6) #date {
             padding-bottom: 0;
         }
-        tr:hover {
-            cursor: pointer;
-        }
     }
+
     #latest-uploads-title {
         padding-bottom: .25em;
     }

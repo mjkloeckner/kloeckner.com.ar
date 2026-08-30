@@ -1,9 +1,12 @@
 :root, [data-theme="dark"] {
 	--bg-color: #191919;
 	--fg-color: antiquewhite;
+    --selection-fg-color: #ffffff;
+    --selection-bg-color: #564c44;
 	--accent-color: crimson;
 	--secondary-accent-color: peru;
-	--hover-color: peru;
+	--hover-fg-color: peru;
+	--hover-bg-color: #443A32;
 	--code-bg: #262626;
 	--link-color: peru;
 	--link-hover-color: crimson;
@@ -19,7 +22,8 @@
 	--bg-color: white;
 	--accent-color: #CC2936;
 	--secondary-accent-color: #141414;
-	--hover-color: #a04a00;
+	--hover-fg-color: #A04A00;
+	--hover-bg-color: #DADADA;
 	--link-hover-color: #CC2936;
 	--link-color: #A04A00;
 	--title-color: #000000;

@@ -99,14 +99,14 @@ image and saving it as `gray.png`. Then, for the main colors used by the
 interface: red, blue, green, orange, cyan and yellow, it creates a mask in which
 only that particular color appears, while the rest of the colors are made
 transparent. It then replaces that color with the desired new color. For
-example, for channel one's yellow (`#F8E400`), `yellow_mask.png` is created with
-the yellow color replaced with blue (`#005FFF`).
+example, for channel one's yellow `#F8E400`, `yellow_mask.png` is created with
+the yellow color replaced with blue `#005FFF`.
 
 At the end, all the masks are combined on top of the previously created inverted
 greyscale image, resulting in the final image shown below.
 
 <div class="centered-img">
-    <img style="max-width: 75%" src="./sine_250_light.png" alt="OWON HDS25s">
+    <img src="./sine_250_light.png" alt="OWON HDS25s">
 </div>
 
 It is true that simply inverting the image would have been enough, but I think
