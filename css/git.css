@@ -140,6 +140,11 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 
+table {
+    border-spacing: 0px;
+    width: 100%;
+}
+
 img, h1, h2 {
 	vertical-align: middle;
 }
@@ -262,7 +267,7 @@ a.d, a.h, a.i, a.line {
 
 #dir-title {
 	border: 1px solid var(--border-color);
-	padding: 1em 1.48em;
+	padding: 22px;
 	margin-bottom: 0;
 	border-top-left-radius: .5em;
 	border-top-right-radius: .5em;
@@ -297,7 +302,7 @@ a.d, a.h, a.i, a.line {
 #main-header-table {
 	display: flex;
 	justify-content: center;
-	padding-bottom: .5em;
+	padding-bottom: 20px;
 	td {
 		text-align: center;
 	}
@@ -362,6 +367,7 @@ a:hover:not(tr a) {
 	text-decoration: none;
 	padding: 2em 2.4em;
 	margin: -2em;
+    word-wrap: anywhere;
 }
 
 #file-size a,
@@ -741,6 +747,7 @@ a {
 #open-file-name, #dir-title {
     /* padding: 1.25em; */
     margin-right: auto;
+    word-wrap: anywhere;
 }
 
 #log thead,
@@ -948,7 +955,7 @@ a:hover {
 	#log,
 	#commit-summary,
 	#commit-diff {
-		padding: .75em;
+		padding: 10px;
 	}
 
 	#files #file-mode, #dir-files #file-mode {
@@ -987,9 +994,12 @@ a:hover {
 	}
 
 	#open-file-name, #dir-title {
-		/* padding: .75em; */
-		margin-right: auto;
+        padding: 10px;
 	}
+
+    #main-header-table {
+        padding-bottom: 14px;
+    }
 
     #repo-top-buttons {
         /* padding: 0 .75em .75em .75em; */
