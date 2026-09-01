@@ -1,0 +1,30 @@
+#!/bin/sh
+
+[ -z "$1" ] && echo "ERROR: file path not provided" && exit 1
+
+git_folder="$1"
+
+# generate index
+# stagit-index $(find "$git_folder" -mindepth 1 -maxdepth 2 -name '*.git' \
+# 	-type d -printf '%P\n' | sort) > "$git_folder"/index.html
+
+stagit-index $(find "$git_folder" -mindepth 1 -maxdepth 2 -name '*.git' \
+	-type d -printf '%P\n' | sort) > "$git_folder"/index.html
+
+# append git files to .gitignore
+# ignore symlinks
+# find . -type l | sed -e s'/^\.\///g' >> .gitignore
+
+# for repo in $(find "$git_folder" -mindepth 1 -maxdepth 1 -type d -printf '%f\n');\
+# do
+# 	(cd "$git_folder"/"$repo"; stagit "$git_folder"/"$repo".git \
+# 		-c "$git_folder"/.cache;
+# 	ln -sf files.html index.html;
+# 	ln -sf ../style.css style.css
+# 	ln -sf ../logo.png logo.png
+# 	ln -sf ../favicon.png favicon.png
+# 	)
+# done
+
+# link repos to git home (makes url prettier)
+# for repo in $(find repos -name *.git); do ln -sf $repo /home/git; done

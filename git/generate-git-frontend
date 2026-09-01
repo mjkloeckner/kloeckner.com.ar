@@ -1,0 +1,35 @@
+#!/bin/sh
+
+[ -z "$1" ] && echo "file path not provided" && exit 1
+
+git_folder="$1"
+
+bare_repos_list=$(find "$git_folder" -mindepth 1 -maxdepth 2 -name '*.git' \
+    -type d -printf '%P\n' | sort)
+
+[ -z "$bare_repos_list" ] \
+    && echo "folder does not contain bare repositories" \
+    && exit 1
+
+# generate git repositories index (main page)
+stagit-index $bare_repos_list > index.html
+
+repos_name_list=$(find "$git_folder" \
+    -mindepth 1 -maxdepth 1 -type d -printf '%f\n')
+
+for repo in $repos_name_list;\
+do
+    echo "$git_folder/$repo".git;
+    (
+        cd "$git_folder/$repo" || exit
+        stagit "$git_folder/$repo".git -c "$git_folder"/.cache
+        ln -sf files.html index.html
+        ln -sf ../style.css style.css
+        ln -sf ../logo.png logo.png
+        ln -sf ../favicon.png favicon.png
+    )
+    # link repos to git home (makes url prettier)
+    # for repo in $(find repos -name *.git); do ln -sf $repo /home/git; done
+    # ln -sf "$git_folder/$repo".git /home/git
+done
+

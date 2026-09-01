@@ -1,0 +1,35 @@
+#!/bin/sh
+
+set -xu
+
+BIN_DIR="/root/git"
+GIT_DIR="/var/www/git"
+GIT_SSH_COMMAND=''
+
+mkdir -p "$GIT_DIR"
+
+gh repo list --limit 1000 --json nameWithOwner,isPrivate,isFork \
+    --jq '.[] | select(.isPrivate == false and .isFork == false) |
+    .nameWithOwner' |
+while read -r repo; do
+    name=$(basename "$repo")
+    repo_dir="$GIT_DIR/$name"
+    bare_repo_path="$repo_dir/$name.git"
+
+    if [ -d "$repo_dir" ]; then
+        git -C "$bare_repo_path" remote update --prune
+	gh repo view $repo --json description --jq '.description' > \
+		$bare_repo_path/description
+    else
+        mkdir -p "$repo_dir"
+        git clone --mirror "https://github.com/$repo.git" "$bare_repo_path"
+        gh repo view $repo --json description --jq '.description' > \
+            $bare_repo_path/description
+
+        ln -sf "$bare_repo_path" /home/git
+    fi
+
+    (cd "$GIT_DIR"; "$BIN_DIR"/update-git-repo "$repo_dir")
+done
+
+(cd "$GIT_DIR"; "$BIN_DIR"/generate-git-main-index .)

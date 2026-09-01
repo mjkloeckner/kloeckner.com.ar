@@ -1,0 +1,61 @@
+#!/bin/sh
+
+[ -z "$1" ] && echo "ERROR: repo name not provided" && exit 1
+
+repo_folder="$1"
+name="$(basename $repo_folder)"
+repo_bare_path="$repo_folder/$name.git"
+
+echo "updating '$repo_folder' git frontend"
+echo "cache file: '$repo_folder/.cache'"
+
+(
+    cd "$repo_folder"; 
+    stagit "$repo_bare_path" -c .cache;
+    ln -sf files.html index.html;
+    ln -sf ../style.css style.css;
+    ln -sf ../logo.png logo.png;
+    ln -sf ../favicon.png favicon.png;
+)
+
+# echo "updateing \`git.kloeckner.com.ar\` main index"
+
+# generate index
+# stagit-index $(find "$git_folder" -mindepth 1 -maxdepth 2 -name '*.git' \
+#	-type d -printf '%P\n' | sort) > "$git_folder"/index.html
+
+# stagit-index $(find "$git_folder" -mindepth 1 -maxdepth 2 -name '*.git' \
+#	-type d -printf '%P\n' | sort) > index.html
+
+# append git files to .gitignore
+# ignore symlinks
+# find . -type l | sed -e s'/^\.\///g' >> .gitignore
+
+# for repo in $(find "$git_folder" -mindepth 1 -maxdepth 1 -type d -printf '%f\n');\
+# do
+#  	(cd "$repo"; stagit "$repo".git \
+#  		-c .cache;
+#  	ln -sf files.html index.html;
+#  	ln -sf ../style.css style.css
+#  	ln -sf ../logo.png logo.png
+#  	ln -sf ../favicon.png favicon.png
+#  	)
+# done
+
+# detect git push -f
+# force=0
+# while read -r old new ref; do
+# 	test "${old}" = "0000000000000000000000000000000000000000" && continue
+# 	test "${new}" = "0000000000000000000000000000000000000000" && continue
+# 
+# 	hasrevs=$(git rev-list "${old}" "^${new}" | sed 1q)
+# 	if test -n "${hasrevs}"; then
+# 		force=1
+# 		break
+# 	fi
+# done
+# 
+# echo "forced pushed detected"
+
+# link repos to git home (makes url prettier)
+# for repo in $(find repos -name *.git); do ln -sf $repo /home/git; done
