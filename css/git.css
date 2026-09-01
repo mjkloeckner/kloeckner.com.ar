@@ -1,3 +1,109 @@
+/* default light */
+:root {
+	--fg-color: #000000;
+	--bg-color: white;
+    --hover-brightness: 0.95;
+	--hover-bg-color: #E9E9E9;
+	--link-color: #A04A00;
+	--title-color: #DAA520;
+
+	--accent-color: crimson;
+
+    --footer-color: grey;
+    --border-color: #505050;
+
+    --desc-color: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fg-color: antiquewhite;
+        --bg-color: #191919;
+        --hover-brightness: 1.25;
+        --hover-bg-color: #443A32;
+        --link-color: peru;
+    }
+}
+
+/*
+
+	#dir-size a,
+	#dir-size a:hover {
+		color: #141414;
+	}
+
+	#file-mode a,
+	#file-size a,
+	#description a,
+	#last-commit a,
+	#owner a,
+	#log-date a,
+	#log-author a,
+	#log-files a {
+		color: antiquewhite;
+	}
+
+	#file-mode a:hover,
+	#file-size a:hover,
+	#description a:hover,
+	#last-commit a:hover,
+	#owner a:hover,
+	#log-date a:hover,
+	#log-author a:hover,
+	#log-files a:hover {
+		text-decoration: none;
+	}
+	a:target {
+		background-color: #222;
+	}
+	.desc {
+		color: antiquewhite;
+	}
+	#blob a {
+		color: #555;
+	}
+	#blob a:target {
+		color: #eee;
+	}
+	#blob a:hover {
+		color: peru;
+	}
+	pre a.h {
+		color: #00cdcd;
+	}
+	.A,
+	span.i,
+	pre a.i {
+		color: #00cd00;
+	}
+	.D,
+	span.d,
+	pre a.d {
+		color: #cd0000;
+	}
+	#branches tr:hover td,
+	#tags tr:hover td,
+	#index tr:hover td,
+	#log tr:hover td,
+	#files tr:hover td,
+	#dir-files tr:hover td {
+		background-color: #000;
+	}
+
+	#legends tr:hover td {
+		background: #141414;
+	}
+
+	#name a,
+	#dir-name a,
+	#file-name a,
+	.dir, .dir:hover,
+	#log-summary a {
+		color: peru;
+	}
+}
+*/
+
 * {
 	overflow-y: unset;
 }
@@ -9,11 +115,14 @@ html {
 }
 
 body {
-	color: #000;
-	background-color: #fff;
-	font-family: inconsolata, monospace;
-	font-size: 14px;
-	max-width: 120ch;
+	color: var(--fg-color);
+	background: var(--bg-color);
+	/* font-family: inconsolata, monospace; */
+    font-family: "Inter", "Helvetica", "DejaVu Sans", sans-serif, serif, inconsolata, monospace;
+	/* font-size: 14px; */
+	/* max-width: 120ch; */
+	font-size: 18px;
+	max-width: 800px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 10em;
@@ -21,7 +130,7 @@ body {
 }
 
 footer {
-	color: grey;
+	color: var(--footer-color);
 	padding: 2em;
 	text-align: center;
 }
@@ -43,9 +152,11 @@ ul {
 	padding-left: 1em;
 }
 
+/*
 a:target {
 	background-color: #ccc;
 }
+*/
 
 a.d, a.h, a.i, a.line {
 	text-decoration: none;
@@ -61,32 +172,39 @@ a.d, a.h, a.i, a.line {
 }
 
 #index,
+#log {
+    tr {
+        display: block;
+        margin-bottom: .5em;
+    }
+}
+
+#index,
 #log,
 #refs,
 #commit-summary,
 #commit-diff {
 	width: 100%;
-	border: 1px solid #505050;
-	padding: 1em;
+	border: 1px solid var(--border-color);
+	padding: 22px;
 	border-radius: .5em;
-	margin-top: 1em;
 }
 
-#refs h2,
-#refs td {
-	padding: 0 0.4em;
-}
+/* #refs h2, */
+/* #refs td { */
+/* 	padding: 0; */
+/* } */
 
 #files {
 	min-width: 100%;
-	border: 1px solid #505050;
+	border: 1px solid var(--border-color);
 	padding: 1em 1.4em 1em 1.4em;
 	border-radius: .5em;
 }
 
 #dir-files {
 	min-width: 100%;
-	border: 1px solid #505050;
+	border: 1px solid var(--border-color);
 	padding: 1em;
 	margin-top: 0em;
 	border-radius: .5em;
@@ -100,7 +218,7 @@ a.d, a.h, a.i, a.line {
 }
 
 #readme {
-	border: 1px solid #505050;
+	border: 1px solid var(--border-color);
 	padding: 2em;
 	margin-top: 1em;
 	border-radius: .5em;
@@ -123,7 +241,13 @@ a.d, a.h, a.i, a.line {
 }
 
 #repo-header-table {
-	padding: .25em 2em .75em 2em;
+	/* padding: 1.25em 1.25em 1em 1.25em; */
+    /* margin: -1px; */
+    padding: 20px;
+
+    tr {
+        filter: brightness(1.0);
+    }
 }
 
 #main-name {
@@ -137,7 +261,7 @@ a.d, a.h, a.i, a.line {
 }
 
 #dir-title {
-	border: 1px solid #505050;
+	border: 1px solid var(--border-color);
 	padding: 1em 1.48em;
 	margin-bottom: 0;
 	border-top-left-radius: .5em;
@@ -145,8 +269,8 @@ a.d, a.h, a.i, a.line {
 }
 
 #binary-file {
-	border: 1px solid #505050;
-	padding: 1em;
+	border: 1px solid var(--border-color);
+	padding: 1.25em;
 	margin-top: 0;
 	border-radius: .5em;
 	border-top-left-radius: 0;
@@ -154,8 +278,11 @@ a.d, a.h, a.i, a.line {
 }
 
 #repo-top-buttons {
-	padding: .5em 2em 1em 2em;
+	/* padding: 0 1.25em 1em 1.25em; */
+    /* margin: -1px; */
+    padding: 0 22px 20px 22px;
 	font-weight: bold;
+    font-size: 20px;
 }
 
 #log-date,
@@ -174,6 +301,9 @@ a.d, a.h, a.i, a.line {
 	td {
 		text-align: center;
 	}
+    tr {
+        filter: brightness(1.0);
+    }
 }
 
 #main-header-logo, #repo-logo {
@@ -186,8 +316,8 @@ a.d, a.h, a.i, a.line {
 }
 
 #blob {
-	border: 1px solid #505050;
-	padding: .5em;
+	border: 1px solid var(--border-color);
+	padding: 1.25em 0.9em;
 	margin-top: 0;
 	border-radius: .5em;
 	border-top-left-radius: 0;
@@ -198,20 +328,29 @@ a.d, a.h, a.i, a.line {
 	color: #555;
 }
 
+#blob a:hover {
+	color: var(--link-color);
+    filter: brightness(var(--hover-brightness));
+	text-decoration: none;
+}
+
 a {
-	color: #a04a00;
+	color: var(--link-color);
 	text-decoration: none;
 }
 
-a:hover {
-	color: crimson;
-	text-decoration: underline;
+a:hover:not(tr a) {
+    background: var(--hover-bg-color);
+    filter: brightness(var(--hover-brightness));
+    text-decoration: none;
 }
 
-#dir-size a, #dir-size a:hover {
-	display: block;
-	color: #fff;
-	text-decoration: none;
+#dir-size a {
+	color: var(--bg-color);
+}
+
+#dir-size a:hover {
+    color: var(--hover-bg-color);
 }
 
 #name a,
@@ -223,9 +362,7 @@ a:hover {
 	text-decoration: none;
 	padding: 2em 2.4em;
 	margin: -2em;
-	color: #a04a00;
 }
-
 
 #file-size a,
 #file-mode a,
@@ -239,9 +376,13 @@ a:hover {
 	text-decoration: none;
 	padding: 2em 2.4em;
 	margin: -2em;
-	color: #000;
 }
 
+#file-size a {
+    color: var(--fg-color);
+}
+
+/*
 #file-mode a:hover ,
 #description a:hover,
 #last-commit a:hover,
@@ -250,13 +391,8 @@ a:hover {
 #log-author a,
 #log-files a {
 	text-decoration: none;
-	color: #000;
 }
-
-#blob a:hover {
-	color: #a04a00;
-	text-decoration: none;
-}
+*/
 
 table thead td {
 	font-weight: bold;
@@ -271,6 +407,7 @@ td {
 	overflow: hidden;
 }
 
+/*
 #branches tr:hover td,
 #tags tr:hover td,
 #index tr:hover td,
@@ -283,6 +420,7 @@ td {
 #legends tr:hover td {
 	background-color: #fff;
 }
+*/
 
 #index tr td:nth-child(2),
 #tags tr td:nth-child(3),
@@ -295,14 +433,16 @@ td.num {
 	text-align: right;
 }
 
+/*
 .desc {
-	color: #555;
+	color var(--desc-color);
 }
 
 .main-desc {
-	color: #555;
+	color var(--desc-color);
 	font-size: 1.25em;
 }
+*/
 
 hr {
 	border: 0;
@@ -334,9 +474,10 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 }
 
 #open-file-header {
-	padding: 0 0.4em;
+	/* padding: 0 0.4em; */
 	border: 1px solid #505050;
-	padding: 1em;
+	/* padding: 1.00em; */
+    padding: 20px 22px 20px 22px;
 	border-top-left-radius: .5em;
 	border-top-right-radius: .5em;
 	border-bottom: none;
@@ -347,6 +488,8 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 	justify-content: space-between;
 	align-items: center;
 	white-space: initial;
+
+    row-gap: .25em;
 }
 
 #open-file-name {
@@ -359,12 +502,7 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 }
 
 #line-checkbox {
-	margin-right: .5em;
-}
-
-#line-checkbox-div {
-	padding-right: 1em;
-	margin-left: auto;
+	/* margin-right: .5em; */
 }
 
 #file-parent-path {
@@ -374,16 +512,24 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 	margin: 0;
 }
 
-#file-raw a {
+#file-raw {
 	padding: .5em;
-	border: 1px solid #505050;
+    /* margin: 1.25em 1.25em 1.25em 0; */
+	border: 1px solid var(--border-color);
 	border-radius: .5em;
 }
 
-#file-raw a:hover{
+#file-raw:hover {
+	background: var(--hover-bg-color);
+    filter: brightness(var(--hover-brightness));
 	text-decoration: none;
-	background: #505050;
-	color: white;
+    cursor: pointer;
+}
+
+#file-raw a:hover {
+	text-decoration: none;
+	background: none;
+	color: var(fg-color);
 }
 
 #readme h1 {
@@ -457,101 +603,276 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 	padding: 1em 0em;
 }
 
+#owner {
+    display: none;
+}
+#content table td {
+    padding-left: 0;
+    white-space: break-spaces;
+    vertical-align: bottom;
+}
+#name {
+    display: block;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+#description {
+    display: block;
+    width: 100%;
+    padding: 0;
+
+    a {
+        color: var(--fg-color);
+    }
+}
+
+#last-commit {
+    display: block;
+    padding: 0em;
+    margin: 0em;
+    padding-left: 0px;
+    font-size: .85em;
+    color: gray;
+    text-align: left;
+    /* margin-bottom: .5em; */
+}
+
+#last-commit a {
+    color: gray;
+}
+
+#index #legends {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+    overflow-wrap: break-word;
+}
+
+#name a {
+    display: block;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#name a,
+#dir-name a,
+#file-name a,
+#log-summary a {
+    padding: 0;
+    margin: 0;
+}
+
+#log-summary a {
+    color: var(--fg-color);
+}
+
+#log tr:hover {
+    filter: brightness(var(--hover-brightness));
+}
+
+#file-mode a,
+#file-size a,
+#description a,
+#last-commit a,
+#owner a,
+#log-date a,
+#log-author a,
+#log-files a {
+    padding: 0;
+    margin: 0;
+}
+
+#index,
+#refs,
+#files,
+#dir-files,
+#log,
+#commit-summary,
+#commit-diff {
+    /* padding: 1.25em; */
+    padding: 22px;
+    margin-top: 0;
+}
+
+#files #file-mode, #dir-files #file-mode {
+    display: none;
+}
+#files td, #dir-files td {
+    padding: 0;
+}
+
+#repo-name {
+    font-size: 1.5em;
+}
+#dir-name {
+    padding-left: 0;
+    padding-right: 0;
+}
+.desc {
+    font-size: 16px;
+}
+
+.main-desc {
+    font-size: 1.25em;
+
+    a:hover {
+        background: var(--hover-bg-color);
+        filter: brightness(var(--hover-brightness));
+    }
+}
+
+#log-author a {
+    color: gray;
+}
+#last-commit a::before {
+    content: "last commit ";
+}
+#log-author a::before {
+    content: "author ";
+}
+#blob {
+    font-size: 16px;
+    overflow: scroll;
+}
+
+#open-file-name, #dir-title {
+    /* padding: 1.25em; */
+    margin-right: auto;
+}
+
+#log thead,
+#log-files {
+    display: none;
+}
+#log-summary,
+#log-date,
+#readme-hr {
+    display: block;
+}
+#log-author {
+    display: block;
+    margin-bottom: 1em;
+}
+#commit-summary {
+    white-space: break-spaces;
+}
+#commit-diff {
+    overflow-x: scroll;
+}
+#readme {
+    padding: 1.50em;
+}
+#readme img {
+    max-width: 100%;
+    padding: 0;
+}
+#readme ul {
+    padding-left: 1em;
+}
+#readme h1 {
+    padding-top: .25em;
+}
+
+#branches tr:hover,
+#tags tr:hover,
+#index tr:hover,
+#log tr:hover,
+#dir-files tr:hover,
+#files tr:hover {
+    background: var(--hover-bg-color);
+}
+
+/*
+a:hover {
+    color: #a04a00;
+}
+*/
+
+#line-checkbox-div {
+    text-align: center;
+    width: min-content;
+    white-space: nowrap;
+    /* padding: 0 1em 1.25em 0; */
+    /* margin-top: 1.25em; */
+    /* margin-bottom: 1.25em; */
+    margin-right: 1em;
+	margin-left: auto;
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+    a:hover:not(tr a) {
+        filter: brightness(var(--hover-brightness));
+    }
+
+
+    tr:hover {
+        filter: brightness(var(--hover-brightness));
+    }
+
+    #branches,
+    #tags,
+    #index,
+    #log,
+    #files {
+        a:hover {
+            filter: brightness(1.0);
+            /* background: var(--bg-color); */
+        }
+    }
+}
+
+#legends {
+    a:hover {
+        filter: brightness(1.0);
+        background: var(--bg-color);
+    }
+
+    tr:hover {
+        filter: brightness(1.0);
+        background: var(--bg-color);
+    }
+}
+
 @media (prefers-color-scheme: dark) {
-	body {
-		background-color: #141414;
-		/* color: #bdbdbd; */
-		color: antiquewhite;
-		width: 100%;
-	}
+    /*
+    #branches tr:hover,
+    #tags tr:hover,
+    #index tr:hover,
+    #log tr:hover,
+    #files tr:hover {
+        background: var(--hover-bg-color);
+    }
 
-	a {
-		color: peru;
-	}
+    a:hover {
+        color: peru;
+        background: var(--hover-bg-color);
+        text-decoration: none;
+    }
+    */
 
-	#dir-size a,
-	#dir-size a:hover {
-		color: #141414;
-	}
+    #readme blockquote p {
+        margin: 0;
+        padding: 0;
+    }
 
-	#file-mode a,
-	#file-size a,
-	#description a,
-	#last-commit a,
-	#owner a,
-	#log-date a,
-	#log-author a,
-	#log-files a {
-		/* color: #bdbdbd; */
-		color: antiquewhite;
-	}
+    #readme blockquote {
+        margin: 1em 0;
+        padding: 0.5em 1em;
+        border-left: 4px solid antiquewhite;
+        /* color: #57606a; */
+        background-color: rgba(110,118,129,0.2);
+    }
 
-	#file-mode a:hover,
-	#file-size a:hover,
-	#description a:hover,
-	#last-commit a:hover,
-	#owner a:hover,
-	#log-date a:hover,
-	#log-author a:hover,
-	#log-files a:hover {
-		/* color: #bdbdbd; */
-		color: antiquewhite;
-		text-decoration: none;
-	}
-	a:target {
-		background-color: #222;
-	}
-	.desc {
-		color: antiquewhite;
-	}
-	#blob a {
-		color: #555;
-	}
-	#blob a:target {
-		color: #eee;
-	}
-	#blob a:hover {
-		color: peru;
-	}
-	pre a.h {
-		color: #00cdcd;
-	}
-	.A,
-	span.i,
-	pre a.i {
-		color: #00cd00;
-	}
-	.D,
-	span.d,
-	pre a.d {
-		color: #cd0000;
-	}
-	#branches tr:hover td,
-	#tags tr:hover td,
-	#index tr:hover td,
-	#log tr:hover td,
-	#files tr:hover td,
-	#dir-files tr:hover td {
-		background-color: #000;
-	}
-
-	#legends tr:hover td {
-		background: #141414;
-	}
-
-	#name a,
-	#dir-name a,
-	#file-name a,
-	.dir, .dir:hover,
-	#log-summary a {
-		color: peru;
-	}
 }
 
 @media (max-width: 800px) {
 	body {
-		font-size: 16px;
-		max-width: 97%;
+		font-size: 18px;
+		max-width: 98%;
 	}
 	#owner {
 		display: none;
@@ -573,11 +894,13 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 	}
 	#last-commit {
 		display: block;
-		padding: .25em 0 1em 0;
-		padding-left: 0px;
+		/* padding: .25em 0 1em 0; */
+        padding: 0em;
+        margin: 0em;
 		font-size: .85em;
 		color: gray;
 		text-align: left;
+        /* margin-bottom: 1em; */
 	}
 	#last-commit a {
 		color: gray;
@@ -588,7 +911,10 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 	a {
 		text-decoration: none;
 		overflow-wrap: break-word;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
 	}
+
 	#name a {
 		display: block;
 		font-weight: bold;
@@ -622,7 +948,7 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 	#log,
 	#commit-summary,
 	#commit-diff {
-		padding: .5em;
+		padding: .75em;
 	}
 
 	#files #file-mode, #dir-files #file-mode {
@@ -631,12 +957,11 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 	#files td, #dir-files td {
 		padding: 0;
 	}
-	#repo-top-buttons {
-		font-size: 20px;
-	}
+
 	#repo-name {
 		font-size: 1.5em;
 	}
+
 	#dir-name {
 		padding-left: 0;
 		padding-right: 0;
@@ -662,9 +987,15 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 	}
 
 	#open-file-name, #dir-title {
-		padding: .75em;
+		/* padding: .75em; */
 		margin-right: auto;
 	}
+
+    #repo-top-buttons {
+        /* padding: 0 .75em .75em .75em; */
+        padding: 0 10px 10px 10px;
+    }
+
 
 	#log thead,
 	#log-files {
@@ -677,7 +1008,6 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 	}
 	#log-author {
 		display: block;
-		padding-bottom: 1em;
 	}
 	#commit-summary {
 		white-space: break-spaces;
@@ -699,6 +1029,7 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 		padding-top: .25em;
 	}
 
+    /*
 	#branches tr:hover td,
 	#tags tr:hover td,
 	#index tr:hover td,
@@ -706,44 +1037,52 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 	#files tr:hover td {
 		background-color: #fff;
 	}
-
-	#repo-top-buttons {
-		padding: .5em .50em 1em .50em;
-	}
+    */
 
 	#repo-header-table {
-		padding: .25em .50em .75em .50em;
+		/* padding: .25em .50em .75em .50em; */
+		padding: 10px;
 	}
 
 	#open-file-header {
-		padding: .5em;
+		/* padding: .75em; */
+        padding: 10px;
 	}
 
-	#file-raw a {
-		margin-right: .5em;
-	}
-
+    /*
 	a:hover {
 		color: #a04a00;
 	}
+    */
 
 	#line-checkbox-div {
 		text-align: center;
 		width: min-content;
 		white-space: nowrap;
+
+        /* margin-top: .75em; */
+        /* margin-bottom: .75em; */
 	}
 
+    #file-raw {
+        /* margin-top: .75em; */
+        /* margin-bottom: .75em; */
+        /* margin-right: .75em; */
+    }
+
+    /*
 	@media (prefers-color-scheme: dark) {
 		#branches tr:hover td,
 		#tags tr:hover td,
 		#index tr:hover td,
 		#log tr:hover td,
 		#files tr:hover td {
-			background: #141414;
+			background: var(--hover-bg-color);
 		}
 
 		a:hover {
 			color: peru;
 		}
 	}
+    */
 }
