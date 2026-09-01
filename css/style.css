@@ -33,6 +33,7 @@ body {
 	margin-right: .5em;
 	font-size: 18px;
 	font-family: "Nimbus Sans", "Nimbus Sans L", "Inter", "Helvetica", "inconsolata", "DejaVu Sans", sans, "Verdana", sans-serif, "Georgia", serif, monospace;
+    font-weight: 500;
 }
 
 header {
@@ -373,6 +374,7 @@ pre code {
 	word-break: normal;
 	overflow-wrap: normal;
 	white-space: pre;
+    hyphens: none;
 }
 
 /* #command { color: #33ff11; } */
@@ -454,6 +456,10 @@ hr {
         text-decoration: none;
     }
 
+    a:hover {
+        filter: brightness(1.0);
+    }
+
     tr:hover {
         /* background: #000; */
         background: var(--hover-bg-color);
@@ -464,6 +470,19 @@ hr {
         display: block;
     }
 }
+
+@media (hover: hover) and (pointer: fine) {
+    a:hover {
+        filter: brightness(var(--hover-brightness));
+    }
+
+    #latest-uploads-blog-entries, #blog_entries {
+        tr:hover {
+            filter: brightness(var(--hover-brightness));
+        }
+    }
+}
+
 
 #urgent-announcement {
 	color: var(--fg-color);
@@ -537,6 +556,7 @@ b-time {
 	#index-title {
 		padding-top: 0;
 		padding-bottom: .25em;
+        font-size: 1.60em;
 	}
 
 
@@ -578,15 +598,6 @@ b-time {
             color: var(--fg-color);
         }
     }
-
-    /*
-    @media (hover: hover) and (pointer: fine) {
-        tr:hover {
-            cursor: pointer;
-            background-color: #000;
-        }
-    }
-    */
 
 	#latest-uploads {
         tr:nth-child(n + 6) {

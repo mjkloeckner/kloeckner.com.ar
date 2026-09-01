@@ -85,7 +85,7 @@ ul {
 
 blockquote {
 	border-left: 4px solid var(--grey1);
-	padding-left: 1em;
+	padding-left: .50em;
 	font-style: italic;
 	pre {
 		font-style: normal;

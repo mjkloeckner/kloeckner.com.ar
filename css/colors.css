@@ -7,6 +7,7 @@
 	--secondary-accent-color: peru;
 	--hover-fg-color: peru;
 	--hover-bg-color: #443A32;
+    --hover-brightness: 1.25;
 	--code-bg: #262626;
 	--link-color: peru;
 	--link-hover-color: crimson;
@@ -23,7 +24,8 @@
 	--accent-color: #CC2936;
 	--secondary-accent-color: #141414;
 	--hover-fg-color: #A04A00;
-	--hover-bg-color: #DADADA;
+	--hover-bg-color: #E9E9E9;
+    --hover-brightness: 0.95;
 	--link-hover-color: #CC2936;
 	--link-color: #A04A00;
 	--title-color: #000000;
