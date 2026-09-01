@@ -134,6 +134,31 @@ table {
 	width: 100%;
 }
 
+#rss {
+    display: inline-flex;
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    color: var(--fg-color);
+    margin-left: 8px;
+    margin-bottom: 8px;
+    /* padding-left: 8px; */
+    /* padding-bottom: 8px; */
+    opacity: 60%;
+}
+
+#rss svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+}
+
+#rss:hover,
+#color-scheme-button:hover {
+    opacity: 100%;
+}
+
 article {
 	color: var(--fg-color);
 
