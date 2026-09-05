@@ -2,7 +2,8 @@
 	/* text-decoration: underline; */
 	text-align: left;
 	padding-top: .5em;
-	padding-bottom: .5em;
+	padding-bottom: 10px;
+    font-size: 28px;
 }
 
 .article-date {
@@ -180,8 +181,8 @@ blockquote {
 	}
 	#article-title {
 		padding-top: .25em;
-		padding-bottom: .25em;
-		font-size: 1.5em;
+		/* padding-bottom: .25em; */
+		font-size: 26px;
 
 	}
 	#article-title-with-icon {
@@ -219,8 +220,8 @@ blockquote {
 	}
 	#article-title {
 		padding-top: .25em;
-		padding-bottom: .5em;
-		font-size: 1.4em;
+		/* padding-bottom: .5em; */
+		font-size: 26px;
 	}
 	#article-title-with-icon {
 		padding-bottom: .5em;

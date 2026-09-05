@@ -11,8 +11,13 @@
 
     --footer-color: grey;
     --border-color: #505050;
+    /* --border-color: #d0d0d0; */
 
     --desc-color: #333;
+
+    --git-add-color: #070;
+    --git-del-color: crimson;
+    --git-dif-color: #00F;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,87 +27,14 @@
         --hover-brightness: 1.25;
         --hover-bg-color: #443A32;
         --link-color: peru;
+
+        --border-color: #444;
+
+        --git-add-color: #00FC00;
+        --git-del-color: #F81C00;
+        --git-dif-color: #005FFF;
     }
 }
-
-/*
-
-	#dir-size a,
-	#dir-size a:hover {
-		color: #141414;
-	}
-
-	#file-mode a,
-	#file-size a,
-	#description a,
-	#last-commit a,
-	#owner a,
-	#log-date a,
-	#log-author a,
-	#log-files a {
-		color: antiquewhite;
-	}
-
-	#file-mode a:hover,
-	#file-size a:hover,
-	#description a:hover,
-	#last-commit a:hover,
-	#owner a:hover,
-	#log-date a:hover,
-	#log-author a:hover,
-	#log-files a:hover {
-		text-decoration: none;
-	}
-	a:target {
-		background-color: #222;
-	}
-	.desc {
-		color: antiquewhite;
-	}
-	#blob a {
-		color: #555;
-	}
-	#blob a:target {
-		color: #eee;
-	}
-	#blob a:hover {
-		color: peru;
-	}
-	pre a.h {
-		color: #00cdcd;
-	}
-	.A,
-	span.i,
-	pre a.i {
-		color: #00cd00;
-	}
-	.D,
-	span.d,
-	pre a.d {
-		color: #cd0000;
-	}
-	#branches tr:hover td,
-	#tags tr:hover td,
-	#index tr:hover td,
-	#log tr:hover td,
-	#files tr:hover td,
-	#dir-files tr:hover td {
-		background-color: #000;
-	}
-
-	#legends tr:hover td {
-		background: #141414;
-	}
-
-	#name a,
-	#dir-name a,
-	#file-name a,
-	.dir, .dir:hover,
-	#log-summary a {
-		color: peru;
-	}
-}
-*/
 
 * {
 	overflow-y: unset;
@@ -157,12 +89,6 @@ ul {
 	padding-left: 1em;
 }
 
-/*
-a:target {
-	background-color: #ccc;
-}
-*/
-
 a.d, a.h, a.i, a.line {
 	text-decoration: none;
 }
@@ -182,6 +108,10 @@ a.d, a.h, a.i, a.line {
         display: block;
         margin-bottom: .5em;
     }
+
+    tr:last-child {
+        margin-bottom: 0;
+    }
 }
 
 #index,
@@ -195,10 +125,9 @@ a.d, a.h, a.i, a.line {
 	border-radius: .5em;
 }
 
-/* #refs h2, */
-/* #refs td { */
-/* 	padding: 0; */
-/* } */
+#branches {
+    margin-top: 10px;
+}
 
 #files {
 	min-width: 100%;
@@ -222,19 +151,27 @@ a.d, a.h, a.i, a.line {
 	width: 120px;
 }
 
-#readme {
+#md-content, #readme {
 	border: 1px solid var(--border-color);
-	padding: 2em;
+	padding: 20px;
 	margin-top: 1em;
 	border-radius: .5em;
 }
 
-#readme p {
+#md-content p {
 	line-height: 1.25;
 }
 
-#readme-hr, #owner {
+#md-content-hr, #owner {
 	display: none;
+}
+
+#md-view #md-content {
+    margin-top: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: .5em;
+    border-bottom-left-radius: .5em;
 }
 
 #name {
@@ -242,13 +179,16 @@ a.d, a.h, a.i, a.line {
 }
 
 #repo-name {
-	font-size: 1.75em;
+    font-size: 1.5em;
+}
+
+#repo-name a:hover {
+    background: var(--hover-bg-color);
+    filter: brightness(var(--hover-brightness));
 }
 
 #repo-header-table {
-	/* padding: 1.25em 1.25em 1em 1.25em; */
-    /* margin: -1px; */
-    padding: 20px;
+    padding: 12px 20px 20px 20px;
 
     tr {
         filter: brightness(1.0);
@@ -258,7 +198,19 @@ a.d, a.h, a.i, a.line {
 #main-name {
 	font-size: 1.75em;
 	color: crimson;
-	padding-bottom: .25em;
+	padding-bottom: 8px;
+}
+
+#webpage-header-link {
+    padding: 0 20px;
+}
+
+#webpage-header-link a {
+    opacity: 0.7;
+}
+
+#webpage-header-link a:hover {
+    opacity: 1.0;
 }
 
 #dir-name {
@@ -275,11 +227,15 @@ a.d, a.h, a.i, a.line {
 
 #binary-file {
 	border: 1px solid var(--border-color);
-	padding: 1.25em;
+	padding: 20px;
 	margin-top: 0;
 	border-radius: .5em;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
+
+    img {
+        width: 100%;
+    }
 }
 
 #repo-top-buttons {
@@ -386,47 +342,24 @@ a:hover:not(tr a) {
 
 #file-size a {
     color: var(--fg-color);
-}
-
-/*
-#file-mode a:hover ,
-#description a:hover,
-#last-commit a:hover,
-#owner a:hover,
-#log-date a,
-#log-author a,
-#log-files a {
-	text-decoration: none;
-}
-*/
-
-table thead td {
-	font-weight: bold;
+    white-space: nowrap;
 }
 
 #content table td {
 	vertical-align: top;
 	/* white-space: nowrap; */
+    padding-left: 0;
+    white-space: break-spaces;
 }
 
 td {
 	overflow: hidden;
 }
 
-/*
-#branches tr:hover td,
-#tags tr:hover td,
-#index tr:hover td,
-#log tr:hover td,
-#files tr:hover td,
-#dir-files tr:hover td {
-	background-color: #eee;
+#md-content td:not(:last-child),
+#md-content th:not(:last-child) {
+    padding-right: 10px;
 }
-
-#legends tr:hover td {
-	background-color: #fff;
-}
-*/
 
 #index tr td:nth-child(2),
 #tags tr td:nth-child(3),
@@ -435,20 +368,17 @@ td {
 	white-space: normal;
 }
 
+#branches td:nth-child(1) {
+    text-align: left;
+}
+
+#branches td:nth-child(n+2) {
+    text-align: right;
+}
+
 td.num {
 	text-align: right;
 }
-
-/*
-.desc {
-	color var(--desc-color);
-}
-
-.main-desc {
-	color var(--desc-color);
-	font-size: 1.25em;
-}
-*/
 
 hr {
 	border: 0;
@@ -464,15 +394,15 @@ pre {
 }
 
 pre a.h {
-	color: #00a;
+	color: var(--git-dif-color);
 }
 
 .A, span.i, pre a.i {
-	color: #070;
+    color: var(--git-add-color);
 }
 
 .D, span.d, pre a.d {
-	color: #e00;
+	color: var(--git-del-color);
 }
 
 pre a.h:hover, pre a.i:hover, pre a.d:hover {
@@ -480,9 +410,7 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 }
 
 #open-file-header {
-	/* padding: 0 0.4em; */
 	border: 1px solid #505050;
-	/* padding: 1.00em; */
     padding: 20px 22px 20px 22px;
 	border-top-left-radius: .5em;
 	border-top-right-radius: .5em;
@@ -519,10 +447,8 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 }
 
 #file-raw {
-	padding: .5em;
-    /* margin: 1.25em 1.25em 1.25em 0; */
 	border: 1px solid var(--border-color);
-	border-radius: .5em;
+	border-radius: 6px;
 }
 
 #file-raw:hover {
@@ -532,22 +458,28 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
     cursor: pointer;
 }
 
+#file-raw a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 4px 4px 5px 5px;
+}
+
 #file-raw a:hover {
 	text-decoration: none;
 	background: none;
-	color: var(fg-color);
 }
 
-#readme h1 {
+#md-content h1 {
 	font-size: 1.75em;
 }
 
-#readme	h2 {
+#md-content	h2 {
 	font-size: 1.5em;
 	padding: .5em 0em;
 }
 
-#readme h3 {
+#md-content h3 {
 	font-size: 1.25em;
 	text-align: left;
 
@@ -555,26 +487,26 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 	padding-bottom: .5em;
 }
 
-#readme h4 {
+#md-content h4 {
 	padding-top: .5em;
 	text-align: left;
 }
 
-#readme h5 {
+#md-content h5 {
 	padding-bottom: .25em;
 	font-size: 1em;
 }
 
-#readme code {
+#md-content code {
 	font-family: "Ubuntu Mono", monospace;
 	background-color: rgba(110,118,129,0.2);
-	padding: .1em .4em;
+    padding: 0px 2px;
+    border-radius: 4px;
 	margin: 0;
-	border-radius: 6px;
 	white-space: nowrap;
 }
 
-#readme pre {
+#md-content pre {
 	text-align: left;
 
 	padding-top: .5em;
@@ -592,7 +524,7 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 	overflow: auto;
 }
 
-#readme pre code {
+#md-content pre code {
 	background: rgba(0,0,0,0);
 	padding: 0;
 	margin: 0;
@@ -600,7 +532,7 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 	white-space: inherit;
 }
 
-#readme img {
+#md-content img {
 	max-width: 100%;
 	display: block;
 	margin-left: auto;
@@ -611,11 +543,6 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
 
 #owner {
     display: none;
-}
-#content table td {
-    padding-left: 0;
-    white-space: break-spaces;
-    vertical-align: bottom;
 }
 #name {
     display: block;
@@ -706,13 +633,15 @@ a {
 #files #file-mode, #dir-files #file-mode {
     display: none;
 }
+
 #files td, #dir-files td {
     padding: 0;
 }
 
-#repo-name {
-    font-size: 1.5em;
+#dir-files #file-size {
+    vertical-align: bottom;
 }
+
 #dir-name {
     padding-left: 0;
     padding-right: 0;
@@ -748,6 +677,7 @@ a {
     /* padding: 1.25em; */
     margin-right: auto;
     word-wrap: anywhere;
+    /* padding: 10px; */
 }
 
 #log thead,
@@ -756,30 +686,60 @@ a {
 }
 #log-summary,
 #log-date,
-#readme-hr {
+#md-content-hr {
     display: block;
 }
+
 #log-author {
     display: block;
     margin-bottom: 1em;
 }
+
+#log tr:last-child #log-author {
+    margin-bottom: 0;
+}
+
 #commit-summary {
     white-space: break-spaces;
 }
 #commit-diff {
     overflow-x: scroll;
 }
-#readme {
-    padding: 1.50em;
+
+#md-content {
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+    }
+
+    th,
+    td {
+        padding: 0.8rem 1rem;
+        text-align: left;
+        vertical-align: top;
+        border: 1px solid var(--border-color);
+    }
+
+    th {
+        font-weight: 600;
+    }
+
+    tbody td:first-child {
+        width: 10rem;
+        font-weight: 600;
+        white-space: nowrap;
+    }
 }
-#readme img {
+
+#md-content img {
     max-width: 100%;
     padding: 0;
 }
-#readme ul {
+#md-content ul {
     padding-left: 1em;
 }
-#readme h1 {
+#md-content h1 {
     padding-top: .25em;
 }
 
@@ -792,20 +752,15 @@ a {
     background: var(--hover-bg-color);
 }
 
-/*
-a:hover {
-    color: #a04a00;
+#md-checkbox-div {
+    margin-right: 10px;
 }
-*/
 
 #line-checkbox-div {
     text-align: center;
     width: min-content;
     white-space: nowrap;
-    /* padding: 0 1em 1.25em 0; */
-    /* margin-top: 1.25em; */
-    /* margin-bottom: 1.25em; */
-    margin-right: 1em;
+    margin-right: 10px;
 	margin-left: auto;
 }
 
@@ -819,6 +774,19 @@ a:hover {
     tr:hover {
         filter: brightness(var(--hover-brightness));
     }
+
+    #commit-summary,
+    #md-content {
+        tr:hover {
+            filter: brightness(1.0);
+        }
+    }
+
+    #commit-summary a:hover {
+        filter: brightness(var(--hover-brightness));
+        background: var(--hover-bg-color);
+    }
+
 
     #branches,
     #tags,
@@ -845,32 +813,15 @@ a:hover {
 }
 
 @media (prefers-color-scheme: dark) {
-    /*
-    #branches tr:hover,
-    #tags tr:hover,
-    #index tr:hover,
-    #log tr:hover,
-    #files tr:hover {
-        background: var(--hover-bg-color);
-    }
-
-    a:hover {
-        color: peru;
-        background: var(--hover-bg-color);
-        text-decoration: none;
-    }
-    */
-
-    #readme blockquote p {
+    #md-content blockquote p {
         margin: 0;
         padding: 0;
     }
 
-    #readme blockquote {
+    #md-content blockquote {
         margin: 1em 0;
         padding: 0.5em 1em;
         border-left: 4px solid antiquewhite;
-        /* color: #57606a; */
         background-color: rgba(110,118,129,0.2);
     }
 
@@ -887,7 +838,7 @@ a:hover {
 	#content table td {
 		padding-left: 0;
 		white-space: break-spaces;
-		vertical-align: bottom;
+		vertical-align: top;
 	}
 	#name {
 		display: block;
@@ -955,6 +906,7 @@ a:hover {
 	#log,
 	#commit-summary,
 	#commit-diff {
+		/* padding: .75em; */
 		padding: 10px;
 	}
 
@@ -993,9 +945,15 @@ a:hover {
 		overflow: scroll;
 	}
 
-	#open-file-name, #dir-title {
+	#open-file-name,
+    #dir-title,
+    #binary-file {
         padding: 10px;
 	}
+
+    #webpage-header-link {
+        padding: 0 10px;
+    }
 
     #main-header-table {
         padding-bottom: 14px;
@@ -1013,41 +971,32 @@ a:hover {
 	}
 	#log-summary,
 	#log-date,
-	#readme-hr {
+	#md-content-hr {
 		display: block;
 	}
+
 	#log-author {
 		display: block;
 	}
-	#commit-summary {
-		white-space: break-spaces;
-	}
+
 	#commit-diff {
 		overflow-x: scroll;
 	}
-	#readme {
-		padding: 1em;
+
+	#md-content {
+		/* padding: 1em; */
+        padding: 10px;
 	}
-	#readme img {
+	#md-content img {
 		max-width: 100%;
 		padding: 0;
 	}
-	#readme ul {
+	#md-content ul {
 		padding-left: 1em;
 	}
-	#readme h1 {
+	#md-content h1 {
 		padding-top: .25em;
 	}
-
-    /*
-	#branches tr:hover td,
-	#tags tr:hover td,
-	#index tr:hover td,
-	#log tr:hover td,
-	#files tr:hover td {
-		background-color: #fff;
-	}
-    */
 
 	#repo-header-table {
 		/* padding: .25em .50em .75em .50em; */
@@ -1059,40 +1008,9 @@ a:hover {
         padding: 10px;
 	}
 
-    /*
-	a:hover {
-		color: #a04a00;
-	}
-    */
-
 	#line-checkbox-div {
 		text-align: center;
 		width: min-content;
 		white-space: nowrap;
-
-        /* margin-top: .75em; */
-        /* margin-bottom: .75em; */
 	}
-
-    #file-raw {
-        /* margin-top: .75em; */
-        /* margin-bottom: .75em; */
-        /* margin-right: .75em; */
-    }
-
-    /*
-	@media (prefers-color-scheme: dark) {
-		#branches tr:hover td,
-		#tags tr:hover td,
-		#index tr:hover td,
-		#log tr:hover td,
-		#files tr:hover td {
-			background: var(--hover-bg-color);
-		}
-
-		a:hover {
-			color: peru;
-		}
-	}
-    */
 }
