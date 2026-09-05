@@ -426,10 +426,6 @@ pre a.h:hover, pre a.i:hover, pre a.d:hover {
     row-gap: .25em;
 }
 
-#open-file-name {
-	font-weight: bold;
-}
-
 .line {
 	display: inline;
 	margin-left: -.5em;
@@ -673,11 +669,16 @@ a {
     overflow: scroll;
 }
 
-#open-file-name, #dir-title {
+#dir-title {
     /* padding: 1.25em; */
     margin-right: auto;
     word-wrap: anywhere;
     /* padding: 10px; */
+}
+
+#open-file-name {
+    padding: 0;
+	font-weight: bold;
 }
 
 #log thead,
@@ -945,7 +946,6 @@ a {
 		overflow: scroll;
 	}
 
-	#open-file-name,
     #dir-title,
     #binary-file {
         padding: 10px;
