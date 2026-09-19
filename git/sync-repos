@@ -1,35 +1,96 @@
 #!/bin/sh
 
-set -xu
 
 BIN_DIR="/root/git"
 GIT_DIR="/var/www/git"
-GIT_SSH_COMMAND=''
+GIT_SSH_COMMAND='ssh -i ~/.ssh/key-mjkloeckner'
+
+MAX_PARALLEL_JOBS=1
 
 mkdir -p "$GIT_DIR"
 
-gh repo list --limit 1000 --json nameWithOwner,isPrivate,isFork \
+count_repos_in_list()
+{
+    set -- $1
+    echo "$#"
+}
+
+parallel_jobs_cleanup()
+{
+    trap - INT TERM
+
+    for pid in $pids; do
+        kill "$pid" 2>/dev/null
+    done
+
+    wait
+
+    exit 130
+}
+
+update_repo()
+{
+    repo="$1"
+    repo_dir="$2"
+    bare_repo_path="$3"
+
+    if [ -d "$repo_dir" ] && [ -d "$bare_repo_path" ]; then
+        git -C "$bare_repo_path" remote update --prune
+    else
+        mkdir -p "$repo_dir"
+        git clone --mirror "https://github.com/$repo.git" "$bare_repo_path"
+        ln -sf "$bare_repo_path" /home/git
+    fi
+
+    # always update description
+    gh repo view "$repo" --json description --jq '.description' > \
+        "$bare_repo_path/description"
+
+    (
+        cd "$GIT_DIR" || exit
+        "$BIN_DIR/update-git-repo" "$repo_dir"
+    )
+}
+
+repos_list=$(gh repo list --limit 1000 --json nameWithOwner,isPrivate,isFork \
     --jq '.[] | select(.isPrivate == false and .isFork == false) |
-    .nameWithOwner' |
-while read -r repo; do
+    .nameWithOwner' | sort)
+repos_count=$(count_repos_in_list "$repos_list")
+
+jobs=0
+pids=""
+
+trap parallel_jobs_cleanup INT TERM
+
+for repo in $repos_list; do
     name=$(basename "$repo")
     repo_dir="$GIT_DIR/$name"
     bare_repo_path="$repo_dir/$name.git"
 
-    if [ -d "$repo_dir" ]; then
-        git -C "$bare_repo_path" remote update --prune
-	gh repo view $repo --json description --jq '.description' > \
-		$bare_repo_path/description
-    else
-        mkdir -p "$repo_dir"
-        git clone --mirror "https://github.com/$repo.git" "$bare_repo_path"
-        gh repo view $repo --json description --jq '.description' > \
-            $bare_repo_path/description
+    update_repo "$repo" "$repo_dir" "$bare_repo_path" &
+    pid=$!
+    pids="$pids $pid"
+    jobs=$((jobs + 1))
 
-        ln -sf "$bare_repo_path" /home/git
+    if [ "$jobs" -ge "$MAX_PARALLEL_JOBS" ]; then
+        wait
+        pids=""
+        jobs=0
     fi
 
-    (cd "$GIT_DIR"; "$BIN_DIR"/update-git-repo "$repo_dir")
+    # always update description
+    # gh repo view $repo --json description --jq '.description' > \
+    #     $bare_repo_path/description
+
+    # if [ -d "$repo_dir" ] && [ -d "$bare_repo_path" ]; then
+    #     git -C "$bare_repo_path" remote update --prune
+    # else
+    #     mkdir -p "$repo_dir"
+    #     git clone --mirror "https://github.com/$repo.git" "$bare_repo_path"
+    #     ln -sf "$bare_repo_path" /home/git
+    # fi
+
+    # (cd "$GIT_DIR"; "$BIN_DIR"/update-git-repo "$repo_dir")
 done
 
-(cd "$GIT_DIR"; "$BIN_DIR"/generate-git-main-index .)
+# (cd "$GIT_DIR"; "$BIN_DIR"/generate-git-main-index .)
