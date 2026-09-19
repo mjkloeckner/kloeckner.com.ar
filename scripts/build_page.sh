@@ -79,13 +79,20 @@ echo "date: $date"
 # lowdown --html-no-head-ids --html-no-escapehtml --html-no-owasp > body.html
 # sed '/^%%/,/^%%/'
 sed '/^%%/,/^%%/d' $input |\
-	lowdown --html-no-head-ids \
+	lowdown --html-no-head-ids --parse-math\
         --html-no-skiphtml --html-no-escapehtml \
         --html-no-owasp > body.html
 
 # puts id to <h1> tag and adds paragraph next to it with the article-date
+echo "last update: \"$last_update\""
+if [ -n "$last_update" ]; then
+    last_update=" (last update $last_update)"
+else
+    last_update=""
+fi
+
 sed -i -e 's/<h1>/<h1 id=article-title>/g' \
-	-e "s/<\/h1>/<\/h1><p class=\"article-date\">$date (last update $last_update)<\/p>/"\
+	-e "s/<\/h1>/<\/h1><p class=\"article-date\">$date$last_update<\/p>/"\
 	body.html
 
 sed -e "s/\$article-title\\$/$title/" -e "s/\$article-date\\$/$date/" \
