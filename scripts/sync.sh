@@ -7,7 +7,7 @@ blog_index_file="common/blog_index.shtml"
 latest_uploads_file="common/latest_uploads.shtml"
 rss_feed_file=$root_folder/"rss.xml"   # RSS feed file
 blog_folders=$("$root_folder"/scripts/sort_blog_index.py "$blog_folder")
-index_latest_uploads_count=8
+index_latest_uploads_count=10
 blog_index_need_regen=false
 
 check_if_blog_index_needs_regen() {
