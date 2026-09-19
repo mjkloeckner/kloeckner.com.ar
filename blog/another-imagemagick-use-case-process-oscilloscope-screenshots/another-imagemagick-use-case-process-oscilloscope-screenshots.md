@@ -12,8 +12,15 @@ this one I want to talk about another use case I found for ImageMagick: process
 oscilloscope screenshots to change the dark color scheme to a lighter one,
 making it suitable for reports and if desired, for printing.
 
+<!--
 <div class="centered-img">
     <img style="width: 38%" src="hds25s.png" alt="OWON HDS25s">
+</div>
+-->
+
+<div class="side-by-side">
+    <img style="max-width: 33%"  src="hds25s.webp" alt="Owon HDS25S front">
+    <img style="max-width: 55%" src="hds25s_back_trim.webp" alt="Owon HDS25S back">
 </div>
 
 Of course, ImageMagick has an infinite number of uses: converting images from
@@ -28,8 +35,8 @@ screenshots fit nicely side by side on a PDF page because of the screen's 4:3
 aspect ratio.
 
 <div class="side-by-side">
-  <img src="sine_250.png" alt="Sine of frecuency 250 Hz">
-  <img src="sine_637.png" alt="Sine with frequency 637 Hz">
+  <img src="sine_250.png" alt="Sine with frecuency 250 Hz and dark scheme">
+  <img src="sine_637.png" alt="Sine with frequency 637 Hz and dark scheme">
 </div>
 
 As seen in the pictures above, the screenshots are clear and look nice, but when
@@ -105,8 +112,9 @@ the yellow color replaced with blue `#005FFF`.
 At the end, all the masks are combined on top of the previously created inverted
 greyscale image, resulting in the final image shown below.
 
-<div class="centered-img">
-    <img src="./sine_250_light.png" alt="OWON HDS25s">
+<div class="side-by-side">
+  <img src="sine_250_light.png" alt="Sine with frecuency 250 Hz and light scheme">
+  <img src="sine_637_light.png" alt="Sine with frequency 637 Hz and light scheme">
 </div>
 
 It is true that simply inverting the image would have been enough, but I think
